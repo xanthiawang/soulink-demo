@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Soulink · 官网 v0.21</title>
+<title>Soulink · 官网 v0.22</title>
 <meta name="description" content="Soulink — AI 社交匹配平台。遇见你的理想型。Soulink 与沐仞科技（FathomPeak）合作出品。">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400&family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@300;400&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -418,6 +418,17 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
 .drawer>a:not(.dcta){display:flex;align-items:center;height:48px;padding:0 16px;margin-bottom:12px;font:500 24px/42px var(--sans);color:var(--brown)}
 .drawer .dcta{display:flex;align-items:center;justify-content:center;gap:8px;height:44px;margin:4px 16px 0;background:var(--brown);color:var(--cream);border-radius:4px;font:600 16px var(--sans)}
 @media (max-width:900px){nav{display:none}header .menu{display:flex}header .logo span,header .logo small{display:none}}
+
+/* ---------- 一张推荐长什么样 ---------- */
+.anat{max-width:var(--max);margin:0 auto;padding:0 24px 40px;display:grid;grid-template-columns:420px 1fr;gap:40px;align-items:center}
+.anat .ph{width:300px;margin:0 auto;border-radius:34px;border:6px solid #201515;overflow:hidden;box-shadow:0 20px 60px rgba(32,21,21,.18);background:#fff}
+.anat .ph img{width:100%;display:block}
+.anat ol{margin:0;padding:0;list-style:none;counter-reset:a}
+.anat li{position:relative;padding:14px 0 14px 46px;border-top:1px solid var(--sand);font:400 15px/1.55 var(--sans);color:var(--dark2)}
+.anat li:first-child{border-top:0}
+.anat li::before{counter-increment:a;content:counter(a,decimal-leading-zero);position:absolute;left:0;top:18px;font:600 12px var(--sans);letter-spacing:.1em;color:var(--orange)}
+.anat li b{display:block;font-family:var(--serif-h);font-weight:400;font-size:22px;color:var(--brown);margin-bottom:4px}
+@media (max-width:900px){.anat{grid-template-columns:1fr;gap:24px}.anat .ph{width:240px}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="boilS" x="-1%" y="-1%" width="102%" height="102%"><feTurbulence type="fractalNoise" baseFrequency=".008" numOctaves="2" seed="1" result="t"><animate attributeName="seed" values="1;2;3;4;5;6;7;8" dur="1.4s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feDisplacementMap in="SourceGraphic" in2="t" scale="2"/></filter></svg>
@@ -622,9 +633,17 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
   </div>
 </div>
 <!-- 今天的 20 位 -->
-<div class="secHead" id="today" style="padding-top:70px"><span class="sq ap"></span><h2 class="ap d1">每天 20 位，一次一位</h2><p class="ap d2">一位用户 10 月 25 日收到的 20 位。App 里一次只看一位，这里一次展开六位；鼠标放上去，看灵犀为什么推荐。</p></div>
-<div class="people" id="people"></div>
-<div class="center" style="padding:10px 24px 100px"><a class="btn ap" href="app.html#onboarding/1">全部 20 位在 App 里 <span class="ar">→</span></a></div>
+<div class="secHead" id="today" style="padding-top:70px"><span class="sq ap"></span><h2 class="ap d1">一张推荐长什么样</h2><p class="ap d2">每天 20 位，一次只看一位。每一张卡上都有这几样，没有一样是黑箱。</p></div>
+<div class="anat"><div class="shot ap"><div class="ph"><img src="art/web/shots/today.webp" alt=""></div></div>
+<ol class="ap d1">
+<li><b>一张清晰的照片</b>其他照片默认模糊，双方都点"看清照片"才互相清晰。</li>
+<li><b>像不像你的理想型</b>按你传的那张照片比，写成"理想型 · 对上 3 个"，不写百分比。</li>
+<li><b>为什么是 Ta</b>灵犀的一句话，引用 Ta 自己填的回答和你说过的话，不是泛泛的"兴趣相投"。</li>
+<li><b>星座 × 属相五行</b>仅供参考，进画像当一个信号，不单独决定推荐。</li>
+<li><b>想认识 / 这次不了</b>"这次不了"要选一个原因，灵犀下次照着改。</li>
+<li><b>今天 n / 20</b>非会员每天 20 位，明早 8 点更新；会员不限量。</li>
+</ol></div>
+<div class="center" style="padding:0 24px 100px"><a class="btn ap" href="app.html#onboarding/1">登录，看今天的 20 位 <span class="ar">→</span></a></div>
 
 <section class="sub" style="padding:90px 24px"><div class="meta ap"><span class="eyebrow">别错过</span></div><p class="lead ap d1"><b>每天 20 位，一次一位。</b>想认识的人在「对话」里等你。</p><div class="cta ap d2"><a class="btn o" href="app.html#onboarding/1">登录 <span class="ar">→</span></a></div></section>
 </div>
