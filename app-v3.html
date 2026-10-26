@@ -777,6 +777,8 @@ b,strong{font-weight:600}
 .lxbar .go{background:#141414;color:#fff;border-radius:999px}
 /* 彩色方块功能图标 */
 img[src*="art/v3/spot-"],img[src*="art/v3/test-"],img[src*="art/v3/place-"]{border-radius:12px;object-fit:contain}
+/* 第 68 轮：Codex 画的磨砂玻璃小物件，放在白色玻璃圆角方块里（Dafi App 图标的做法） */
+img.gl3{box-sizing:border-box;object-fit:contain;padding:3px;border-radius:14px!important;background:linear-gradient(160deg,#fff,#F5F5F8)!important;border:1px solid rgba(20,20,40,.06);box-shadow:inset 0 1px 0 #fff,0 2px 8px rgba(20,20,40,.05)}
 .objic{width:48px!important;height:48px!important}
 /* 列表头像方一点（Dafi 圆角方） */
 .li .av,.fd .hd .av{border-radius:14px}
@@ -2041,6 +2043,7 @@ html,body{background:#F0F0F2}
 <script>
 (function(){
   var V3 = ["act-arrowup", "act-arrowup-w", "act-back", "act-bell", "act-book", "act-camera", "act-cap", "act-cards", "act-chat", "act-chevron", "act-clock", "act-close", "act-crown", "act-cup", "act-delete", "act-eye", "act-filter", "act-flag", "act-fork", "act-frame", "act-globe", "act-grid", "act-hand", "act-headphones", "act-heart", "act-home", "act-image", "act-key", "act-keyboard", "act-list", "act-mic", "act-note", "act-pair", "act-paper", "act-phone", "act-pin", "act-play", "act-play-w", "act-plus", "act-refresh", "act-rock", "act-ruler", "act-scissors", "act-search", "act-send", "act-settings", "act-share", "act-shield", "act-shift", "act-smile", "act-sparkle", "act-star", "act-target", "act-ticket", "act-user", "act-video", "act-wand", "act-waves", "lingxi-mark", "place-bookstore", "place-cafe", "place-dinner", "place-exhibition", "place-river", "place-theatre", "spot-ideal", "spot-key", "spot-lingxi", "spot-match", "spot-notes", "spot-plus", "spot-portrait", "spot-tests", "tab-chats", "tab-me", "tab-places", "tab-today", "test-mbti", "test-pair", "test-style", "test-zodiac"];
+  var GLASS = ["place-bookstore", "place-cafe", "place-dinner", "place-exhibition", "place-river", "place-theatre", "spot-ideal", "spot-key", "spot-match", "spot-notes", "spot-plus", "spot-portrait", "spot-tests", "test-mbti", "test-pair", "test-style", "test-zodiac"];
   var COVERS = ['blush','aurora','mustard','ocean','ember','sand','forest','dusk'];
   var TABMAP = {today:'act-cards', chats:'act-chat', lx:'lingxi-mark', places:'act-grid', me:'act-user'};
   var re = /art\/(flat|ink)\/([a-z0-9-]+)\.svg/;
@@ -2055,6 +2058,7 @@ html,body{background:#F0F0F2}
     if (/^ob-/.test(name)){ var vf = OBV[name]; img.onerror = function(){ img.onerror = null; img.src = 'art/v3/cover-' + COVERS[(obN++) % COVERS.length] + '.webp'; }; img.src = vf ? 'art/v3/vis/' + vf + '.webp' : 'art/v3/cover-blush.webp'; return; }
     if (name === 'scene-match' || name === 'scene-voice'){ img.onerror = function(){ img.onerror = null; img.src = 'art/v3/' + name + '.webp'; }; img.src = 'art/v3/vis/' + (name === 'scene-match' ? 'vis-match' : 'vis-voice') + '.webp'; return; }
     if (img.id === 'pl-ink' && /^place-/.test(name)){ var PC = {'place-cafe':'sand','place-exhibition':'ocean','place-bookstore':'blush','place-river':'ocean','place-dinner':'ember','place-theatre':'dusk'}; img.onerror = null; img.src = 'art/v3/cover-' + (PC[name]||'blush') + '.webp'; return; }
+    if (GLASS.indexOf(name) >= 0){ img.onerror = null; img.src = 'art/v3/glass/' + name + '.webp'; img.classList.add('gl3'); return; }
     if (V3.indexOf(name) >= 0){ img.onerror = null; img.src = 'art/v3/' + name + '.svg'; }
   }
   function swapCodex(img){
