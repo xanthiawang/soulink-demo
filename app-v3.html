@@ -1,10 +1,9 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500&display=swap">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Soulink · 原型 v3 · 柔光风</title>
+<title>Soulink · 原型 v3</title>
 <meta name="description" content="Soulink · 遇见你的理想型。可点击原型 v2：每天 20 位、合并的对话与约会、去处、测一测、语音通话。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif&family=Noto+Serif+SC:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap">
-
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght,WONK@9..144,300..500,0..1&display=swap">
 <style>
 :root{
@@ -667,74 +666,159 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
 .ai.mo{margin-left:auto;padding:4px 2px}
 .acts .vw{font:400 12px var(--sans);letter-spacing:0;text-transform:none;color:var(--tertiary)}
 
-/* =================== v3 · 柔光风（参考 Dafi）：暖灰底 · 柔焦光晕 · 磨砂卡片 · 大圆角 · 黑色胶囊 =================== */
-:root{--background:#EFEDEA;--card:rgba(255,255,255,.72);--primary:#141414;--secondary:#5F5B57;--tertiary:#8C8781;--quaternary:#C2BDB6;
- --fill-primary:#141414;--fill-secondary:rgba(20,20,20,.07);--fill-secondary-hover:rgba(20,20,20,.11);--fill-tertiary:rgba(255,255,255,.55);
- --stroke-light:rgba(20,20,20,.06);--stroke-medium:rgba(20,20,20,.12);--dia-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 8px 24px rgba(60,50,40,.06);
- --r16:20px;--r20:24px;--r30:28px;--pill:999px;
- --sans:"Instrument Sans","Noto Sans SC","PingFang SC",system-ui,sans-serif;--serif:"Instrument Serif","Noto Serif SC","Songti SC",Georgia,serif;--mono:"Instrument Sans","Noto Sans SC",sans-serif;
- --mist-a:#E6E1EF;--mist-b:#E2E6F3;--mist-c:#F6E7D3;--mist-d:#ECE7E1;
- --peach:#F6B38C;--lemon:#F4E98A;--lilac:#CDBCF1;--sky:#AFC8F4;--rose:#F3C3D3}
-html,body{background:#E4E1DC}
-.frame{background:var(--background);border:1px solid rgba(255,255,255,.6);box-shadow:0 30px 80px rgba(60,50,40,.18)}
-.bgB{background:var(--background)!important}
-.bgB::after{content:"";position:absolute;inset:-10%;background:radial-gradient(60% 38% at 18% 100%,rgba(247,227,107,.85),transparent 70%),radial-gradient(55% 34% at 92% 92%,rgba(244,184,206,.75),transparent 70%),radial-gradient(50% 30% at 70% 0%,rgba(203,184,240,.55),transparent 70%),radial-gradient(45% 28% at 0% 10%,rgba(169,196,245,.45),transparent 70%);filter:blur(28px)}
-.bgB img,.bgB svg{display:none}
-body,.frame{font-family:var(--sans)}
-.cap,.cap2{font:500 11px/1.4 var(--sans);letter-spacing:.02em;text-transform:none;color:var(--tertiary)}
-.h{font-family:var(--serif);font-weight:400;font-variation-settings:normal;letter-spacing:-.01em}
-.h.h1{font-size:34px;line-height:1.08}.h.h2{font-size:26px}
-.top .t{font:600 17px var(--sans);letter-spacing:-.01em}
+/* ============ v3 · 参考 Dafi 的整套设计系统 ============ */
+:root{--background:#F2F0ED;--white:#FFFFFF;--card:#FFFFFF;
+ --primary:#141414;--secondary:#6B6763;--tertiary:#9A958F;--quaternary:#C9C4BD;
+ --fill-primary:#141414;--fill-secondary:#E9E6E2;--fill-secondary-hover:#E0DCD7;--fill-tertiary:#F6F5F3;
+ --stroke-light:#ECE9E5;--stroke-medium:#DDD8D2;--black-8:#ECE9E5;--dia-shadow:none;--shadow-card:none;
+ --mist-a:#ECE9E5;--mist-b:#ECE9E5;--mist-c:#ECE9E5;--mist-d:#ECE9E5;
+ --r16:16px;--r20:20px;--r30:22px;--pill:999px;
+ --sans:"Geist","Noto Sans SC","PingFang SC",system-ui,sans-serif;
+ --serif:"Newsreader","Noto Serif SC","Songti SC",Georgia,serif;
+ --mono:"Geist","Noto Sans SC",sans-serif;
+ --yellow:#F5E14E;--y-soft:#F7EE8E;--blue-soft:#C3E2EC;--lime-soft:#DCEB8F;--pink-soft:#F7CAD6;--peach-soft:#FAD1B8;--lilac-soft:#DCD2F5}
+html,body{background:#E7E4E0;font-family:var(--sans);color:var(--primary);-webkit-font-smoothing:antialiased}
+.frame{background:var(--background);border:0;border-radius:46px;box-shadow:0 30px 70px rgba(40,30,20,.16)}
+.bgB{background:var(--background)!important}.bgB img,.bgB svg{display:none!important}
+/* 字 */
+.cap,.cap2{font:500 12px/1.4 var(--sans);letter-spacing:0;text-transform:none;color:var(--tertiary)}
+.h{font-family:var(--sans);font-weight:400;font-variation-settings:normal;letter-spacing:-.02em;line-height:1.1}
+.h.h1{font-size:30px}.h.h2{font-size:24px}
+.sub{color:var(--secondary);font-size:14px;line-height:1.55}
+b,strong{font-weight:600}
+/* 内容标题用衬线（Dafi：课程名、文档标题） */
+.idealhero .h,#pf-title,[data-route="place"] .h.h1,.result .h,.qz .h,#tq-q,.deckcard .cap0 .h,.place-title{font-family:var(--serif)!important;font-weight:400;letter-spacing:-.01em}
+/* 顶栏 */
+.top{height:92px;padding:50px 20px 0}
+.top .t{font:600 20px/1.2 var(--sans);letter-spacing:-.02em;flex:1}
 .top .right{font:500 12px var(--sans);color:var(--tertiary)}
-/* 卡片：磨砂玻璃 */
-.card,.glass,.tile,.deckcard,.idealhero,.relcard,.hp,.vcard,.result,.compose .panel,.sugcard,.comp2,.lxbar,.memcard2,.seg,.compose .bar,.tb,.pcard,.fdcomp{background:rgba(255,255,255,.66)!important;-webkit-backdrop-filter:blur(18px) saturate(1.2);backdrop-filter:blur(18px) saturate(1.2);border:1px solid rgba(255,255,255,.75)!important;box-shadow:var(--dia-shadow)!important;border-radius:24px}
-.compose .bar,.tb,.seg{border-radius:999px}
-.photo,.gal .photo,.deckcard .photo,.vslot,.idealhero .ph{border-radius:18px;border:0}
-.inp,.chip,.compose input.obin{background:rgba(255,255,255,.7);border:1px solid rgba(20,20,20,.08);border-radius:14px}
-.chip{border-radius:999px}.chip.sel{background:#141414;color:#fff;border-color:#141414}
-/* 按钮：黑色小胶囊 / 描边胶囊 */
-.btn{background:#141414;color:#fff;border-radius:999px;font-weight:600;height:44px}
-.btn.soft{background:rgba(255,255,255,.6);color:#141414;border:1px solid #141414}
-.btn.sm{height:34px}
-.compose .send{background:#141414;color:#fff;border-radius:999px}
-/* 标签：粉彩胶囊 */
-.tag{background:rgba(255,255,255,.7);border:1px solid rgba(20,20,20,.08);border-radius:999px;color:#141414}
-.tag.sel,.tag.p{background:var(--peach);border-color:transparent;color:#2b1a10}
-.deckcard .wd span{background:rgba(255,255,255,.7);border-radius:999px}.deckcard .wd span.on{background:var(--lemon);color:#141414}
-.pill{border-radius:999px;background:rgba(255,255,255,.7);font:600 10px var(--sans);letter-spacing:.06em}.pill.hot{background:var(--peach);color:#2b1a10}
-.fd .ty{background:var(--peach);color:#2b1a10;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
-.fd .ty.say{background:var(--lilac);border:0}
-/* 灵犀：渐变光点，不用手绘头像 */
-.lxbar{background:linear-gradient(120deg,rgba(255,255,255,.75),rgba(255,255,255,.55))!important}
-.lxbar .av,.tabs a.core .ring{background:conic-gradient(from 200deg,#F4E98A,#F6B38C,#F3C3D3,#CDBCF1,#AFC8F4,#F4E98A)!important;border:0!important;box-shadow:0 6px 20px rgba(205,188,241,.55),0 0 0 4px rgba(255,255,255,.8)!important}
-.lxbar .av img{opacity:0}
-.lxbar .go{background:#141414;color:#fff}
-.tabs a.core .ring svg{color:#141414}.tabs a.core.on .ring{background:conic-gradient(from 20deg,#F4E98A,#F6B38C,#F3C3D3,#CDBCF1,#AFC8F4,#F4E98A)!important}
-/* 底栏：浮动磨砂胶囊 */
-.tabs{background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.8);box-shadow:0 10px 30px rgba(60,50,40,.10)}
-.tabs a{font:500 12px var(--sans)}.tabs a.on{font-weight:600}
-/* 气泡 */
-.bub{background:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.8);border-radius:20px}.bub.me{background:#141414;color:#fff}
-.sugcard{background:linear-gradient(135deg,rgba(244,233,138,.45),rgba(243,195,211,.40),rgba(205,188,241,.35))!important}
-.comp2 .sug{background:linear-gradient(135deg,rgba(244,233,138,.45),rgba(246,179,140,.30));border-radius:16px}
-/* 动态：平铺保持，仅换字 */
-.fd{background:transparent!important;-webkit-backdrop-filter:none;backdrop-filter:none;border:0!important;border-bottom:1px solid rgba(20,20,20,.07)!important;box-shadow:none!important;border-radius:0}
+.top .back{display:inline-flex;align-items:center;gap:2px;font:500 13px var(--sans);color:var(--primary);margin:0 8px 0 -4px;width:auto;height:32px;border-radius:0;white-space:nowrap;flex:none}
+.top .back svg{display:none}.top .back::before{content:"";width:18px;height:18px;background:url(art/v3/act-back.svg) center/18px no-repeat}
+.top .back::after{content:"返回"}
+.top .back+.t:not(:empty){font-size:16px;font-weight:600;text-align:center}
+.top .ib{width:36px;height:36px;border-radius:12px;background:#fff;border:0}
+/* 分区标题：Dafi「Nouvelles notes ¹²」 */
+.scroll>.cap.pad,.scroll>.pad>.cap:only-child{font:500 17px/1.3 var(--sans);color:var(--primary);letter-spacing:-.01em}
+/* 卡片：白、无描边、无投影、圆角 20 */
+.card,.glass,.tile,.idealhero,.relcard,.hp,.vcard,.result,.memcard2,.comp2,.fdcomp{background:#fff!important;border:0!important;box-shadow:none!important;border-radius:20px!important}
+.card.list .li{border-bottom-color:var(--stroke-light)}
+.glass{padding:14px 16px}
+/* 按钮：黑色胶囊；次级：黑描边胶囊（Dafi「Tout voir」） */
+.btn{background:#141414;color:#fff;border-radius:999px;font:600 14px var(--sans);height:44px;padding:0 22px;border:0}
+.btn:hover{background:#2A2A2A}
+.btn.w{height:50px}
+.btn.sm{height:32px;font-size:12.5px;padding:0 14px}
+.btn.soft{background:transparent;color:#141414;border:1px solid #141414}
+.tick{font:500 13px var(--sans);border:1px solid #141414;border-radius:999px;padding:8px 16px;background:transparent}
+/* 选择 / 标签 */
+.chip{background:#fff;border:1px solid var(--stroke-medium);border-radius:999px;font:500 13px var(--sans)}
+.chip.sel{background:#141414;color:#fff;border-color:#141414}
+.tag{background:var(--fill-tertiary);border:0;border-radius:8px;font:500 12px var(--sans);color:var(--primary);padding:5px 10px}
+.tag.sel{background:#141414;color:#fff}
+.tag.p,.tag.lx{background:var(--y-soft);color:#141414}
+.pill{background:var(--fill-tertiary);color:var(--primary);border-radius:6px;font:600 10.5px var(--sans);letter-spacing:.02em;padding:4px 8px}
+.pill.hot{background:var(--peach-soft);color:#7A3A12}
+.fd .ty{background:var(--lime-soft);color:#2F3A0A;border-radius:6px;font:600 10.5px var(--sans);letter-spacing:.06em}
+.fd .ty.say{background:var(--lilac-soft);border:0;color:#33215E}
+.inp,.compose input.obin,.field input{background:#ECE9E5;border:0;border-radius:12px;font:400 15px var(--sans)}
+/* 分段：黑色实心胶囊 = 当前 */
+.seg{background:transparent;border:0;box-shadow:none;padding:0;gap:6px;display:inline-flex}
+.seg button,.seg a{border-radius:999px;padding:7px 14px;font:500 13px var(--sans);color:var(--secondary);border:1px solid var(--stroke-medium);background:transparent}
+.seg button.on,.seg a.on{background:#141414;color:#fff;border-color:#141414}
+/* 底部导航：白色圆角条 + 黄色方块标当前（Dafi） */
+.tabs{left:20px;right:20px;bottom:22px;height:64px;border-radius:22px;background:#fff;border:0;box-shadow:0 8px 24px rgba(40,30,20,.08);padding:0 10px;display:flex;justify-content:space-around;align-items:center;backdrop-filter:none;-webkit-backdrop-filter:none}
+.tabs a,.tabs a.core{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:14px;margin:0;padding:0;border:0}
+.tabs a span,.tabs a.core span,.tabs a .lbl{display:none!important}
+.tabs a img.v3i{width:22px;height:22px;display:block}
+.tabs a.on{background:var(--yellow)}
+.tabs a.core .ring{display:none!important}
+.tabs a.core img.v3i{width:30px;height:30px}
+/* 今日推荐卡 */
+#deck-lead{font:400 20px/1.3 var(--sans)!important;letter-spacing:-.01em;color:var(--secondary)!important}
+.deckcard{background:#fff!important;border:0!important;box-shadow:none!important;border-radius:26px!important;padding:8px 8px 14px}
+.deckcard .photo{border-radius:20px;border:0;height:400px}
+.deckcard .photo .why0{background:#fff;color:#141414;border-radius:6px;font:600 10.5px var(--sans);letter-spacing:.04em}
+.deckcard .photo .cap0 .h{font-size:30px}
+.deckcard .wd span{background:var(--fill-tertiary);border-radius:8px}.deckcard .wd span.on{background:var(--y-soft);color:#141414}
+.nextrow button .av{border-radius:14px}
+/* 理想型大卡 */
+.idealhero .ph{border-radius:20px;margin:8px 8px 0;overflow:hidden}
+.idealhero .h{font-size:32px}
+.idealhero .ws span{background:var(--y-soft);border-radius:8px;font:500 12px var(--sans)}
+.idealhero .ph .ai{background:#fff;border-radius:6px;font:500 11px var(--sans);letter-spacing:0}
+/* 灵犀入口：白卡 + 渐变花 */
+.lxbar{background:#fff!important;border:0!important;box-shadow:none!important;border-radius:20px!important}
+.lxbar .av{background:transparent!important;width:52px;height:52px;border-radius:14px}
+.lxbar .av img{width:52px;height:52px}
+.lxbar .go{background:#141414;color:#fff;border-radius:999px}
+/* 彩色方块功能图标 */
+img[src*="art/v3/spot-"],img[src*="art/v3/test-"],img[src*="art/v3/place-"]{border-radius:12px;object-fit:contain}
+.objic{width:48px!important;height:48px!important}
+/* 列表头像方一点（Dafi 圆角方） */
+.li .av,.fd .hd .av{border-radius:14px}
+/* 聊天 */
+.bub{background:#fff;border:0;border-radius:18px;font-size:14.5px}
+.bub.me{background:#141414;color:#fff}
+.bub.sys{background:transparent;color:var(--tertiary)}
+.compose{background:linear-gradient(180deg,rgba(242,240,237,0),var(--background) 35%)}
+.compose .bar{background:#fff;border:0;box-shadow:0 6px 20px rgba(40,30,20,.06);border-radius:20px;padding:8px 8px 8px 10px}
+.compose .help{background:transparent;border-radius:10px}
+.compose .help.on{background:var(--yellow);color:#141414}
+.compose .send{background:#141414;color:#fff;border-radius:12px;height:36px;min-width:36px;font:600 13px var(--sans)}
+.sugcard{background:#fff!important;border:0!important;border-radius:18px!important}
+.sugcard .opts button{background:var(--fill-tertiary);border:0;border-radius:12px}
+.comp2 .sug{background:var(--y-soft);border-radius:14px}
+.keys .k{border:0;box-shadow:none;border-radius:10px;background:#fff}.keys .k.fn{background:#E3E0DB}.keys .k.go{background:#141414;color:#fff;border-radius:10px}
+.panel.kbp{background:#ECE9E5;border:0;box-shadow:none}
+.kbsug .cands button{background:#fff;border:0;border-radius:999px}
+.tools8 button,.tools8 a{background:#fff;border:0;border-radius:16px}
+.tb{background:#fff!important;border:0!important;box-shadow:none!important;border-radius:999px;font:500 12.5px var(--sans)}
+.fab i{background:#fff;border:0;box-shadow:0 6px 18px rgba(40,30,20,.08)}.fab span{background:#fff;border:0;font:500 10px var(--sans)}
+/* 动态：平铺 */
+.fd{background:transparent!important;border:0!important;border-bottom:1px solid var(--stroke-light)!important;border-radius:0!important;box-shadow:none!important}
 .fd .ph{border-radius:16px}
+.fd .pl{background:#fff;border-radius:999px}
 /* 抽屉 */
-.sheet{background:rgba(30,25,20,.18)}
-.sheet .box{background:rgba(247,245,242,.92);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border-radius:28px 28px 0 0}
-/* 首屏：柔光 + 大字标，城市视频不在此版 */
+.sheet{background:rgba(20,20,20,.22)}
+.sheet .box{background:var(--background);border-radius:26px 26px 0 0}
+.sheet .grab{background:#CFCAC4}
+/* 测验选项（Dafi：描边选项 + 右侧单选圈） */
+.qz .opt{background:#fff;border:1px solid var(--stroke-medium);box-shadow:none;border-radius:12px;position:relative;padding-right:44px;font:500 15px var(--sans)}
+.qz .opt::after{content:"";position:absolute;right:16px;top:50%;width:16px;height:16px;margin-top:-8px;border-radius:50%;border:1.5px solid #B9B3AC}
+.qz .opt:hover{border-color:#141414}.qz .opt:hover::after{border-color:#141414;background:radial-gradient(circle,#141414 45%,transparent 50%)}
+/* 测一测结果 / 合盘 */
+.result{text-align:left}
+.result .ws span{background:var(--y-soft);border-radius:8px}
+/* 开关 */
+.tg{background:#D8D3CD}.tg::after{box-shadow:none}
+.tg:not(.off){background:#141414}
+/* 步骤条（Dafi 引导页顶部的三段条） */
+.step i{background:#DCD7D1;height:3px;border-radius:2px}.step i.on{background:#141414}
+/* 小渐变方块（Dafi 标题上方的「主题色块」） */
+img.lo{width:64px!important;height:64px!important;border-radius:16px;object-fit:cover;display:block;margin:0 auto}
+/* ===== 柔光场景：启动 / 登录、语音、灵犀空状态、匹配、通话 ===== */
 #scrB .cityB{background:var(--background);font-size:0;color:transparent}
 #scrB .cityB>*{display:none!important}
-#scrB .cityB::after{content:"";position:absolute;inset:-15%;background:radial-gradient(42% 30% at 50% 34%,rgba(244,233,138,.95),transparent 70%),radial-gradient(40% 26% at 30% 46%,rgba(243,195,211,.75),transparent 72%),radial-gradient(40% 26% at 72% 44%,rgba(205,188,241,.75),transparent 72%),radial-gradient(60% 30% at 50% 100%,rgba(175,200,244,.45),transparent 70%);filter:blur(30px)}
+#scrB .cityB::after,[data-route="onboarding/5"]::before,#match::before,#call::before,#lx-hello::before{content:"";position:absolute;pointer-events:none;background:radial-gradient(38% 30% at 50% 42%,rgba(247,222,74,.95),transparent 70%),radial-gradient(34% 26% at 30% 52%,rgba(243,195,211,.80),transparent 72%),radial-gradient(34% 26% at 70% 50%,rgba(205,188,241,.80),transparent 72%),radial-gradient(40% 26% at 46% 30%,rgba(175,200,244,.55),transparent 72%);filter:blur(30px)}
+#scrB .cityB::after{inset:-20% -20% 30% -20%}
 #scrB .hintB,#scrB .skip,#scrB>.gp{display:none!important}
-#scrB .hB,#scrB .hB.dark{font-family:var(--serif)!important;color:#141414!important;text-shadow:none!important;font-size:44px!important;line-height:1.05}
-#scrB .scroll .cap,#scrB .scroll p{color:#5F5B57!important;text-shadow:none!important}
-#scrB .scroll .center{color:#8C8781!important}
-#scrB .btn.w:not([style]){background:#141414!important;color:#fff!important}
-#scrB .scroll>div:first-child{padding-top:170px!important}
-#scrB .scroll>div:first-child::before{content:"Soulink";display:block;font:700 40px/1 var(--sans);letter-spacing:-.04em;color:#141414;margin-bottom:26px}
-#scrB .pad.rv.d4{margin:0 16px 20px;padding:18px 16px 16px!important;background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.8);border-radius:28px}
+#scrB .scroll>div:first-child{padding-top:150px!important}
+#scrB .scroll>div:first-child::before{content:"Soulink";display:block;font:800 52px/1 var(--sans);letter-spacing:-.05em;color:#141414;margin-bottom:28px}
+#scrB .scroll .cap{color:var(--secondary)!important}
+#scrB .hB,#scrB .hB.dark{font:400 30px/1.15 var(--sans)!important;letter-spacing:-.02em;color:#141414!important;text-shadow:none!important}
+#scrB .scroll p{color:var(--secondary)!important;text-shadow:none!important}
+#scrB .pad.rv.d4{margin:0 14px 18px;padding:22px 18px 14px!important;background:#fff;border-radius:28px}
+#scrB .pad.rv.d4 .btn.w{height:48px}
+#scrB .pad.rv.d4 .btn.w[style]{background:#ECE9E5!important;border:0!important;color:#141414!important}
+[data-route="onboarding/5"]::before{left:-20%;right:-20%;top:4%;height:60%}
+#match{background:var(--background)!important}#match::before{inset:-10% -20% 40% -20%}
+#call{background:var(--background)!important}#call::before{inset:-10% -20% 40% -20%}
+#lx-hello{position:relative}#lx-hello::before{left:10%;right:10%;top:-30px;height:200px;z-index:-1}
+#match .h,#call .h{font-family:var(--sans)}
+#pl-img{background:none!important;padding:0!important;overflow:hidden;border-radius:20px}
+#pl-ink{width:100%!important;height:100%!important;max-width:none!important;object-fit:cover;border-radius:20px;display:block}
+/* 声波（Dafi 录音条） */
+.wave i{background:#141414}
 </style>
 
 <div class="stage">
@@ -1762,4 +1846,54 @@ body,.frame{font-family:var(--sans)}
 })();
 </script>
 
-<script>(function(){ if(!window.demo) return; demo.introPlay=function(){ var s=document.getElementById('scrB'); if(s){ s.classList.remove('intro'); s.classList.remove('night'); s.classList.remove('vid') } }; demo.introPlay(); })();</script>
+<script>
+(function(){
+  var V3 = ["act-back", "act-bell", "act-book", "act-camera", "act-cap", "act-cards", "act-chat", "act-clock", "act-close", "act-crown", "act-cup", "act-delete", "act-eye", "act-filter", "act-flag", "act-fork", "act-frame", "act-globe", "act-grid", "act-hand", "act-headphones", "act-heart", "act-home", "act-image", "act-key", "act-keyboard", "act-list", "act-mic", "act-note", "act-pair", "act-phone", "act-pin", "act-plus", "act-ruler", "act-search", "act-send", "act-settings", "act-share", "act-shield", "act-shift", "act-smile", "act-sparkle", "act-star", "act-target", "act-ticket", "act-user", "act-video", "act-wand", "act-waves", "lingxi-mark", "place-bookstore", "place-cafe", "place-dinner", "place-exhibition", "place-river", "place-theatre", "spot-ideal", "spot-key", "spot-lingxi", "spot-match", "spot-notes", "spot-plus", "spot-portrait", "spot-tests", "tab-chats", "tab-me", "tab-places", "tab-today", "test-mbti", "test-pair", "test-style", "test-zodiac"];
+  var COVERS = ['blush','aurora','mustard','ocean','ember','sand','forest','dusk'];
+  var TABMAP = {today:'act-cards', chats:'act-chat', lx:'lingxi-mark', places:'act-grid', me:'act-user'};
+  var re = /art\/(flat|ink)\/([a-z0-9-]+)\.svg/;
+  var obN = 0;
+  function swapImg(img){
+    var src = img.getAttribute('src') || '';
+    if (src.indexOf('art/v3/') >= 0) return;
+    var m = src.match(re); if (!m) return;
+    var name = m[2];
+    if (name === 'strip-clouds'){ img.style.display = 'none'; return; }
+    if (/^scene-/.test(name)){ img.onerror = null; img.src = 'art/v3/' + name + '.webp'; return; }
+    if (/^ob-/.test(name) || img.classList.contains('lo')){ img.onerror = null; img.src = 'art/v3/cover-' + COVERS[(obN++) % COVERS.length] + '.webp'; return; }
+    if (img.id === 'pl-ink' && /^place-/.test(name)){ var PC = {'place-cafe':'sand','place-exhibition':'ocean','place-bookstore':'mustard','place-river':'aurora','place-dinner':'ember','place-theatre':'dusk'}; img.onerror = null; img.src = 'art/v3/cover-' + (PC[name]||'blush') + '.webp'; return; }
+    if (V3.indexOf(name) >= 0){ img.onerror = null; img.src = 'art/v3/' + name + '.svg'; }
+  }
+  function swapCodex(img){
+    var src = img.getAttribute('src') || '';
+    if (/art\/codex\/icon-/.test(src) || (img.classList.contains('lo') && src.indexOf('art/v3/') < 0)){ img.onerror = null; img.src = 'art/v3/cover-' + COVERS[(obN++) % COVERS.length] + '.webp'; }
+  }
+  function tabs(root){
+    (root.querySelectorAll ? root.querySelectorAll('.tabs a[data-tab]') : []).forEach(function(a){
+      if (a.dataset.v3) return; var k = a.dataset.tab, f = TABMAP[k]; if (!f) return;
+      var label = (a.textContent || '').trim();
+      a.innerHTML = '<img class="v3i" src="art/v3/' + f + '.svg" alt=""><span class="lbl">' + label + '</span>';
+      a.setAttribute('aria-label', label); a.dataset.v3 = 1;
+    });
+  }
+  function icons(root){
+    if (!root.querySelectorAll) return;
+    root.querySelectorAll('#help-btn svg, .compose .help svg.ic').forEach(function(sv){ if (sv.dataset.v3) return; var im = document.createElement('img'); im.src = 'art/v3/act-wand.svg'; im.style.cssText = 'width:20px;height:20px'; sv.replaceWith(im); });
+    root.querySelectorAll('.top a.ib svg.ic').forEach(function(sv){ var im = document.createElement('img'); im.src = 'art/v3/act-settings.svg'; im.style.cssText = 'width:18px;height:18px'; sv.replaceWith(im); });
+    root.querySelectorAll('button.mic svg.ic').forEach(function(sv){ var im = document.createElement('img'); im.src = 'art/v3/act-mic.svg'; im.style.cssText = 'width:26px;height:26px'; sv.replaceWith(im); });
+  }
+  function run(root){
+    root = root || document;
+    if (root.tagName === 'IMG'){ swapImg(root); swapCodex(root); return; }
+    if (!root.querySelectorAll) return;
+    root.querySelectorAll('img').forEach(function(i){ swapImg(i); swapCodex(i); });
+    tabs(root); icons(root);
+  }
+  run(document);
+  new MutationObserver(function(ms){ ms.forEach(function(m){
+    if (m.type === 'attributes'){ swapImg(m.target); return; }
+    m.addedNodes.forEach(function(n){ if (n.nodeType === 1) run(n); });
+  }); }).observe(document.body, {subtree:true, childList:true, attributes:true, attributeFilter:['src']});
+  if (window.demo){ demo.introPlay = function(){ var sc = document.getElementById('scrB'); if (sc){ sc.classList.remove('intro','night','vid'); } }; demo.introPlay(); }
+})();
+</script>
