@@ -1,3 +1,5 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Soulink · 官网原型 v0.14</title>
 <meta name="description" content="Soulink — AI 社交匹配平台。遇见你的理想型。由 Soulink 与沐仞科技（FathomPeak）共同所有。">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -333,17 +335,37 @@ nav a.nl.cur:after{transform:translateX(-50%) scaleX(1)}
 .plist{display:flex;flex-direction:column}
 .pgroup{font:600 14px/20px var(--sans);letter-spacing:2px;text-transform:uppercase;color:var(--brown);margin:0 0 60px}
 .pgroup:not(:first-child){margin-top:60px}
-.pcard{border-radius:10px;overflow:clip;background:#fff;margin-bottom:40px;scroll-margin-top:100px}
-.pcard .vis{position:relative;aspect-ratio:1060/751;background:#ECEAE3}
-.pcard .vis video,.pcard .vis img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.pcard .tx{padding:30px 30px 34px}
-.pcard .tag{display:inline-block;font:500 12px/18px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:#605D52;border:1px solid rgba(32,21,21,.18);padding:3px 8px;border-radius:4px;margin:0 0 15px}
-.pcard h3{font:400 30px/32px var(--serif-h);letter-spacing:-.01em;margin:0 0 15px;color:var(--brown)}
-.pcard p{font:400 16px/22.4px var(--sans);letter-spacing:-.16px;color:var(--brown);margin:0 0 26px;max-width:1000px}
-.pcard .link{font:600 18px/22px var(--sans);color:var(--brown);text-decoration:none;display:inline-flex;gap:8px;align-items:center}
-.pcard .link:hover{text-decoration:underline}
-@media (max-width:900px){.prod{grid-template-columns:1fr;column-gap:0;padding-bottom:70px}.pnav{position:static;flex-direction:row;flex-wrap:wrap;gap:2px;margin-bottom:28px}.pnav b{margin:0 10px 0 0;width:100%}.pcard .tx{padding:22px 20px 26px}.pcard h3{font-size:26px}}
-@media (max-width:860px){.prod{grid-template-columns:1fr}.pnav{display:none}.pcard{grid-template-columns:1fr}.pcard .vis{min-height:320px}}
+/* Lingxi feature panels: product UI first; reference hierarchy, original brand staging. */
+.pcard{display:grid;grid-template-columns:minmax(220px,1fr) minmax(0,1.65fr);border:1px solid #d9d5ce;border-radius:10px;overflow:hidden;background:#fffefa;margin-bottom:48px;scroll-margin-top:90px}
+.pcard .tx{grid-column:1;grid-row:1;padding:30px 28px;display:flex;flex-direction:column;align-items:flex-start}
+.pcard .tag{display:inline-block;font:500 12px/18px var(--sans);color:#605d52;border:1px solid #d9d5ce;padding:3px 7px;margin-bottom:18px}
+.pcard h3{font:500 26px/1.25 var(--sans);letter-spacing:-.02em;margin:0 0 16px;color:var(--brown)}
+.pcard p{font:400 16px/1.6 var(--sans);color:var(--brown);margin:0 0 24px}
+.pcard .link{font:600 16px/1.4 var(--sans);margin-top:auto;display:inline-flex;gap:8px;text-decoration:underline;text-underline-offset:5px}
+.pcard .vis{grid-column:2;grid-row:1;position:relative;min-width:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px;padding:34px 24px 22px;isolation:isolate;background:#b8c2df}
+.pcard .vis::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(150deg,rgba(85,109,179,.22),transparent 55%,rgba(246,164,92,.44)),repeating-linear-gradient(90deg,transparent 0 89px,rgba(39,50,84,.11) 90px 91px)}
+.pcard:nth-of-type(3n) .vis{background:#d2d5e5}
+.pcard:nth-of-type(4n) .vis{background:#c2cccf}
+.pcard .ui-preview{display:block;width:min(100%,353px);border:1px solid rgba(40,50,75,.14);border-radius:8px;overflow:hidden;background:white;box-shadow:0 14px 30px rgba(35,43,72,.14);transition:transform .2s ease}
+.pcard .ui-preview:hover{transform:translateY(-3px)}
+.pcard .ui-preview:focus-visible{outline:3px solid #dd4a09;outline-offset:5px}
+.pcard .vis img{position:static;width:100%;height:auto;object-fit:contain;display:block}
+.pcard .ui-caption{font:400 12px/1.5 var(--sans);color:#35405b;text-align:center;margin:0;max-width:none}
+.pcard .ui-caption a{text-decoration:underline;text-underline-offset:3px}
+.pcard.featured{display:flex;flex-direction:column}
+.pcard.featured .vis{padding:40px 36px 24px;min-height:560px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.pcard.featured .ui-preview{justify-self:end;width:min(100%,353px)}
+.pcard.featured .ui-caption{grid-column:1/-1}
+.pcard.featured .tx{padding:30px 32px 34px}
+.pcard .ui-steps{font:400 16px/1.6 var(--sans);max-width:270px;color:#26344f}
+.pcard .ui-steps small{display:block;font-size:12px;margin-bottom:18px}
+.pcard .ui-steps h4{font:500 28px/1.35 var(--sans);margin:0 0 25px}
+.pcard .ui-steps span{display:inline-block;padding:7px 12px;background:rgba(255,255,255,.78);border:1px solid rgba(52,62,91,.15);border-radius:30px;margin:0 4px 8px 0;font-size:14px}
+.pcard .ui-steps p{font-size:14px;color:#35405b;margin-top:20px}
+@media(min-width:901px) and (max-width:1250px){.prod{grid-template-columns:178px minmax(0,1fr);column-gap:40px}.pcard{grid-template-columns:minmax(190px,1fr) minmax(0,1.4fr)}.pcard .tx{padding:25px 22px}}
+@media(max-width:900px){.prod{grid-template-columns:1fr;column-gap:0;padding-bottom:70px}.pnav{position:static;display:flex;flex-direction:row;flex-wrap:wrap;gap:2px;margin-bottom:32px}.pnav b{margin:14px 0 2px;width:100%}.pnav a{padding:9px 12px}.pgroup{margin-bottom:26px}.pgroup:not(:first-child){margin-top:28px}}
+@media(max-width:620px){.prod{padding-left:18px;padding-right:18px}.pcard{display:flex;flex-direction:column}.pcard .tx{order:0;padding:24px 22px}.pcard .vis{order:1;padding:24px 14px 18px;min-height:0}.pcard h3{font-size:24px}.pcard.featured .vis{display:flex;min-height:0;padding:24px 14px 18px}.pcard.featured .tx{padding:24px 22px}.pcard .ui-steps{display:none}.pcard .ui-caption{font-size:12px}.pcard .ui-preview{max-width:353px}.pcard .link{font-size:15px}.pcard{margin-bottom:30px}}
+@media(prefers-reduced-motion:reduce){.pcard .ui-preview{transition:none}.pcard .ui-preview:hover{transform:none}}
 .filt{max-width:var(--max);margin:0 auto;padding:0 24px 24px;display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}
 .filt select,.filt input{height:34px;border:1px solid var(--stone);border-radius:2px;background:#fff;padding:0 10px;font:400 12px var(--sans);min-width:150px}
 .filt .tz{display:inline-flex;border:1px solid var(--stone);border-radius:2px;overflow:hidden;font:600 10px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase}.filt .tz b,.filt .tz i{padding:11px 10px;font-style:normal}.filt .tz b{background:var(--brown);color:#fff}
@@ -509,23 +531,23 @@ nav a.nl.cur:after{transform:translateX(-50%) scaleX(1)}
   </div>
 </section>
 
-<div class="secHead"><span class="sq ap"></span><h2 class="ap d1">灵犀现在会做的事</h2><p class="ap d2">它写的都标「AI 生成」，它记的你都能删。右边是每一项在 App 里的样子。</p></div>
+<div class="secHead"><span class="sq ap"></span><h2 class="ap d1">灵犀现在会做的事</h2><p class="ap d2">它写的都标「AI 生成」，它记的你都能删。下面用产品界面，看看每一步怎么用。</p></div>
 <div class="prod">
   <nav class="pnav ap"><b>看见你</b><a href="#p-ideal">理想型</a><a href="#p-report">理想型报告</a><a href="#p-voice">讲讲你</a><b>记住你</b><a href="#p-memory">灵犀记得</a><a href="#p-chat">和灵犀聊</a><a href="#p-analyze">聊天分析</a><b>帮你聊</b><a href="#p-helper">帮聊</a><a href="#p-game">猜拳先问</a><b>算你们</b><a href="#p-pair">合盘</a></nav>
   <div class="plist">
     <div class="pgroup">看见你</div>
-    <div class="pcard ap" id="p-ideal"><div class="vis"><img src="art/web/prod/illu-ideal.jpg" alt=""></div><div class="tx"><span class="tag">主功能</span><h3>理想型</h3><p>传一张理想型照片，灵犀按照片帮你找像的人，推荐给你。每天 20 位里标出像的人；不存人脸。</p><a class="link" href="#/today">看今天像的人 <span class="ar">→</span></a></div></div>
-    <div class="pcard ap" id="p-report"><div class="vis"><img src="art/web/prod/illu-report.jpg" alt=""></div><div class="tx"><span class="tag">AI 生成 · 仅供参考</span><h3>理想型报告</h3><p>Ta 大概是什么样的人、去哪遇见、别做什么。依据是你讲过的话和广场上的去处，可以重新生成。</p></div></div>
-    <div class="pcard ap" id="p-voice"><div class="vis"><img src="art/web/prod/illu-voice.jpg" alt=""></div><div class="tx"><span class="tag">注册第一步</span><h3>讲讲你</h3><p>不填表。对灵犀讲三段话：周末怎么过、上一段关系教会你什么、想找什么样的人。它当场记成几条，每条你都能改、能删。</p></div></div>
+    <div class="pcard ap featured" id="p-ideal"><div class="vis"><a class="ui-preview" href="app.html#me/ideal" target="_blank" rel="noopener" aria-label="打开理想型照片与上传、让灵犀画入口交互原型"><img src="art/web/prod/ui-2026-10-26/ideal.webp" alt="理想型照片与上传、让灵犀画入口，原型示例" loading="lazy" decoding="async"></a><div class="ui-steps"><small>从你喜欢的样子开始</small><h4>传一张照片，<br>看推荐理由。</h4><span>清冷</span><span>短发</span><span>冷色衣着</span><span>安静</span><p>照片特点 · AI 生成 · 仅供参考</p></div><p class="ui-caption">交互原型 · 示例内容　<a href="app.html#me/ideal" target="_blank" rel="noopener">打开体验 ↗</a></p></div><div class="tx"><span class="tag">主功能</span><h3>理想型</h3><p>传一张理想型照片，灵犀按照片帮你找像的人，推荐给你。每天 20 位里标出像的人；不存人脸。</p><a class="link" href="#/today">看今天像的人 <span class="ar">→</span></a></div></div>
+    <div class="pcard ap" id="p-report"><div class="vis"><a class="ui-preview" href="app.html#me/ideal" target="_blank" rel="noopener" aria-label="打开理想型分析与见面去处的原型界面交互原型"><img src="art/web/prod/ui-2026-10-26/report.webp" alt="理想型分析与见面去处的原型界面，原型示例" loading="lazy" decoding="async"></a><p class="ui-caption">交互原型 · 示例内容　<a href="app.html#me/ideal" target="_blank" rel="noopener">打开体验 ↗</a></p></div><div class="tx"><span class="tag">AI 生成 · 仅供参考</span><h3>理想型报告</h3><p>Ta 大概是什么样的人、去哪遇见、别做什么。依据是你讲过的话和广场上的去处，可以重新生成。</p></div></div>
+    <div class="pcard ap" id="p-voice"><div class="vis"><a class="ui-preview" href="app.html#onboarding/5" target="_blank" rel="noopener" aria-label="打开三段语音介绍的第一段与话题提示交互原型"><img src="art/web/prod/ui-2026-10-26/voice.webp" alt="三段语音介绍的第一段与话题提示，原型示例" loading="lazy" decoding="async"></a><p class="ui-caption">交互原型 · 示例内容　<a href="app.html#onboarding/5" target="_blank" rel="noopener">打开体验 ↗</a></p></div><div class="tx"><span class="tag">注册第一步</span><h3>讲讲你</h3><p>不填表。对灵犀讲三段话：周末怎么过、上一段关系教会你什么、想找什么样的人。它当场记成几条，每条你都能改、能删。</p></div></div>
     <div class="pgroup">记住你</div>
-    <div class="pcard ap" id="p-memory"><div class="vis"><img src="art/web/prod/illu-memory.jpg" alt=""></div><div class="tx"><span class="tag">默认开 · 随时关</span><h3>灵犀记得</h3><p>它记三类：你说话的习惯、你看重的事、你对推荐的反馈，每条标来源。可改可删可导出；只用来给你推荐、写理由、帮聊。</p></div></div>
-    <div class="pcard ap" id="p-chat"><div class="vis"><img src="art/web/prod/illu-chat.jpg" alt=""></div><div class="tx"><span class="tag">AI 对话</span><h3>和灵犀聊</h3><p>进来就有四个它替你想好的问题。每个回答写依据、给下一问；用哪个工具来答，你选。说心里话也行，不公开。</p></div></div>
-    <div class="pcard ap" id="p-analyze"><div class="vis"><img src="art/web/prod/illu-analyze.jpg" alt=""></div><div class="tx"><span class="tag">只给你看</span><h3>聊天分析</h3><p>选一段对话，灵犀告诉你 Ta 这些话是什么意思、Ta 现在怎么想、你下一句怎么接。只在你手机上分析。</p></div></div>
+    <div class="pcard ap" id="p-memory"><div class="vis"><a class="ui-preview" href="app.html#me/memory" target="_blank" rel="noopener" aria-label="打开灵犀记忆的来源及改删操作交互原型"><img src="art/web/prod/ui-2026-10-26/memory.webp" alt="灵犀记忆的来源及改删操作，原型示例" loading="lazy" decoding="async"></a><p class="ui-caption">交互原型 · 示例内容　<a href="app.html#me/memory" target="_blank" rel="noopener">打开体验 ↗</a></p></div><div class="tx"><span class="tag">默认开 · 随时关</span><h3>灵犀记得</h3><p>它记三类：你说话的习惯、你看重的事、你对推荐的反馈，每条标来源。可改可删可导出；只用来给你推荐、写理由、帮聊。</p></div></div>
+    <div class="pcard ap" id="p-chat"><div class="vis"><a class="ui-preview" href="app.html#lx/chat" target="_blank" rel="noopener" aria-label="打开和灵犀聊的四个提问入口交互原型"><img src="art/web/prod/ui-2026-10-26/chat.webp" alt="和灵犀聊的四个提问入口，原型示例" loading="lazy" decoding="async"></a><p class="ui-caption">交互原型 · 示例内容　<a href="app.html#lx/chat" target="_blank" rel="noopener">打开体验 ↗</a></p></div><div class="tx"><span class="tag">AI 对话</span><h3>和灵犀聊</h3><p>进来就有四个它替你想好的问题。每个回答写依据、给下一问；用哪个工具来答，你选。说心里话也行，不公开。</p></div></div>
+    <div class="pcard ap" id="p-analyze"><div class="vis"><a class="ui-preview" href="app.html#lx/analyze" target="_blank" rel="noopener" aria-label="打开聊天截图上传与分析方向选择交互原型"><img src="art/web/prod/ui-2026-10-26/analyze.webp" alt="聊天截图上传与分析方向选择，原型示例" loading="lazy" decoding="async"></a><p class="ui-caption">交互原型 · 示例内容　<a href="app.html#lx/analyze" target="_blank" rel="noopener">打开体验 ↗</a></p></div><div class="tx"><span class="tag">只给你看</span><h3>聊天分析</h3><p>选一段对话，灵犀告诉你 Ta 这些话是什么意思、Ta 现在怎么想、你下一句怎么接。只在你手机上分析。</p></div></div>
     <div class="pgroup">帮你聊</div>
-    <div class="pcard ap" id="p-helper"><div class="vis"><img src="art/web/prod/illu-helper.jpg" alt=""></div><div class="tx"><span class="tag">你来发</span><h3>帮聊</h3><p>聊不下去时，灵犀按你的说话习惯给整句，直接填进输入框，改完你自己发。每句写明它怎么知道的。</p><a class="link" href="#/lingxi/demo">点开演示 <span class="ar">→</span></a></div></div>
-    <div class="pcard ap" id="p-game"><div class="vis"><img src="art/web/prod/illu-game.jpg" alt=""></div><div class="tx"><span class="tag">破冰</span><h3>猜拳，赢的人先问</h3><p>不知道从哪聊起，猜个拳。手势在聊天框里出，赢了从灵犀按你们俩资料出的问题里挑一个问。</p></div></div>
+    <div class="pcard ap" id="p-helper"><div class="vis"><a class="ui-preview" href="app.html#chat/lin" target="_blank" rel="noopener" aria-label="打开帮聊拟稿及待用户发送的输入框交互原型"><img src="art/web/prod/ui-2026-10-26/helper.webp" alt="帮聊拟稿及待用户发送的输入框，原型示例" loading="lazy" decoding="async"></a><p class="ui-caption">交互原型 · 示例内容　<a href="app.html#chat/lin" target="_blank" rel="noopener">打开体验 ↗</a></p></div><div class="tx"><span class="tag">你来发</span><h3>帮聊</h3><p>聊不下去时，灵犀按你的说话习惯给整句，直接填进输入框，改完你自己发。每句写明它怎么知道的。</p><a class="link" href="#/lingxi/demo">点开演示 <span class="ar">→</span></a></div></div>
+    <div class="pcard ap" id="p-game"><div class="vis"><a class="ui-preview" href="app.html#chat/lin" target="_blank" rel="noopener" aria-label="打开聊天中的石头剪刀布选择交互原型"><img src="art/web/prod/ui-2026-10-26/game.webp" alt="聊天中的石头剪刀布选择，原型示例" loading="lazy" decoding="async"></a><p class="ui-caption">交互原型 · 示例内容　<a href="app.html#chat/lin" target="_blank" rel="noopener">打开体验 ↗</a></p></div><div class="tx"><span class="tag">破冰</span><h3>猜拳，赢的人先问</h3><p>不知道从哪聊起，猜个拳。手势在聊天框里出，赢了从灵犀按你们俩资料出的问题里挑一个问。</p></div></div>
     <div class="pgroup">算你们</div>
-    <div class="pcard ap" id="p-pair"><div class="vis"><img src="art/web/prod/illu-pair.jpg" alt=""></div><div class="tx"><span class="tag">仅供参考</span><h3>合盘</h3><p>星座、属相五行、MBTI、恋爱风格，和今天的任何一位合一盘：合拍分、六个维度、三段解读。进你的画像当一个信号，不单独决定推荐。</p></div></div>
+    <div class="pcard ap" id="p-pair"><div class="vis"><a class="ui-preview" href="app.html#me/tests/pair" target="_blank" rel="noopener" aria-label="打开合盘原型的六维图与仅供参考说明交互原型"><img src="art/web/prod/ui-2026-10-26/pair.webp" alt="合盘原型的六维图与仅供参考说明，原型示例" loading="lazy" decoding="async"></a><p class="ui-caption">交互原型 · 示例内容　<a href="app.html#me/tests/pair" target="_blank" rel="noopener">打开体验 ↗</a></p></div><div class="tx"><span class="tag">仅供参考</span><h3>合盘</h3><p>星座、属相五行、MBTI、恋爱风格，和今天的任何一位合一盘：合拍分、六个维度、三段解读。进你的画像当一个信号，不单独决定推荐。</p></div></div>
   </div>
 </div>
 <section class="sub" style="padding:90px 24px"><div class="meta ap"><span class="eyebrow">别错过</span></div><p class="lead ap d1"><b>每天 20 位，一次一位。</b>想认识的人在「对话」里等你。</p><div class="cta ap d2"><a class="btn o" href="#/home/apply">申请内测 <span class="ar">→</span></a></div></section>

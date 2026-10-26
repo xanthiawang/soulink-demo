@@ -1,0 +1,119 @@
+[
+  {
+    "feature": "ideal",
+    "source": "app.html#me/ideal",
+    "capture": "design/lingxi-2026-10-26/captures/ideal-screen.png",
+    "crop": [
+      730,
+      112,
+      1083,
+      611
+    ],
+    "output": "art/web/prod/ui-2026-10-26/ideal.webp",
+    "status": "Existing interactive prototype example, not a live AI result"
+  },
+  {
+    "feature": "report",
+    "source": "app.html#me/ideal",
+    "capture": "design/lingxi-2026-10-26/captures/report-screen.png",
+    "crop": [
+      730,
+      196,
+      1083,
+      768
+    ],
+    "output": "art/web/prod/ui-2026-10-26/report.webp",
+    "status": "Existing interactive prototype example, not a live AI result"
+  },
+  {
+    "feature": "voice",
+    "source": "app.html#onboarding/5",
+    "capture": "design/lingxi-2026-10-26/captures/voice-bottom-screen.png",
+    "crop": [
+      730,
+      80,
+      1083,
+      747
+    ],
+    "output": "art/web/prod/ui-2026-10-26/voice.webp",
+    "status": "Existing interactive prototype example, not a live AI result"
+  },
+  {
+    "feature": "memory",
+    "source": "app.html#me/memory",
+    "capture": "design/lingxi-2026-10-26/captures/memory-screen.png",
+    "crop": [
+      730,
+      331,
+      1083,
+      699
+    ],
+    "output": "art/web/prod/ui-2026-10-26/memory.webp",
+    "status": "Existing interactive prototype example, not a live AI result"
+  },
+  {
+    "feature": "chat",
+    "source": "app.html#lx/chat",
+    "capture": "design/lingxi-2026-10-26/captures/chat-screen.png",
+    "crop": [
+      730,
+      145,
+      1083,
+      491
+    ],
+    "output": "art/web/prod/ui-2026-10-26/chat.webp",
+    "status": "Existing interactive prototype example, not a live AI result"
+  },
+  {
+    "feature": "analyze",
+    "source": "app.html#lx/analyze",
+    "capture": "design/lingxi-2026-10-26/captures/analyze-screen.png",
+    "crop": [
+      730,
+      165,
+      1083,
+      663
+    ],
+    "output": "art/web/prod/ui-2026-10-26/analyze.webp",
+    "status": "Existing interactive prototype example, not a live AI result"
+  },
+  {
+    "feature": "helper",
+    "source": "app.html#chat/lin",
+    "capture": "design/lingxi-2026-10-26/captures/helper-screen.png",
+    "crop": [
+      730,
+      236,
+      1083,
+      748
+    ],
+    "output": "art/web/prod/ui-2026-10-26/helper.webp",
+    "status": "Existing interactive prototype example, not a live AI result"
+  },
+  {
+    "feature": "game",
+    "source": "app.html#chat/lin",
+    "capture": "design/lingxi-2026-10-26/captures/game-screen.png",
+    "crop": [
+      764,
+      381,
+      1084,
+      613
+    ],
+    "output": "art/web/prod/ui-2026-10-26/game.webp",
+    "status": "Existing interactive prototype example, not a live AI result"
+  },
+  {
+    "feature": "pair",
+    "source": "app.html#me/tests/pair",
+    "capture": "design/lingxi-2026-10-26/captures/pair-screen.png",
+    "crop": [
+      730,
+      14,
+      1083,
+      628
+    ],
+    "output": "art/web/prod/ui-2026-10-26/pair.webp",
+    "status": "Existing interactive prototype example, not a live AI result"
+  }
+]
