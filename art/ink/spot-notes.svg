@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" stroke="rgba(0,0,0,.85)" role="img" aria-label="笔记：钢笔与两行手写字">
+<g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M37 72 L49 50 L86 15 Q91 13 95 18 Q99 21 96 26 L59 61 L37 72 Z"/>
+  <path d="M49 50 L59 61 M83 18 L93 29 M55 55 L41 69 M89 36 L96 42 L79 58"/>
+  <path d="M19 86 Q44 82 69 86 Q75 87 81 85 M21 99 Q42 96 62 99"/>
+  <path d="M32 75 L36 74"/>
+  <path d="M23.7 33 Q24.33 38.39 28.95 39.72 Q23.91 40.91 22.44 47 Q21.46 41.61 16.98 40.35 Q21.74 38.74 23.7 33 Z"/>
+  <path d="M100 80 L100.3 80.4 M65 19 L65.4 19.2"/>
+</g>
+</svg>

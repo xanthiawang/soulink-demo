@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title">
+  <title id="title">和灵犀聊两分钟</title>
+  <style>
+    :root{--ink:rgba(0,0,0,.85)}
+    path{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 0.350000s ease-out both;animation-delay:var(--wait)}
+    @keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+    @media(prefers-reduced-motion:reduce){path{animation:none;stroke-dasharray:none;stroke-dashoffset:0}}
+  </style>
+  <path pathLength="1" style="--wait:0.000000s" d="M8.3 3.8 C3.9 4.5 2.1 7.2 2.7 11.4 Q2.9 14.5 5.5 16.1 L4.3 20.7 Q7.8 19.7 10.2 17.9 C15.7 19.1 21.3 16.4 21.1 10.2 C21.4 5.6 17.7 3.2 12.9 3.4 Q10.1 3.3 8.3 3.8 Z"/>
+  <path pathLength="1" style="--wait:0.350000s" d="M6.8 8.9 Q11.2 8.3 16.2 8.7"/>
+  <path pathLength="1" style="--wait:0.700000s" d="M7.4 12.5 Q10.7 12.1 13.1 12.5"/>
+  <path pathLength="1" style="--wait:1.050000s" d="M16.5 15.3 Q18.7 14.5 19.2 12.8"/>
+</svg>

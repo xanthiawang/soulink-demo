@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" stroke="rgba(0,0,0,.85)" role="img" aria-label="理想型：空相框与角上的星">
+<g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M77 25 Q51 22 24 26 L23 96 Q60 99 96 95 L97 51"/>
+  <path d="M75 34 Q53 32 33 35 L32 86 Q60 89 86 86 L87 54"/>
+  <path d="M95.6 12 Q97.04 24.32 107.6 27.36 Q96.08 30.08 92.72 44 Q90.48 31.68 80.24 28.8 Q91.12 25.12 95.6 12 Z"/>
+  <path d="M28 30 L28 42 M74 92 L88 91"/>
+  <path d="M15 15 L15.3 15.3 M108 74 L108.3 74.1 M46 108 L46.4 108.2"/>
+</g>
+</svg>

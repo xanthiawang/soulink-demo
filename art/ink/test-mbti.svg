@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" stroke="rgba(0,0,0,.85)" role="img" aria-label="MBTI：四个手写字母格">
+<g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M17 18 Q36 16 54 18 L53 52 Q35 54 17 52 Z M66 18 Q85 16 103 19 L102 53 Q84 54 66 52 Z M17 66 Q35 64 53 66 L54 102 Q34 104 18 102 Z M66 66 Q84 64 102 66 L103 102 Q85 104 66 102 Z"/>
+  <path d="M25 44 L26 27 L34 39 L44 26 L44 44"/>
+  <path d="M76 44 L76 26 C92 23 94 34 77 35 C95 31 96 46 76 44"/>
+  <path d="M25 76 Q35 75 45 76 M35 76 L34 95"/>
+  <path d="M77 76 L92 76 M84 76 L84 95 M77 95 Q84 94 92 95"/>
+  <path d="M20 22 L20 29 M99 89 L99 98"/>
+</g>
+</svg>
