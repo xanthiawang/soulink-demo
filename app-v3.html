@@ -932,6 +932,35 @@ html,body{background:#ECEAE7}
 .tabs a.core.on{background:var(--yellow)!important;box-shadow:0 0 0 3px #fff,0 8px 22px rgba(30,30,40,.14)}
 /* 灵犀对话空状态的头像与 2×2 卡里的图标 */
 #lx-hello>div:first-child>div:first-child img{border-radius:16px}
+
+/* ============ v3.3 · 全白界面、去掉黄色（Zixin 2026-10-27） ============ */
+:root{--background:#FFFFFF;--card:#F5F5F7;--fill-tertiary:#F3F3F5;--fill-secondary:#ECECEF;--stroke-light:#EFEFF2;--stroke-medium:#E2E2E6;--y-soft:#F1F1F3;--yellow:#141414;--lime-soft:#F1F1F3}
+html,body{background:#F0F0F2}
+.frame,.screen,.bgB{background:#FFFFFF!important}
+.bgB::after{background:radial-gradient(36% 22% at 100% 70%,rgba(247,202,214,.14),transparent 70%),radial-gradient(40% 22% at 70% 0%,rgba(227,218,247,.18),transparent 70%)!important}
+/* 卡片：白底上用极浅灰面，不再磨砂 */
+.card,.glass,.tile,.idealhero,.relcard,.hp,.vcard,.result,.memcard2,.comp2,.fdcomp,.deckcard,.sugcard{background:#F5F5F7!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border:0!important;box-shadow:none!important}
+.lxbar{background:#FBE7DD!important}
+.inp,.compose input.obin,.field input{background:#F3F3F5!important;border:0!important}
+.chip{background:#fff!important;border:1px solid #E2E2E6!important}
+.tag{background:#F1F1F3!important}
+.tag.p,.tag.lx,.idealhero .ws span,.result .ws span,.deckcard .wd span.on,.fd .ty,.deckcard .photo .why0{background:#F1F1F3!important;color:#141414!important}
+.comp2 .sug{background:#F3F3F5!important}
+.sheet .box{background:#FFFFFF!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+.compose{background:linear-gradient(180deg,rgba(255,255,255,0),#fff 35%)!important}
+.compose .bar{background:#F3F3F5!important;border:0!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+#lx-qrows button{background:#F5F5F7!important;border:0!important;box-shadow:none!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+/* 底栏：白色长条 + 细描边；灵犀圆形按钮改黑色 */
+.tabs{background:#fff!important;border:1px solid #ECECEF!important;box-shadow:0 8px 24px rgba(20,20,30,.06)!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+.tabs a.on{background:#F1F1F3!important}
+.tabs a.core,.tabs a.core.on{background:#141414!important;box-shadow:0 8px 22px rgba(20,20,30,.18)!important}
+.tabs a.core img.v3i{filter:invert(1)}
+.compose .help.on{background:#F1F1F3!important}
+/* 首页：白底，光晕只留淡粉淡紫；玻璃边缘去黄 */
+#wabi{background:#fff!important}
+#wabi::before{background:radial-gradient(40% 24% at 50% 8%,rgba(227,218,247,.30),transparent 70%),radial-gradient(40% 24% at 80% 30%,rgba(247,202,214,.24),transparent 70%)!important}
+#wb-lens::after{box-shadow:inset 0 0 0 1px rgba(255,255,255,.85),inset 0 -14px 24px -8px rgba(236,150,175,.70),inset 0 -4px 10px rgba(190,160,235,.55),inset 12px 0 20px -12px rgba(200,180,240,.5),inset -12px 0 20px -12px rgba(245,170,195,.45),inset 0 12px 18px -6px rgba(255,255,255,.95)!important}
+#wb-lensin{background:#fff!important}
 </style>
 
 <div class="stage">
@@ -1984,7 +2013,7 @@ html,body{background:#ECEAE7}
     if (/^scene-/.test(name)){ img.onerror = null; img.src = 'art/v3/' + name + '.webp'; return; }
     if (/^ob-/.test(name)){ var vf = OBV[name]; img.onerror = function(){ img.onerror = null; img.src = 'art/v3/cover-' + COVERS[(obN++) % COVERS.length] + '.webp'; }; img.src = vf ? 'art/v3/vis/' + vf + '.webp' : 'art/v3/cover-blush.webp'; return; }
     if (name === 'scene-match' || name === 'scene-voice'){ img.onerror = function(){ img.onerror = null; img.src = 'art/v3/' + name + '.webp'; }; img.src = 'art/v3/vis/' + (name === 'scene-match' ? 'vis-match' : 'vis-voice') + '.webp'; return; }
-    if (img.id === 'pl-ink' && /^place-/.test(name)){ var PC = {'place-cafe':'sand','place-exhibition':'ocean','place-bookstore':'mustard','place-river':'aurora','place-dinner':'ember','place-theatre':'dusk'}; img.onerror = null; img.src = 'art/v3/cover-' + (PC[name]||'blush') + '.webp'; return; }
+    if (img.id === 'pl-ink' && /^place-/.test(name)){ var PC = {'place-cafe':'sand','place-exhibition':'ocean','place-bookstore':'blush','place-river':'ocean','place-dinner':'ember','place-theatre':'dusk'}; img.onerror = null; img.src = 'art/v3/cover-' + (PC[name]||'blush') + '.webp'; return; }
     if (V3.indexOf(name) >= 0){ img.onerror = null; img.src = 'art/v3/' + name + '.svg'; }
   }
   function swapCodex(img){
@@ -2047,7 +2076,7 @@ html,body{background:#ECEAE7}
   }
   /* 头像泡泡 */
   var PICS = []; for (var i=1;i<=20;i++){ PICS.push('art/people/p'+(i<10?'0':'')+i+'.webp'); }
-  var DOTS = ['#F5E76A','#F7CAD6','#E3DAF7','#FAD1B8'];
+  var DOTS = ['#F7CAD6','#E3DAF7','#FAD1B8','#DDE3F5'];
   function burst(){
     cloud.innerHTML = ''; balls = [];
     var n = PICS.length + 10;
