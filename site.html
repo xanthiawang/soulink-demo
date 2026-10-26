@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Soulink · 官网 v0.23</title>
+<title>Soulink · 官网 v0.24</title>
 <meta name="description" content="Soulink — AI 社交匹配平台。遇见你的理想型。Soulink 与沐仞科技（FathomPeak）合作出品。">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400&family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@300;400&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -429,6 +429,21 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
 .anat li::before{counter-increment:a;content:counter(a,decimal-leading-zero);position:absolute;left:0;top:18px;font:600 12px var(--sans);letter-spacing:.1em;color:var(--orange)}
 .anat li b{display:block;font-family:var(--serif-h);font-weight:400;font-size:22px;color:var(--brown);margin-bottom:4px}
 @media (max-width:900px){.anat{grid-template-columns:1fr;gap:24px}.anat .ph{width:240px}}
+
+/* ---------- 功能列表（Dia 式：左编号列表，右小手机） ---------- */
+.feat{max-width:1200px;margin:0 auto;padding:10px 24px 90px;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:start}
+.feat .fg{font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--stone2,#766c65);margin:26px 0 6px}
+.feat .fg:first-child{margin-top:0}
+.feat .fi{display:block;width:100%;text-align:left;padding:14px 0 14px 22px;border-left:2px solid transparent;cursor:pointer;transition:border-color .2s}
+.feat .fi small{display:block;font:500 11px var(--sans);letter-spacing:.12em;color:var(--stone);margin-bottom:4px}
+.feat .fi h3{font-family:var(--serif-h);font-weight:300;font-size:26px;line-height:1.15;margin:0;color:var(--stone2,#766c65);transition:color .2s}
+.feat .fi p{display:none;margin:10px 0 0;font:400 15px/1.6 var(--sans);color:var(--dark2);max-width:34em}
+.feat .fi.on{border-left-color:var(--brown)}.feat .fi.on h3{color:var(--brown)}.feat .fi.on p{display:block}
+.feat .fi:hover h3{color:var(--brown)}
+.feat .fr{position:sticky;top:96px}
+.feat .phone{width:300px;margin:0 auto;border-radius:36px;border:6px solid #201515;overflow:hidden;box-shadow:0 20px 60px rgba(32,21,21,.18);background:#fff;aspect-ratio:390/844}
+.feat .phone img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:opacity .25s}
+@media (max-width:900px){.feat{grid-template-columns:1fr;gap:28px}.feat .fr{position:static}.feat .phone{width:240px}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="boilS" x="-1%" y="-1%" width="102%" height="102%"><feTurbulence type="fractalNoise" baseFrequency=".008" numOctaves="2" seed="1" result="t"><animate attributeName="seed" values="1;2;3;4;5;6;7;8" dur="1.4s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feDisplacementMap in="SourceGraphic" in2="t" scale="2"/></filter></svg>
@@ -575,58 +590,20 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
 </section>
 
 <div class="secHead"><span class="sq ap"></span><h2 class="ap d1">灵犀现在会做的事</h2><p class="ap d2">它写的都标「AI 生成」，它记的你都能删。下面用产品界面，看看每一步怎么用。</p></div>
-<div class="prod">
-  <nav class="pnav ap"><b>看人</b><a href="#p-ideal">理想型</a><a href="#p-pair">合盘</a><b>懂你</b><a href="#p-memory">灵犀记得</a><a href="#p-chat">和灵犀聊</a><b>帮聊</b><a href="#p-helper">帮聊</a><a href="#p-analyze">聊天分析</a></nav>
-  <div class="plist">
-    <div class="pgroup">看人</div>
-    <div class="pcard ap featured" id="p-ideal"><div class="vis"><div class="lxui lxui-ideal" aria-label="我的理想型界面示例">
-    <div class="lxui-top"><strong>我的理想型</strong><span>界面示例</span></div>
-    <div class="lxui-content"><div class="lxui-photo"><img src="art/people/ideal.webp" alt="原型中的理想型示例照片"><span>你喜欢的样子</span></div>
-<h4>从一张照片开始。</h4><p>传一张理想型照片，<br>让灵犀了解你喜欢的样子。</p>
-<div class="lxui-traits"><span>短发</span><span>冷色衣着</span></div>
-<div class="lxui-foot"><a class="lxui-action" href="app.html#me/ideal">到原型中上传照片<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><a class="lxui-action secondary" href="app.html#me/ideal">体验「让灵犀画」<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div></div></div>
-    <div class="ui-steps"><h4>传一张照片，<br>看推荐理由。</h4><span>短发</span><span>冷色衣着</span><p>照片特点 · AI 生成 · 仅供参考<br>性格还要通过资料和相处了解。</p></div></div><div class="tx"><span class="tag">主功能</span><h3>理想型</h3><p>传一张理想型照片，灵犀按照片帮你找像的人，推荐给你。每天 20 位里标出像的人；不存人脸。</p><a class="link" href="#/product/today">看今天像的人 <span class="ar">→</span></a></div></div>
-    <div class="pcard ap" id="p-pair"><div class="vis"><div class="lxui lxui-pair" aria-label="你和林的合盘界面示例">
-    <div class="lxui-top"><strong>你和林的合盘</strong><span>界面示例</span></div>
-    <div class="lxui-content"><div class="lxui-people"><div><img src="art/people/p21.webp" alt="原型中的你"><strong>你</strong><span>INFJ</span></div><span class="lxui-people-link"><img class="lxui-icon" src="art/ink/act-star.svg" alt=""></span><div><img src="art/people/p01.webp" alt="原型人物林"><strong>林</strong><span>ENFP</span></div></div>
-<h4>慢慢了解。</h4><p>你们都提过喜欢安静，是否相处舒服还要聊聊看。</p>
-<dl class="lxui-compare"><div><dt>星座</dt><dd>处女座 / 处女座</dd></div><div><dt>属相五行</dt><dd>土兔 / 金龙</dd></div><div><dt>恋爱风格</dt><dd>安全型 / Ta 未测</dd></div></dl>
-<p class="lxui-note">AI 生成 · 仅供参考，不单独决定推荐。</p><a class="lxui-action" href="app.html#me/tests/pair">到原型中看完整合盘<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div></div>
-    </div><div class="tx"><span class="tag">仅供参考</span><h3>合盘</h3><p>星座、属相五行、MBTI、恋爱风格，和今天的任何一位合一盘：合拍分、六个维度、三段解读。进你的画像当一个信号，不单独决定推荐。</p></div></div>
-  
-    <div class="pgroup">懂你</div>
-    <div class="pcard ap" id="p-memory"><div class="vis"><div class="lxui lxui-memory" aria-label="灵犀记得界面示例">
-    <div class="lxui-top"><strong>灵犀记得</strong><span>界面示例</span></div>
-    <div class="lxui-content"><h4>记得的每一条，<br>你都能做主。</h4><div class="lxui-memory-list">
-<div><span class="lxui-kind">说话习惯</span><p>短句，少用语气词</p><small>来源 · 10-24 聊天 · 10-25 语音</small></div>
-<div><span class="lxui-kind">你看重的事</span><p>周末要安静，看展多于聚会</p><small>来源 · 10-25 语音第 1 段</small></div></div>
-<div class="lxui-permissions"><span><img class="lxui-icon" src="art/ink/act-eye.svg" alt="">查看来源</span><span><img class="lxui-icon" src="art/ink/act-settings.svg" alt="">可改可删</span></div>
-<a class="lxui-action" href="app.html#me/memory">在原型中管理记忆<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div></div>
-    </div><div class="tx"><span class="tag">默认开 · 随时关</span><h3>灵犀记得</h3><p>它记三类：你说话的习惯、你看重的事、你对推荐的反馈，每条标来源。可改可删可导出；只用来给你推荐、写理由、帮聊。</p></div></div>
-    <div class="pcard ap" id="p-chat"><div class="vis"><div class="lxui lxui-chat" aria-label="和灵犀聊界面示例">
-    <div class="lxui-top"><strong>和灵犀聊</strong><span>界面示例</span></div>
-    <div class="lxui-content"><div class="lxui-greeting"><img class="lxui-icon" src="art/ink/act-star.svg" alt=""><div><h4>我是灵犀。</h4><p>可以聊推荐，也可以聊对话。</p></div></div>
-<div class="lxui-questions"><a href="app.html#lx/chat">我和林合不合？<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><a href="app.html#lx/chat">今天该不该主动？<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><a href="app.html#lx/chat">看看与林的对话<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><a href="app.html#lx/chat">我适合什么样的人？<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
-<p class="lxui-note">说说你最近在意的事。</p><a class="lxui-action" href="app.html#lx/chat">到原型中和灵犀聊<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div></div>
-    </div><div class="tx"><span class="tag">AI 对话</span><h3>和灵犀聊</h3><p>进来就有四个它替你想好的问题。每个回答写依据、给下一问；用哪个工具来答，你选。说心里话也行，不公开。</p></div></div>
-    <div class="pgroup">帮聊</div>
-    <div class="pcard ap" id="p-helper"><div class="vis"><div class="lxui lxui-helper" aria-label="灵犀帮聊界面示例">
-    <div class="lxui-top"><strong>灵犀帮聊</strong><span>界面示例</span></div>
-    <div class="lxui-content"><div class="lxui-chatline"><img src="art/people/p01.webp" alt="原型人物林"><div><small>林 · 示例对话</small><p>哪个？</p></div></div>
-<div class="lxui-draft"><div><img class="lxui-icon" src="art/ink/act-wand.svg" alt=""><span>灵犀拟稿 · AI 生成</span></div><blockquote>是三影堂那个，这周六还在。你拍什么多？</blockquote></div>
-<div class="lxui-source">依据 · 你 10-24 打卡「三影堂」<br>你的习惯 · 短句、不用「哈哈」</div>
-<div class="lxui-rule"></div><p class="lxui-note">改好后，由你自己发。</p><a class="lxui-action" href="app.html#chat/lin">到原型中试试帮聊<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div></div>
-    </div><div class="tx"><span class="tag">你来发</span><h3>帮聊</h3><p>聊不下去时，灵犀按你的说话习惯给整句，直接填进输入框，改完你自己发。每句写明它怎么知道的。</p><a class="link" href="#/product/demo">点开演示 <span class="ar">→</span></a></div></div>
-    <div class="pcard ap" id="p-analyze"><div class="vis"><div class="lxui lxui-analyze" aria-label="聊天分析界面示例">
-    <div class="lxui-top"><strong>聊天分析</strong><span>界面示例</span></div>
-    <div class="lxui-content"><h4>这一段对话，<br>一起看看。</h4><p>上传你有权使用的聊天截图。</p>
-<a class="lxui-upload" href="app.html#lx/analyze"><img class="lxui-icon" src="art/ink/act-camera.svg" alt=""><strong>到原型中上传截图</strong><span>最多 3 张</span></a>
-<h5>你想了解什么？</h5><div class="lxui-options"><span>对话含义</span><span>待了解的事</span><span>关系进展</span><span>怎么回复</span></div>
-<p class="lxui-note">仅用于本次分析，用后删除，只给你看。</p></div></div>
-    </div><div class="tx"><span class="tag">只给你看</span><h3>聊天分析</h3><p>选一段对话，灵犀告诉你 Ta 这些话是什么意思、Ta 现在怎么想、你下一句怎么接。只在你手机上分析。</p></div></div>
+<div class="feat" id="feat">
+  <div class="fl">
+    <div class="fg">看人</div>
+    <button class="fi on" data-shot="ideal" onclick="site.feat(this)"><small>01</small><h3>理想型</h3><p>传一张理想型照片，灵犀按照片帮你找像的人，每天 20 位里标出像的人；不存人脸。也可以让灵犀照它对你的了解画一张，还会写一份理想型报告。</p></button>
+    <button class="fi" data-shot="pair" onclick="site.feat(this)"><small>02</small><h3>合盘</h3><p>和今天的任何一位合一盘：星座、属相五行、MBTI、恋爱风格，合拍分、六个维度、三段解读。进你的画像当一个信号，不单独决定推荐。</p></button>
+    <div class="fg">懂你</div>
+    <button class="fi" data-shot="memory" onclick="site.feat(this)"><small>03</small><h3>灵犀记得</h3><p>从注册时对灵犀讲的三段话开始，它记三类：你说话的习惯、你看重的事、你对推荐的反馈，每条标来源。可改可删可导出；只用来给你推荐、写理由、帮聊。</p></button>
+    <button class="fi" data-shot="lxchat" onclick="site.feat(this)"><small>04</small><h3>和灵犀聊</h3><p>进来就有四个它替你想好的问题。每个回答写依据、给下一问；用哪个工具来答，你选。说心里话也行，不公开。</p></button>
+    <div class="fg">帮聊</div>
+    <button class="fi" data-shot="helper" onclick="site.feat(this)"><small>05</small><h3>帮聊</h3><p>聊不下去时，灵犀按你的说话习惯给整句，直接填进输入框，改完你自己发，每句写明它怎么知道的。不知道从哪聊起，猜个拳，赢的人先问。</p></button>
+    <button class="fi" data-shot="analyze" onclick="site.feat(this)"><small>06</small><h3>聊天分析</h3><p>选一段对话，灵犀告诉你 Ta 这些话是什么意思、Ta 现在怎么想、你下一句怎么接。只在你手机上分析。</p></button>
   </div>
+  <div class="fr ap"><div class="phone"><img id="featShot" src="art/web/shots/f-ideal.webp" alt=""></div><div class="center" style="margin-top:18px"><a class="btn" href="app.html#onboarding/1">登录，在 App 里试 <span class="ar">→</span></a></div></div>
 </div>
-<!-- 今天的 20 位 -->
 <div class="secHead" id="today" style="padding-top:70px"><span class="sq ap"></span><h2 class="ap d1">一张推荐长什么样</h2><p class="ap d2">每天 20 位，一次只看一位。每一张卡上都有这几样，没有一样是黑箱。</p></div>
 <div class="anat"><div class="shot ap"><div class="ph"><img src="art/web/shots/today.webp" alt=""></div></div>
 <ol class="ap d1">
@@ -762,7 +739,7 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
   $('#dStyles').innerHTML=styles.map(s=>`<button class="${s==='自然'?'on':''}" onclick="site.style('${s}',this)">${s}</button>`).join('');
   function render(){ const c=$('#dCand'); if(mode==='reply'){c.innerHTML=R[style]+'<small>依据：Ta 说过"周末不看展会难受"；你们都提过"安静的地方"。</small>'} else { if(!base){c.innerHTML='先在左边输入框写一句，再选语气。<small>改写只改语气，不加你没说过的事。</small>';return} c.innerHTML=W[style](base)+'<small>原句：'+base+'</small>' } }
   const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2200)};
-  window.site={
+  window.site={ feat(b){ document.querySelectorAll('.feat .fi').forEach(x=>x.classList.toggle('on',x===b)); const im=document.getElementById('featShot'); if(im){ im.style.opacity=0; setTimeout(()=>{ im.src='art/web/shots/f-'+b.dataset.shot+'.webp'; im.style.opacity=1 },180) } },
     openDemo(){$('#oc').classList.add('live');render()}, closeDemo(){$('#oc').classList.remove('live')},
     mode(m,b){mode=m;$$('.demo .modes button').forEach(x=>x.classList.toggle('on',x===b)); if(m==='rewrite') base=$('#dIn').value.trim(); render()},
     style(s,b){ if(q<=0){toast('今天的次数用完了，明天再来');return} style=s;$$('#dStyles button').forEach(x=>x.classList.toggle('on',x===b)); q--; $('#dQ').textContent=q; render()},
