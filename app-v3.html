@@ -666,6 +666,31 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
 .ai.mo{margin-left:auto;padding:4px 2px}
 .acts .vw{font:400 12px var(--sans);letter-spacing:0;text-transform:none;color:var(--tertiary)}
 
+/* ---------- 推荐卡（参考：整卡大图 + 右侧圆形按钮 + 卡内下滑看资料，位置在最后） ---------- */
+.dkwrap{position:relative;margin:4px 16px 0}
+.deckcard.dk2{margin:0!important;padding:0!important;height:640px;overflow-y:auto;scrollbar-width:none;border-radius:26px!important;border:0!important;box-shadow:none!important;background:#F5F5F7!important;animation:deckin .45s cubic-bezier(.22,1,.36,1)}
+.deckcard.dk2::-webkit-scrollbar{display:none}
+.deckcard.dk2 .photo{display:block;height:640px!important;border-radius:26px 26px 0 0!important;margin:0!important;position:relative;overflow:hidden;border:0}
+.deckcard.dk2 .photo img{width:100%;height:100%;object-fit:cover}
+.deckcard.dk2 .photo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.45))}
+.deckcard.dk2 .photo .cap0{position:absolute;left:20px;right:96px;bottom:26px;z-index:1;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.25)}
+.deckcard.dk2 .photo .cap0 .h{font-family:var(--sans)!important;font-weight:500!important;font-size:32px!important;display:block;margin-top:8px}
+.deckcard.dk2 .photo .cap0 small{font-size:15px;opacity:.95;display:block;margin-top:6px}
+.dkchip{display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.92);color:#141414;font:500 12.5px var(--sans);text-shadow:none}
+.dksec{padding:24px 22px 4px}
+.dkh{font:500 13px var(--sans);color:#8A8A92;margin-bottom:10px}
+.dksec p{margin:0;font-size:17px;line-height:1.65;color:var(--primary)}
+.dksec p.dkbig{font-size:20px}
+.dksec .tag{margin:0 6px 6px 0}
+.dkpics{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}.dkpics::-webkit-scrollbar{display:none}
+.dkpics img{width:88px;height:108px;object-fit:cover;border-radius:12px;flex:none}
+.dkfoot{display:flex;gap:10px;padding:26px 18px 30px}
+.dkfoot button{flex:1;height:46px;border-radius:999px;border:1px solid #E2E2E6;background:#fff;font:500 14px var(--sans);color:var(--primary)}
+.dkacts{position:absolute;right:14px;bottom:28px;z-index:3;display:flex;flex-direction:column;gap:14px}
+.dkacts button{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(0,0,0,.18);transition:transform .15s}
+.dkacts button:active{transform:scale(.92)}
+.dk-like{background:#141414}.dk-skip{background:#fff}
+
 /* ============ v3 · 参考 Dafi 的整套设计系统 ============ */
 :root{--background:#F7F7F9;--white:#FFFFFF;--card:#FFFFFF;
  --primary:#141414;--secondary:#66666C;--tertiary:#98989F;--quaternary:#C7C7CD;
@@ -961,6 +986,20 @@ html,body{background:#F0F0F2}
 #wabi::before{background:radial-gradient(40% 24% at 50% 8%,rgba(227,218,247,.30),transparent 70%),radial-gradient(40% 24% at 80% 30%,rgba(247,202,214,.24),transparent 70%)!important}
 #wb-lens::after{box-shadow:inset 0 0 0 1px rgba(255,255,255,.85),inset 0 -14px 24px -8px rgba(236,150,175,.70),inset 0 -4px 10px rgba(190,160,235,.55),inset 12px 0 20px -12px rgba(200,180,240,.5),inset -12px 0 20px -12px rgba(245,170,195,.45),inset 0 12px 18px -6px rgba(255,255,255,.95)!important}
 #wb-lensin{background:#fff!important}
+
+/* ============ v3.4 · 白底上的玻璃（照 Dafi New Chat：透明度与线框） ============ */
+.bgB::after{inset:-15%!important;background:radial-gradient(42% 26% at 85% 18%,rgba(247,202,214,.34),transparent 70%),radial-gradient(46% 28% at 12% 55%,rgba(222,214,247,.38),transparent 70%),radial-gradient(40% 26% at 70% 92%,rgba(206,232,226,.30),transparent 70%)!important;filter:blur(30px)}
+.card,.glass,.tile,.idealhero,.relcard,.hp,.vcard,.result,.memcard2,.comp2,.fdcomp,.sugcard,#lx-qrows button{background:linear-gradient(160deg,rgba(255,255,255,.80),rgba(246,246,250,.50))!important;-webkit-backdrop-filter:blur(24px) saturate(1.4)!important;backdrop-filter:blur(24px) saturate(1.4)!important;border:1px solid rgba(255,255,255,.95)!important;box-shadow:inset 0 1px 0 #fff,inset 0 -1px 0 rgba(20,20,40,.03),0 1px 2px rgba(20,20,40,.04),0 10px 28px rgba(20,20,40,.06)!important}
+.lxbar{background:linear-gradient(160deg,rgba(252,232,222,.85),rgba(250,222,232,.55))!important;-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.95)!important;box-shadow:inset 0 1px 0 #fff,0 10px 28px rgba(20,20,40,.06)!important}
+.compose .bar{background:linear-gradient(160deg,rgba(244,244,247,.92),rgba(236,236,242,.70))!important;-webkit-backdrop-filter:blur(24px)!important;backdrop-filter:blur(24px)!important;border:1px solid rgba(255,255,255,.95)!important;box-shadow:inset 0 1px 0 #fff,0 6px 18px rgba(20,20,40,.05)!important}
+.tabs{background:rgba(255,255,255,.72)!important;-webkit-backdrop-filter:blur(24px)!important;backdrop-filter:blur(24px)!important;border:1px solid rgba(255,255,255,.95)!important;box-shadow:inset 0 1px 0 #fff,0 10px 28px rgba(20,20,40,.08)!important}
+.inp,.compose input.obin,.field input{background:rgba(240,240,244,.75)!important;border:1px solid rgba(255,255,255,.9)!important}
+.chip,.tag{background:rgba(255,255,255,.65)!important;border:1px solid rgba(20,20,40,.06)!important}
+.btn.soft{background:rgba(240,240,244,.75)!important;border:1px solid rgba(255,255,255,.9)!important;color:#141414}
+.sheet .box{background:rgba(255,255,255,.88)!important;-webkit-backdrop-filter:blur(28px)!important;backdrop-filter:blur(28px)!important}
+#lx-qrows button img{border-radius:14px!important}
+.deckcard.dk2{background:linear-gradient(160deg,rgba(255,255,255,.85),rgba(246,246,250,.6))!important;-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.95)!important;box-shadow:inset 0 1px 0 #fff,0 12px 32px rgba(20,20,40,.08)!important}
+.dkfoot button{background:rgba(240,240,244,.75);border:1px solid rgba(255,255,255,.9)}
 </style>
 
 <div class="stage">
@@ -1726,10 +1765,13 @@ html,body{background:#F0F0F2}
   function passes(p){ const q=pref(); return p[2]>=q.age[0]&&p[2]<=q.age[1]&&p[5]<=q.dist }
   function deckList(){ let f=state.filter||'lx'; if(!['lx','ideal'].includes(f)) f=state.filter='lx'; let L=[LIN,...PEOPLE]; const done=state.done||[]; L=L.filter(p=>!done.includes(p[0])).filter(passes); const soft=pref().soft||[]; if(f==='lx'&&soft.length){ L=L.slice().sort((a,b)=>(soft.some(w=>b[8].includes(w)||b[9].includes(w))?1:0)-(soft.some(w=>a[8].includes(w)||a[9].includes(w))?1:0)) } if(f==='ideal') L=L.slice().sort((a,b)=>b[10]-a[10]); if(state.pin){ const i=L.findIndex(p=>p[0]===state.pin); if(i>0){ const [q]=L.splice(i,1); L.unshift(q) } } return L }
   function likeTxt(n){ return n>=4?'理想型 · 全对上':n>=2?`理想型 · 对上 ${n} 个`:'' }
-  function renderToday(){ let f=state.filter||'lx'; if(!['lx','ideal','near'].includes(f)) f=state.filter='lx'; $$('[data-route="today"] .seg button').forEach(b=>b.classList.toggle('on',(b.getAttribute('onclick')||'').includes("'"+f+"'"))); const L=deckList(); const p=L[0]; const lead=$('#deck-lead'), link=$('#deck-link'); if(f==='lx'){ lead.textContent=p?`灵犀排的顺序 · 先看${p[1]}，${p[0]==='lin'?'Ta 刚问了你一个问题':p[9]}`:'今天的 20 位看完了'; link.style.display='none' } else if(f==='ideal'){ const n=L.filter(x=>x[10]>=2).length; lead.textContent=`按照片相似程度排 · 小婷型 · ${n} 位像`; link.style.display=''; } else { lead.textContent=''; link.style.display='none' }
+  function renderToday(){ let f=state.filter||'lx'; if(!['lx','ideal','near'].includes(f)) f=state.filter='lx'; $$('[data-route="today"] .seg button').forEach(b=>b.classList.toggle('on',(b.getAttribute('onclick')||'').includes("'"+f+"'"))); const L=deckList(); const p=L[0]; const lead=$('#deck-lead'), link=$('#deck-link'); if(lead&&lead.parentNode) lead.parentNode.style.display=(f==='lx')?'none':''; if(f==='lx'){ lead.textContent=''; link.style.display='none' } else if(f==='ideal'){ const n=L.filter(x=>x[10]>=2).length; lead.textContent=`按照片相似程度排 · 小婷型 · ${n} 位像`; link.style.display=''; } else { lead.textContent=''; link.style.display='none' }
         const d=$('#deck'); if(!p){ d.innerHTML='<div class="glass" style="text-align:center;padding:28px 16px"><b style="font-weight:500">今天没有更多符合条件的人</b><p class="sub" style="margin-top:6px">明早 8 点更新，已喜欢的人可在「消息」里查看。</p></div>'; $('#deck-count').textContent=''; $('#deck-next').innerHTML=''; return }
     const words=WORDS.map((w,i)=>`<span class="${i<p[10]?'on':''}">${w}</span>`).join(''); const meta=`${p[3]} · ${p[4]} · 约 ${p[5]} 公里${p[0]==='lin'?' · 已验证 ✓':''}`; const badge= f==='ideal'?likeTxt(p[10]):(p[0]==='lin'?'首推':p[9]);
-    d.innerHTML=`<div class="deckcard" id="deckcard"><a href="#today/profile/${p[0]}" class="photo"><img class="avp" alt="" src="${PH(p)}" onerror="this.style.display='none'"><span class="why0">${badge}</span><span class="cap0"><span class="h h2">${p[1]}，${p[2]}</span><small>${meta}</small></span></a>${f==='ideal'?`<div class="wd">${words}</div>`:''}<div style="padding:12px 8px 4px">${f!=='ideal'&&p[10]>=2?`<span class="tag p">${likeTxt(p[10])}</span>`:''}<span class="tag">${p[6]}</span><span class="tag">${zod(2026-p[2])} × ${ME_Z}</span><span class="tag">${p[9]}</span><p style="margin:6px 0 12px;font-size:13.5px;color:var(--secondary);line-height:1.55">${p[8]}</p><div class="row2"><button class="btn" style="flex:1" onclick="demo.like('${p[1]}','${p[0]}')">喜欢</button><button class="btn soft" style="flex:1" onclick="demo.sheet('pass')">跳过</button></div></div></div>`;
+    const ANS=p[0]==='lin'?[['周末不＿＿会难受','周末不看展会难受。最近在看一个摄影展，去了两次。'],['理想的周日是','上午咖啡馆，下午随便走走，晚上早点回家。']]:[];
+    const PICS=(p[0]==='lin'?['art/people/p01-2.webp','art/people/p01-3.webp','art/people/p01-4.webp']:[]).concat(FEED.filter(x=>x.id===p[0]&&x.ph).map(x=>`art/photos/${x.ph}.webp`));
+    const chip=f==='ideal'?likeTxt(p[10]):(p[10]>=2?likeTxt(p[10]):(p[0]==='lin'?'首推':''));
+    d.innerHTML=`<div class="dkwrap"><div class="deckcard dk2" id="deckcard"><a href="#today/profile/${p[0]}" class="photo"><img class="avp" alt="" src="${PH(p)}" onerror="this.style.display='none'"><span class="cap0">${chip?`<span class="dkchip">${chip}</span>`:''}<span class="h h2">${p[1]}　${p[2]}</span><small>${p[3]}${p[0]==='lin'?' · 已验证 ✓':''}</small></span></a><div class="dksec"><div class="dkh">为什么是 Ta · AI 生成</div><p>${p[8]}</p>${f==='ideal'?`<div class="wd">${words}</div>`:''}</div>${ANS.map(q=>`<div class="dksec"><div class="dkh">${q[0]}</div><p>${q[1]}</p></div>`).join('')}${PICS.length?`<div class="dksec"><div class="dkh">近期动态</div><div class="dkpics">${PICS.map(u=>`<img src="${u}" alt="">`).join('')}</div></div>`:''}<div class="dksec"><div class="dkh">测一测 · 仅供参考</div><div><span class="tag">${p[6]}</span><span class="tag">${zod(2026-p[2])} × ${ME_Z}</span><span class="tag">${p[9]}</span></div></div><div class="dksec"><div class="dkh">我在哪里</div><p class="dkbig">北京 · ${p[4]} · 约 ${p[5]} 公里</p></div><div class="dkfoot"><button onclick="demo.moreOpen?demo.moreOpen('${p[1]}'):demo.reportOpen('${p[1]}')">举报或屏蔽</button><button onclick="demo.toast('已生成推荐卡，可以发给微信好友')">推荐给好友</button></div></div><div class="dkacts"><button class="dk-like" title="喜欢" onclick="demo.like('${p[1]}','${p[0]}')"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M12 20 C7 16.5 3.5 13.5 3.5 9.2 C3.5 6.5 5.6 4.5 8 4.5 c1.7 0 3.1.9 4 2.3 c.9-1.4 2.3-2.3 4-2.3 c2.4 0 4.5 2 4.5 4.7 C20.5 13.5 17 16.5 12 20 Z" fill="#fff"/></svg></button><button class="dk-skip" title="跳过" onclick="demo.sheet('pass')"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M6 6 L18 18 M18 6 L6 18" fill="none" stroke="#141414" stroke-width="2.2" stroke-linecap="round"/></svg></button></div></div>`;
     $('#deck-count').textContent=`今天还剩 ${L.length-1} 位 · AI 生成 · 仅供参考`; $('#deck-next').innerHTML=L.slice(1,8).map(q=>`<button onclick="demo.jumpTo('${q[0]}')"><span class="av"><img class="avp" src="${PH(q)}" alt=""></span><b>${q[1]}</b><span>${f==='ideal'?(q[10]>=4?'全对上':'对上 '+q[10]):''}</span></button>`).join('') }
   function renderTodayOld(){ const f=state.filter||'lx'; let list=PEOPLE.slice(); if(f==='near') list=list.filter(p=>p[5]<=5); if(f==='ideal') list=list.filter(p=>p[10]>=2).sort((a,b)=>b[10]-a[10]); $('#today-list').innerHTML=list.map((p,i)=>`<a class="prow" href="#today/profile/${p[0]}"><div class="av ${G[i%4]}"><img class="avp" src="art/people/p${String((PEOPLE.indexOf(p)+2)).padStart(2,'0')}.webp" alt="" onerror="this.style.display='none'"></div><div style="flex:1;min-width:0"><div class="nm"><span>${p[1]}，${p[2]}</span><small>约 ${p[5]} 公里</small></div><div class="why">${p[8]}</div><div class="tg">${p[10]>=2?`<i class="p">${likeTxt(p[10])}</i>`:''}<i>${p[9]}</i><i>${p[6]}</i><i>${zod(2026-p[2])} × ${ME_Z}</i></div></div></a>`).join(''); $('#today-head').textContent=f==='ideal'?'像理想型的人（首推以外）':f==='near'?'5 公里内':'今天还有 19 位'; $('#today-count').textContent=f==='ideal'?`${list.length} 位 · 按照片相似程度排`:f==='near'?`${list.length} 位`:'明早 8 点更新' }
   const WORDS=['短发','清冷','冷色衣着','安静'];
