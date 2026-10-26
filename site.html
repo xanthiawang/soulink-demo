@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Soulink · 官网 v0.22</title>
+<title>Soulink · 官网 v0.23</title>
 <meta name="description" content="Soulink — AI 社交匹配平台。遇见你的理想型。Soulink 与沐仞科技（FathomPeak）合作出品。">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400&family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@300;400&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -456,16 +456,10 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
 <div class="heroTrack" id="top">
   <section class="hero" id="hero">
     <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="boilW" x="-1%" y="-1%" width="102%" height="102%"><feTurbulence type="fractalNoise" baseFrequency=".006" numOctaves="2" seed="1" result="t"><animate attributeName="seed" values="1;2;3;4;5;6;7;8" dur="1.4s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feDisplacementMap in="SourceGraphic" in2="t" scale="2.4"/></filter></svg>
-    <div class="sky boil">
+    <div class="sky">
       <div class="grad"></div>
-      <video class="cv" id="heroVid" src="art/web/video/city-landscape.mp4" poster="art/web/video/city-landscape-poster.jpg" muted playsinline preload="auto" aria-hidden="true" onloadedmetadata="document.getElementById('hero').classList.add('vid')" onerror="document.getElementById('hero').classList.remove('vid')"></video>
-      <img class="fr day" data-k="0" src="art/web/hero-day.webp" alt="" onerror="document.getElementById('hero').classList.add('nohero')">
-      <img class="fr" data-k=".17" src="art/web/hero-t1.webp" alt="" onerror="this.remove()">
-      <img class="fr" data-k=".33" src="art/web/hero-t2.webp" alt="" onerror="this.remove()">
-      <img class="fr" data-k=".5" src="art/web/hero-dusk.webp" alt="" onerror="this.remove()">
-      <img class="fr" data-k=".67" src="art/web/hero-t3.webp" alt="" onerror="this.remove()">
-      <img class="fr" data-k=".83" src="art/web/hero-t4.webp" alt="" onerror="this.remove()">
-      <img class="fr" data-k="1" src="art/web/hero-night.webp" alt="" onerror="this.remove()">
+      <video class="cv" id="heroVid" src="art/web/video/city-landscape.mp4" poster="art/web/video/city-landscape-poster.jpg" muted playsinline preload="auto" autoplay aria-hidden="true" onloadedmetadata="document.getElementById('hero').classList.add('vid')" onerror="document.getElementById('hero').classList.remove('vid')"></video>
+      <img class="fr day" data-k="0" src="art/web/video/city-landscape-poster.jpg" alt="" onerror="document.getElementById('hero').classList.add('nohero')">
     </div>
     <svg class="fallbackCity" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" fill="none" stroke="#000" stroke-width="1.5"><circle cx="1180" cy="200" r="110" fill="#F67D0A" stroke="none"/><g fill="#C5C0B1"><rect x="40" y="300" width="180" height="600"/><rect x="520" y="380" width="80" height="520"/><rect x="900" y="470" width="110" height="430"/><rect x="1380" y="320" width="180" height="580"/></g><g fill="#F8F4F0"><rect x="260" y="520" width="120" height="380"/><rect x="700" y="560" width="140" height="340"/><rect x="1100" y="590" width="90" height="310"/></g><path d="M130 300 C500 420 1100 420 1470 320" stroke-width="2"/><g fill="#000" stroke="none"><circle cx="130" cy="285" r="7"/><rect x="124" y="290" width="12" height="22"/><circle cx="1470" cy="305" r="7"/><rect x="1464" y="310" width="12" height="22"/></g></svg>
     <div class="stars" id="stars"></div>
@@ -491,7 +485,7 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
 <section class="ticker"><div class="eyebrow">高校联盟 · 实时注册 <b style="color:var(--orange)">1,342</b> 人 · 2026-10-26</div><div class="rail" id="rail"><ul><li><b>清华大学</b><i>989</i><small>人</small></li><li><b>北京大学</b><i>181</i><small>人</small></li><li><b>北京师范大学</b><i>80</i><small>人</small></li><li><b>同济大学</b><i>15</i><small>人</small></li><li><b>上海交通大学</b><i>12</i><small>人</small></li><li><b>中国传媒大学</b><i>12</i><small>人</small></li><li><b>中南财经政法大学</b><i>12</i><small>人</small></li><li><b>中国人民大学</b><i>11</i><small>人</small></li><li><b>北京外国语大学</b><i>11</i><small>人</small></li><li><b>南洋理工大学</b><i>9</i><small>人</small></li><li><b>复旦大学</b><i>4</i><small>人</small></li><li><b>中南大学</b><i>3</i><small>人</small></li><li><b>新加坡国立大学</b><i>3</i><small>人</small></li></ul><ul aria-hidden="true"><li><b>清华大学</b><i>989</i><small>人</small></li><li><b>北京大学</b><i>181</i><small>人</small></li><li><b>北京师范大学</b><i>80</i><small>人</small></li><li><b>同济大学</b><i>15</i><small>人</small></li><li><b>上海交通大学</b><i>12</i><small>人</small></li><li><b>中国传媒大学</b><i>12</i><small>人</small></li><li><b>中南财经政法大学</b><i>12</i><small>人</small></li><li><b>中国人民大学</b><i>11</i><small>人</small></li><li><b>北京外国语大学</b><i>11</i><small>人</small></li><li><b>南洋理工大学</b><i>9</i><small>人</small></li><li><b>复旦大学</b><i>4</i><small>人</small></li><li><b>中南大学</b><i>3</i><small>人</small></li><li><b>新加坡国立大学</b><i>3</i><small>人</small></li></ul></div></section>
 <section class="formSec" id="apply">
   <div class="frame ap">
-    <img src="art/web/hero-day.webp" alt="" onerror="this.remove()">
+    <img src="art/web/video/city-landscape-poster.jpg" alt="" onerror="this.remove()">
     <div class="card login-entry">
       <span class="eyebrow">SOULINK</span><h3>从认识你开始。</h3>
       <p>进入 Soulink，告诉灵犀你喜欢的样子。</p>
@@ -538,7 +532,7 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
     <p>交友数据和沐仞的企业业务分开存放、分开授权；不会拿来训练对外的模型。</p>
     <a class="link" href="#/home/faq">看数据与隐私说明 <span class="ar">→</span></a>
   </div>
-  <div class="pic ap d1"><img src="art/web/hero-night.webp" alt="" onerror="this.src='art/web/hero-day.webp';this.onerror=null"></div>
+  <div class="pic ap d1"><img src="art/web/video/lingxi-hero-poster.jpg" alt=""></div>
 </div>
 
 <!-- 大字标 -->
@@ -702,7 +696,7 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
 <!-- 登录 -->
 <section class="formSec" id="apply">
   <div class="frame ap">
-    <img src="art/web/hero-day.webp" alt="" onerror="this.remove()">
+    <img src="art/web/video/city-landscape-poster.jpg" alt="" onerror="this.remove()">
     <div class="card login-entry">
       <span class="eyebrow">SOULINK</span><h3>从认识你开始。</h3>
       <p>进入 Soulink，告诉灵犀你喜欢的样子。</p>
