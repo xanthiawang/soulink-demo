@@ -889,6 +889,49 @@ img.lo{width:132px!important;height:132px!important;border-radius:26px!important
 #wb-lens::after{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;z-index:2;background:radial-gradient(60% 26% at 50% 10%,rgba(255,255,255,.85),rgba(255,255,255,0) 70%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.8),inset 0 -14px 24px -8px rgba(40,90,255,.9),inset 0 -4px 10px rgba(150,70,255,.6),inset 12px 0 20px -12px rgba(110,150,255,.55),inset -12px 0 20px -12px rgba(255,110,190,.45),inset 0 12px 18px -6px rgba(255,255,255,.95)}
 #wabi.b #wb-lens{background:radial-gradient(circle at 50% 22%,rgba(255,255,255,.85),rgba(255,255,255,.3) 62%),rgba(255,255,255,.4)}
 #wabi.b #wb-lensin{opacity:.0}
+
+/* ============ v3.2 · 统一（照 Dafi 实拍） ============ */
+/* 色：暖白底；品牌暖调彩虹 = 黄 / 桃 / 粉 / 淡紫；黑为主按钮；桃为强调卡；黄只给圆形主按钮 */
+:root{--background:#F7F6F4;--yellow:#F5E76A;--y-soft:#F7EE8E;--peach-soft:#FAD9C4;--pink-soft:#F7CAD6;--lilac-soft:#E3DAF7;--blue-soft:#E3DAF7;--lime-soft:#F7EE8E}
+html,body{background:#ECEAE7}
+.bgB::after{background:radial-gradient(40% 24% at 10% 100%,rgba(247,231,106,.18),transparent 70%),radial-gradient(36% 22% at 100% 72%,rgba(250,200,170,.20),transparent 70%),radial-gradient(40% 22% at 70% 0%,rgba(247,202,214,.20),transparent 70%)!important}
+#wabi::before{background:radial-gradient(40% 24% at 50% 8%,rgba(247,231,106,.30),transparent 70%),radial-gradient(40% 24% at 80% 30%,rgba(247,202,214,.26),transparent 70%),radial-gradient(40% 24% at 20% 26%,rgba(250,210,180,.24),transparent 70%)!important}
+/* 首页玻璃：暖色色散，不用蓝紫 */
+#wb-lens::after{box-shadow:inset 0 0 0 1px rgba(255,255,255,.85),inset 0 -14px 24px -8px rgba(245,190,70,.75),inset 0 -4px 10px rgba(245,140,170,.55),inset 12px 0 20px -12px rgba(250,180,150,.55),inset -12px 0 20px -12px rgba(230,170,230,.45),inset 0 12px 18px -6px rgba(255,255,255,.95)!important}
+#wabi.b #wb-lens{background:url(art/v3/brand/orb.png) center/118% no-repeat,radial-gradient(circle at 50% 30%,#fff,rgba(255,255,255,.4))!important}
+#wabi.b #wb-lens::after{box-shadow:inset 0 0 0 1px rgba(255,255,255,.8)!important;background:none}
+/* 图标：一套线宽 2px 圆头；动态操作行的内联图标同粗 */
+.ai svg{stroke-width:2!important}
+.fd .ty{background:var(--y-soft)!important;color:#3B3200!important}
+.deckcard .photo .why0{background:var(--y-soft)!important;color:#3B3200!important}
+.pill.hot{background:var(--peach-soft)!important;color:#5A2A0E!important}
+/* 标题：Tab 主页大标题粗体 + 品牌标（照 Library / Home） */
+[data-route="today"] .top .t,[data-route="chats"] .top .t,[data-route="places"] .top .t,[data-route="lx"] .top .t,[data-route="me"] .top .t{font:800 26px/1.1 var(--sans)!important;letter-spacing:-.03em;display:flex;align-items:center;gap:10px}
+[data-route="today"] .top .t::before,[data-route="chats"] .top .t::before,[data-route="places"] .top .t::before,[data-route="lx"] .top .t::before,[data-route="me"] .top .t::before{content:"";width:30px;height:30px;flex:none;background:url(art/v3/brand/lingxi-mark.png) center/contain no-repeat}
+/* 两段式大标题（黑 + 灰），字号照实拍放大 */
+.h.h1{font-size:30px;font-weight:400}
+/* 按钮：大圆角矩形（实拍「Connect」「Activate」「Later」） */
+.btn{border-radius:16px!important;height:48px;font-weight:600}
+.btn.w{height:56px;border-radius:18px!important;font-size:16px}
+.btn.sm{border-radius:12px!important;height:34px}
+.btn.soft{border:1.5px solid #141414}
+#wb-btns a{border-radius:18px!important;height:56px;font-weight:600}
+#wb-btns a.w{border:1.5px solid #141414;box-shadow:none}
+/* 强调卡用桃色（实拍 University 卡） */
+.lxbar{background:var(--peach-soft)!important;border:0!important}
+.lxbar .av{background:rgba(255,255,255,.55)!important;border-radius:16px}
+/* 底部导航：照实拍——磨砂条里图标 + 文字，当前项灰色胶囊；灵犀单独成右侧黄色圆形按钮 */
+.tabs{left:16px!important;right:92px!important;bottom:22px;height:66px;border-radius:999px!important;padding:0 6px!important;justify-content:space-between!important;overflow:visible}
+.tabs a{flex:1;flex-direction:column!important;gap:3px;width:auto!important;height:54px!important;border-radius:999px!important;background:transparent!important}
+.tabs a span.lbl{display:block!important;font:700 10.5px/1 var(--sans);color:#141414;letter-spacing:0}
+.tabs a img.v3i{width:22px!important;height:22px!important}
+.tabs a.on{background:rgba(20,20,30,.07)!important}
+.tabs a.core{position:absolute!important;right:-80px;top:50%;margin-top:-33px!important;width:66px!important;height:66px!important;flex:none;border-radius:50%!important;background:var(--yellow)!important;box-shadow:0 8px 22px rgba(30,30,40,.12)}
+.tabs a.core span.lbl{display:none!important}
+.tabs a.core img.v3i{width:30px!important;height:30px!important}
+.tabs a.core.on{background:var(--yellow)!important;box-shadow:0 0 0 3px #fff,0 8px 22px rgba(30,30,40,.14)}
+/* 灵犀对话空状态的头像与 2×2 卡里的图标 */
+#lx-hello>div:first-child>div:first-child img{border-radius:16px}
 </style>
 
 <div class="stage">
@@ -1927,7 +1970,7 @@ img.lo{width:132px!important;height:132px!important;border-radius:26px!important
 
 <script>
 (function(){
-  var V3 = ["act-arrowup", "act-arrowup-w", "act-back", "act-bell", "act-book", "act-camera", "act-cap", "act-cards", "act-chat", "act-clock", "act-close", "act-crown", "act-cup", "act-delete", "act-eye", "act-filter", "act-flag", "act-fork", "act-frame", "act-globe", "act-grid", "act-hand", "act-headphones", "act-heart", "act-home", "act-image", "act-key", "act-keyboard", "act-list", "act-mic", "act-note", "act-pair", "act-phone", "act-pin", "act-plus", "act-ruler", "act-search", "act-send", "act-settings", "act-share", "act-shield", "act-shift", "act-smile", "act-sparkle", "act-star", "act-target", "act-ticket", "act-user", "act-video", "act-wand", "act-waves", "lingxi-mark", "place-bookstore", "place-cafe", "place-dinner", "place-exhibition", "place-river", "place-theatre", "spot-ideal", "spot-key", "spot-lingxi", "spot-match", "spot-notes", "spot-plus", "spot-portrait", "spot-tests", "tab-chats", "tab-me", "tab-places", "tab-today", "test-mbti", "test-pair", "test-style", "test-zodiac"];
+  var V3 = ["act-arrowup", "act-arrowup-w", "act-back", "act-bell", "act-book", "act-camera", "act-cap", "act-cards", "act-chat", "act-chevron", "act-clock", "act-close", "act-crown", "act-cup", "act-delete", "act-eye", "act-filter", "act-flag", "act-fork", "act-frame", "act-globe", "act-grid", "act-hand", "act-headphones", "act-heart", "act-home", "act-image", "act-key", "act-keyboard", "act-list", "act-mic", "act-note", "act-pair", "act-paper", "act-phone", "act-pin", "act-play", "act-play-w", "act-plus", "act-refresh", "act-rock", "act-ruler", "act-scissors", "act-search", "act-send", "act-settings", "act-share", "act-shield", "act-shift", "act-smile", "act-sparkle", "act-star", "act-target", "act-ticket", "act-user", "act-video", "act-wand", "act-waves", "lingxi-mark", "place-bookstore", "place-cafe", "place-dinner", "place-exhibition", "place-river", "place-theatre", "spot-ideal", "spot-key", "spot-lingxi", "spot-match", "spot-notes", "spot-plus", "spot-portrait", "spot-tests", "tab-chats", "tab-me", "tab-places", "tab-today", "test-mbti", "test-pair", "test-style", "test-zodiac"];
   var COVERS = ['blush','aurora','mustard','ocean','ember','sand','forest','dusk'];
   var TABMAP = {today:'act-cards', chats:'act-chat', lx:'lingxi-mark', places:'act-grid', me:'act-user'};
   var re = /art\/(flat|ink)\/([a-z0-9-]+)\.svg/;
@@ -2004,7 +2047,7 @@ img.lo{width:132px!important;height:132px!important;border-radius:26px!important
   }
   /* 头像泡泡 */
   var PICS = []; for (var i=1;i<=20;i++){ PICS.push('art/people/p'+(i<10?'0':'')+i+'.webp'); }
-  var DOTS = ['#F7DE4A','#F3C3D3','#CDBCF1','#AFC8F4','#F6B38C','#DCEB8F'];
+  var DOTS = ['#F5E76A','#F7CAD6','#E3DAF7','#FAD1B8'];
   function burst(){
     cloud.innerHTML = ''; balls = [];
     var n = PICS.length + 10;
@@ -2061,5 +2104,31 @@ img.lo{width:132px!important;height:132px!important;border-radius:26px!important
   addEventListener('hashchange', function(){ var h = location.hash; if (h === '' || h === '#' || h === '#onboarding/1') reset(); });
   reset(); loop();
   window.__wabi = {toB:toB, toA:toA, reset:reset};
+})();
+</script>
+
+<script>
+(function(){
+  function im(src, w){ var i = document.createElement('img'); i.src = src; i.alt = ''; i.style.cssText = 'width:'+w+'px;height:'+w+'px;display:block'; return i; }
+  var MARK = 'art/v3/brand/lingxi-mark.png', MONO = 'art/v3/brand/lingxi-mark-mono.png';
+  function apply(root){
+    if (!root.querySelectorAll) return;
+    /* 灵犀标：全站统一用 Codex 画的品牌标 */
+    root.querySelectorAll('img').forEach(function(i){
+      var s = i.getAttribute('src') || '';
+      if (/art\/v3\/(spot-lingxi|lingxi-mark)\.svg/.test(s)){ i.onerror = null; i.src = i.closest('.tabs') ? MONO : MARK; }
+      if (/art\/ink\/game-(rock|scissors|paper)\.svg/.test(s)){ var k = s.match(/game-(\w+)/)[1]; i.onerror = null; i.src = 'art/v3/act-' + k + '.svg'; }
+    });
+    /* 字符当图标的按钮：× ⟳ → 线性图标 */
+    root.querySelectorAll('button').forEach(function(b){
+      if (b.dataset.v3g || b.children.length) return; var t = (b.textContent || '').trim();
+      if (t === '×' || t === '⟳'){ b.dataset.v3g = 1; b.textContent = ''; b.appendChild(im('art/v3/act-' + (t === '×' ? 'close' : 'refresh') + '.svg', 14)); }
+    });
+    /* 残留的手绘内联图标 */
+    var MAP = [['.help[title="传照片"] svg','act-camera',18],['.top .ib[title="分享"] svg','act-share',18],['.vcard .pl svg','act-play-w',16],['.gbanner svg','act-crown',20],['[data-route="onboarding/5"] .gp.ic svg','act-keyboard',18]];
+    MAP.forEach(function(m){ root.querySelectorAll(m[0]).forEach(function(sv){ sv.replaceWith(im('art/v3/' + m[1] + '.svg', m[2])); }); });
+  }
+  apply(document);
+  new MutationObserver(function(ms){ ms.forEach(function(m){ m.addedNodes.forEach(function(n){ if (n.nodeType === 1) apply(n.parentNode || n); }); }); }).observe(document.body, {subtree:true, childList:true});
 })();
 </script>
