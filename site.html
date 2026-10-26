@@ -1,0 +1,734 @@
+<title>Soulink · 官网原型 v0.14</title>
+<meta name="description" content="Soulink — AI 社交匹配平台。遇见你的理想型。由 Soulink 与沐仞科技（FathomPeak）共同所有。">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400&family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@300;400&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* 参考站实测色卡 2026-10-25：zapier.com/zapconnect */
+  --ink:#000; --brown:#201515; --brown80:rgba(32,21,21,.8);
+  --cream:#F8F4F0; --paper:#FFFEFB; --cream2:#FFF9EE; --sand:#ECEAE3; --stone:#C5C0B1; --stone2:#939084; --muted:#605D52; --dark2:#36342E;
+  --orange:#FF4F00; --orange2:#E64700; --peach:#FFB385; --sun:#F67D0A;
+  --sky:#687BC7; --sky2:#9290B8; --dusk:#3C4973; --night:#373A5B;
+  --serif-h:"Newsreader","Tiempos Headline","Noto Serif SC","Songti SC",Georgia,serif;
+  --serif-t:"Newsreader","Tiempos Text","Noto Serif SC","Songti SC",Georgia,serif;
+  --sans:"Inter","Noto Sans SC","PingFang SC",system-ui,sans-serif;
+  --max:1120px; --r:4px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;background:var(--cream);color:var(--ink);font:400 16px/1.3 var(--sans);letter-spacing:-.02em;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.h{font-family:var(--serif-h);font-weight:300;font-variation-settings:"opsz" 72;letter-spacing:0;line-height:1.05;margin:0}
+.t{font-family:var(--serif-t);font-weight:400;font-variation-settings:"opsz" 24;letter-spacing:-.01em;line-height:1.2}
+.eyebrow{font:600 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--brown)}
+.sq{display:inline-block;width:8px;height:8px;background:var(--orange);vertical-align:middle}
+.center{text-align:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:44px;padding:0 20px;border-radius:var(--r);background:var(--brown);color:#fff;font:600 16px/1 var(--sans);letter-spacing:-.01em;transition:background .18s ease,transform .18s ease}
+.btn:hover{background:#000}
+.btn.o{background:var(--orange)}.btn.o:hover{background:var(--orange2)}
+.btn.s{height:40px;font-size:14px;padding:0 16px}
+.btn .ar{transition:transform .18s ease}.btn:hover .ar{transform:translateX(3px)}
+.link{font:600 14px/1 var(--sans);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.link:hover .ar{transform:translateX(3px)}.link .ar{display:inline-block;transition:transform .18s}
+/* 出现动画：参考站 Framer appear，淡入 + 上移 */
+.ap{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.ap.in{opacity:1;transform:none}
+.ap.d1{transition-delay:.1s}.ap.d2{transition-delay:.2s}.ap.d3{transition-delay:.3s}.ap.d4{transition-delay:.4s}
+
+/* ---------- 顶栏（参考站：absolute 64px，透明，文字压在画上） ---------- */
+header{position:absolute;left:0;right:0;top:0;height:64px;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 16px;color:var(--brown)}
+header.light{color:#fff}
+.logo{display:flex;align-items:baseline;gap:6px;font-family:var(--sans);letter-spacing:-.04em;line-height:1}
+.logo i{display:inline-block;width:28px;height:7px;background:var(--orange);margin-right:2px;align-self:flex-end;margin-bottom:3px}
+.logo b{font-weight:800;font-size:27px}
+.logo span{font-weight:300;font-size:14px;letter-spacing:.02em;font-family:var(--sans);margin-left:6px}
+.logo small{font:500 11px/1 var(--sans);letter-spacing:.08em;opacity:.7;margin-left:6px}
+nav{display:flex;align-items:center;gap:28px}
+nav a.nl{position:relative;font:600 16px/1 var(--sans);letter-spacing:-.01em;padding:6px 0}
+nav a.nl:after{content:"";position:absolute;left:50%;bottom:-6px;width:70px;max-width:100%;height:1px;background:currentColor;transform:translateX(-50%) scaleX(0);transform-origin:center;transition:transform .25s ease;opacity:.9}
+nav a.nl:hover:after{transform:translateX(-50%) scaleX(1)}
+header.light .btn{background:var(--brown)}
+.menu{display:none}
+@media (max-width:860px){nav a.nl{display:none}.logo small,.logo span{display:none}header .btn{height:38px;padding:0 14px;font-size:14px;white-space:nowrap}}
+
+/* ---------- 首屏：滚动驱动 白天→黄昏→夜晚（参考站：sticky 1080 + 120 帧序列，约 830px 滚动走完） ---------- */
+.heroTrack{position:relative;height:320vh;background:var(--brown)}
+.hero{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--sky)}
+.hero .sky{position:absolute;inset:0}
+.hero .sky img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%;transition:opacity .15s linear}
+.hero .sky img.fr:not(.day){opacity:0}
+.hero .sky.boil{filter:url(#boilW)}
+.hero .sky .cv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%;display:none;z-index:1}
+.hero.vid .sky .cv{display:block}.hero.vid .sky img.fr{display:none}.hero.vid .sky.boil{filter:none}
+.hero .sky .grad{position:absolute;inset:0;background:linear-gradient(180deg,var(--sky),var(--sky2));display:none}
+.hero.nohero .sky .grad{display:block}
+.hero.nohero .sky img{display:none}
+.hero .clouds{position:absolute;left:-5%;right:-5%;bottom:-4%;height:48%;pointer-events:none;will-change:transform;transition:transform .9s cubic-bezier(.22,1,.36,1)}
+.hero .clouds img{width:100%;height:100%;object-fit:cover;object-position:center bottom}
+.hero .stars{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .4s}
+.hero .stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:#FFF9EE;box-shadow:0 0 6px rgba(255,249,238,.9);animation:tw 3.4s ease-in-out infinite}
+.hero .stars i:nth-child(2n){animation-delay:-1.1s;width:2px;height:2px}.hero .stars i:nth-child(3n){animation-delay:-2.2s}
+@keyframes tw{0%,100%{opacity:.35}50%{opacity:1}}
+.hero .copy{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;color:#fff;will-change:transform,opacity}
+.hero .hl{width:min(1200px,100%);padding:0 clamp(0px,4vw,60px)}
+.hero .hl .l1{text-align:left;padding-left:7%}
+.hero .hl .l2{text-align:center;padding-left:8%}
+.hero .hl h1{will-change:transform}
+.hero h1{font-size:clamp(52px,9.6vw,150px);color:#FFF9EE;text-shadow:0 2px 30px rgba(32,21,21,.25);font-family:var(--serif-h);font-weight:300;font-variation-settings:"opsz" 72;margin:0;line-height:1.02}
+.hero h1 .cn{font-family:"Noto Serif SC","Songti SC",serif;font-weight:300}
+.hero .copy p{margin:18px 0 26px;font-family:var(--serif-t);font-size:clamp(18px,2.2vw,26px);color:#FFF9EE;max-width:26em;line-height:1.25;text-shadow:0 1px 18px rgba(32,21,21,.45),0 0 2px rgba(32,21,21,.3)}
+.hero .dim{position:absolute;inset:0;background:var(--brown);opacity:0;pointer-events:none}
+.hero .hint{position:absolute;left:0;right:0;bottom:22px;text-align:center;font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,249,238,.75)}
+.hero .hint:after{content:"";display:block;width:1px;height:26px;background:rgba(255,249,238,.6);margin:10px auto 0;animation:drop 1.8s ease-in-out infinite;transform-origin:top}
+@keyframes drop{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
+.hero .spark{position:absolute;width:5px;height:5px;border-radius:50%;background:#FFF9EE;box-shadow:0 0 8px rgba(255,249,238,.95);animation:sparkUp 1.3s cubic-bezier(.2,.7,.3,1) forwards;pointer-events:none}
+@keyframes sparkUp{0%{opacity:0;transform:translate(0,0) scale(.6)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.1)}}
+.hero .fallbackCity{position:absolute;inset:0;display:none}
+.hero.nohero .fallbackCity{display:block}
+
+/* ---------- 深色副首屏 ---------- */
+.sub{background:var(--brown);color:#FFF9EE;padding:120px 24px 140px;text-align:center;position:relative;margin-top:-1px}
+.sub .meta{display:flex;justify-content:center;gap:22px;align-items:center;flex-wrap:wrap;color:#FFF9EE}
+.sub .meta .eyebrow{color:#FFF9EE}
+.sub .lead{margin:44px auto 0;max-width:30em;font-family:var(--serif-t);font-size:clamp(20px,2.3vw,26px);line-height:1.2;color:var(--stone)}
+.sub .lead b{font-weight:400;color:#FFF9EE}
+.sub .cta{display:flex;gap:16px;justify-content:center;margin-top:44px;flex-wrap:wrap}
+
+/* ---------- 申请内测：画上压一张表单 ---------- */
+.formSec{background:var(--cream);padding:40px 24px 80px}
+.frame{position:relative;max-width:1120px;margin:0 auto;min-height:620px;border-radius:2px;overflow:hidden;background:var(--sky)}
+.frame>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 70%}
+.frame .card{position:relative;z-index:1;width:min(600px,100%);margin:60px auto;background:var(--paper);border-radius:var(--r);padding:28px 28px 24px;box-shadow:0 2px 4px rgba(32,21,21,.06),0 24px 48px rgba(32,21,21,.12)}
+.frame .card h3{font:600 20px/1.2 var(--sans);margin:0 0 20px;text-align:center;letter-spacing:-.02em}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fld label{display:block;font:600 12px/1 var(--sans);margin:0 0 6px;color:var(--brown)}
+.fld input,.fld select{width:100%;height:40px;border:1px solid var(--stone);border-radius:var(--r);background:#fff;padding:0 12px;font:400 14px var(--sans);color:var(--ink);outline:none;appearance:none}
+.fld input:focus,.fld select:focus{border-color:var(--brown)}
+.fld select{background-image:linear-gradient(45deg,transparent 50%,var(--brown) 50%),linear-gradient(135deg,var(--brown) 50%,transparent 50%);background-position:calc(100% - 18px) 17px,calc(100% - 13px) 17px;background-size:5px 5px;background-repeat:no-repeat}
+.chk{display:flex;gap:8px;align-items:flex-start;font:400 12px/1.4 var(--sans);color:var(--muted);margin-top:14px}
+.chk input{margin:2px 0 0;width:14px;height:14px}
+.fine{font:400 11px/1.4 var(--sans);color:var(--muted);margin:10px 0 14px}
+.fine a{text-decoration:underline}
+.btn.w{width:100%}
+@media (max-width:640px){.f2{grid-template-columns:1fr}.frame .card{margin:24px auto}}
+
+/* ---------- 竖线段落（参考站 CTA Lines：8 根，428/342/265/190，外桃内橙，间距 66） ---------- */
+.lines{position:relative;background:var(--cream);height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.lines .ln{position:absolute;top:0;width:1px;background:var(--peach);transform:scaleY(0);transform-origin:top;transition:transform 1.1s cubic-bezier(.22,1,.36,1)}
+.lines.in .ln{transform:scaleY(1)}
+.lines .ln.o{background:var(--orange)}
+.lines .c{position:relative;z-index:1;text-align:center;max-width:420px;padding:0 24px}
+.lines .c p{font:400 14px/1.4 var(--sans);color:var(--dark2);margin:0 0 16px}
+.lines .c .big{font-family:var(--serif-t);font-size:20px;line-height:1.25;color:var(--brown);margin:28px 0}
+.lines .c .btn{margin:6px 0}
+@media (max-width:760px){.lines{height:auto;padding:80px 0}.lines .ln{display:none}}
+
+/* ---------- 三步 / 高校联盟 ---------- */
+.steps{max-width:var(--max);margin:0 auto;padding:10px 24px 90px;display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.steps>div{padding:8px 28px 8px 0}
+.steps>div+div{padding-left:28px;border-left:1px solid var(--stone)}
+.steps em{display:block;font-family:var(--serif-h);font-style:normal;font-weight:300;font-size:56px;line-height:1;color:var(--orange);margin-bottom:14px}
+.steps h4{font-family:var(--serif-t);font-weight:400;font-size:22px;margin:0 0 12px;color:var(--brown)}
+.steps p{font:400 14px/1.55 var(--sans);color:var(--dark2);margin:0}
+@media (max-width:760px){.steps{grid-template-columns:1fr;gap:28px}.steps>div+div{border-left:0;padding-left:0}}
+.campus{background:var(--brown);color:#FFF9EE;padding:100px 0 110px}
+.campus .ch{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.campus h2{font-family:var(--serif-h);font-weight:300;font-size:clamp(32px,4vw,56px);margin:10px 0 14px;line-height:1.02}
+.campus .ch p{font:400 15px/1.55 var(--sans);color:var(--stone);max-width:36em;margin:0}
+.campus .num b{display:block;font-family:var(--serif-h);font-weight:300;font-size:72px;line-height:1;color:var(--peach)}
+.campus .num span{font:600 11px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--stone)}
+.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:48px;padding-top:36px;border-top:1px solid rgba(255,249,238,.18)}
+.cg .eyebrow{color:var(--peach);display:block;margin-bottom:12px}
+.cg a{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,249,238,.12);font:400 15px/1.3 var(--sans);color:#FFF9EE}
+.cg a i{font:400 12px var(--sans);color:var(--stone);font-style:normal}
+.cinv{margin-top:56px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;padding:28px 32px;border:1px solid rgba(255,249,238,.18);border-radius:2px}
+.cinv h3{font-family:var(--serif-t);font-weight:400;font-size:24px;margin:8px 0 8px}
+.cinv p{font:400 14px/1.5 var(--sans);color:var(--stone);max-width:34em;margin:0}
+@media (max-width:860px){.cgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.cgrid{grid-template-columns:1fr}}
+/* ---------- 跑马灯 ---------- */
+.ticker{background:var(--cream);padding:60px 0 10px;overflow:hidden}
+.ticker .eyebrow{text-align:center;margin-bottom:28px;color:var(--brown)}
+.ticker .rail{display:flex;width:max-content;animation:rail 46s linear infinite}
+.ticker:hover .rail{animation-play-state:paused}
+.ticker ul{display:flex;gap:64px;list-style:none;margin:0;padding:0 32px;align-items:center}
+.ticker li{font-family:var(--serif-t);font-size:22px;color:var(--brown);white-space:nowrap;display:flex;align-items:baseline;gap:8px}
+.ticker li i{font-style:normal;font-family:var(--sans);font-weight:600;font-size:18px;color:var(--orange)}.ticker li small{font:400 11px var(--sans);color:var(--muted)}
+@keyframes rail{to{transform:translateX(-50%)}}
+
+/* ---------- 章节标题（橙色小方块 + 衬线） ---------- */
+.secHead{text-align:center;padding:80px 24px 36px}
+.secHead .sq{display:block;margin:0 auto 22px}
+.secHead h2{font-family:var(--serif-h);font-weight:300;font-size:clamp(30px,3.6vw,48px);letter-spacing:-.02em;line-height:1.05;margin:0}
+.secHead p{font:400 16px/1.4 var(--sans);color:var(--dark2);max-width:34em;margin:18px auto 0}
+
+/* ---------- 今天的 20 位（参考站 speakers 网格：2 列大卡，画上压人像） ---------- */
+.people{display:grid;grid-template-columns:1fr 1fr;gap:28px 36px;max-width:var(--max);margin:0 auto;padding:0 24px 40px}
+.pc{display:block}
+.pc .pic{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--sky)}
+.pc .pic .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pos,center 40%);transform:scale(1.02);transition:transform .8s cubic-bezier(.22,1,.36,1)}
+.pc:hover .pic .bg{transform:scale(1.06)}
+.pc .pic .ph{position:absolute;left:12%;right:12%;bottom:0;top:16%;object-fit:cover;object-position:top;border-radius:2px 2px 0 0;box-shadow:0 20px 40px rgba(32,21,21,.25)}
+.pc .pic .why{position:absolute;left:0;right:0;bottom:0;padding:16px;background:linear-gradient(180deg,rgba(32,21,21,0),rgba(32,21,21,.86));color:#FFF9EE;font:400 14px/1.4 var(--sans);transform:translateY(100%);transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.pc:hover .pic .why{transform:none}
+.pc .pic .why b{display:block;font:600 11px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;color:var(--peach)}
+.pc .pic .why .ws{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.pc .pic .why .ws span{border:1px solid rgba(255,249,238,.5);border-radius:999px;padding:3px 9px;font-size:12px}
+.pc .pic .why .ws span.on{background:var(--orange);border-color:var(--orange)}
+.pc .nm{font-family:var(--serif-t);font-size:20px;margin:18px 0 4px}
+.pc .rl{font:400 14px/1.3 var(--sans);color:var(--dark2)}
+.pc .bio{font:400 13px/1.45 var(--sans);color:var(--dark2);margin-top:12px;max-width:40em}
+.pc .tag{display:inline-block;margin-top:10px;font:600 11px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--stone);padding:5px 8px;border-radius:2px;color:var(--brown)}
+.pc .tag.on{border-color:var(--orange);color:var(--orange)}
+@media (max-width:760px){.people{grid-template-columns:1fr}}
+
+/* ---------- 四件事（参考站 What to expect：竖分隔线 + 衬线小标） ---------- */
+.four{max-width:var(--max);margin:0 auto;padding:10px 24px 90px;display:grid;grid-template-columns:repeat(4,1fr)}
+.four>div{padding:8px 28px 8px 0;position:relative}
+.four>div+div{padding-left:28px;border-left:1px solid var(--stone)}
+.four h4{font-family:var(--serif-t);font-weight:400;font-size:20px;margin:0 0 14px;color:var(--brown)}
+.four p{font:400 13px/1.5 var(--sans);color:var(--dark2);margin:0}
+.four img{width:48px;height:48px;margin:0 0 14px}
+@media (max-width:860px){.four{grid-template-columns:1fr 1fr;gap:28px 0}.four>div:nth-child(3){border-left:0;padding-left:0}}
+@media (max-width:520px){.four{grid-template-columns:1fr}.four>div+div{border-left:0;padding-left:0}}
+
+/* ---------- 两张大卡（参考站 Video cards：画 + 衬线标题 + 右下箭头） ---------- */
+.bigcards{max-width:var(--max);margin:0 auto;padding:0 24px 100px;display:grid;gap:22px}
+.bc{position:relative;display:block;height:300px;overflow:hidden;border-radius:2px;background:var(--dusk);color:#FFF9EE}
+.bc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pos,center);transform:scale(1.02);transition:transform .9s cubic-bezier(.22,1,.36,1)}
+.bc:hover img{transform:scale(1.06)}
+.bc .ov{position:absolute;inset:0;background:linear-gradient(90deg,rgba(32,21,21,.55),rgba(32,21,21,.05) 60%)}
+.bc h3{position:absolute;left:32px;top:28px;margin:0;font-family:var(--serif-h);font-weight:300;font-size:clamp(28px,3.4vw,40px);line-height:1.05;max-width:9em}
+.bc .sub2{position:absolute;left:32px;bottom:28px;font:400 14px/1.4 var(--sans);max-width:28em;opacity:.9}
+.bc .arrow{position:absolute;right:28px;bottom:24px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:26px;transition:transform .3s}
+.bc:hover .arrow{transform:translateX(6px)}
+
+/* ---------- 深色展示：灵犀帮聊（参考站 GZBO：橙色大卡 + 放射白线 + 播放键） ---------- */
+.demoSec{background:var(--brown);color:#FFF9EE;padding:100px 24px 110px}
+.demoSec .secHead{padding-top:0}.demoSec .secHead h2{color:#FFF9EE}.demoSec .secHead p{color:var(--stone)}
+.oc{position:relative;max-width:var(--max);margin:36px auto 0;aspect-ratio:16/8.4;background:var(--orange);overflow:hidden;border-radius:2px;color:#FFF9EE}
+.oc svg.rays{position:absolute;inset:0;width:100%;height:100%}
+.oc .title{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 clamp(54px,9vw,120px)/1 var(--sans);letter-spacing:-.05em;color:#FFF9EE;transition:opacity .4s}
+.oc .play{position:absolute;left:50%;top:50%;width:72px;height:72px;margin:-36px 0 0 -36px;border-radius:50%;background:rgba(255,249,238,.3);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;transition:transform .25s,background .25s}
+.oc .play:hover{transform:scale(1.06);background:rgba(255,249,238,.42)}
+.oc .play:before{content:"";border-left:22px solid #FFF9EE;border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:6px}
+.oc .brand{position:absolute;left:0;right:0;bottom:24px;text-align:center;font:800 18px/1 var(--sans);letter-spacing:-.03em}
+.oc .brand i{display:inline-block;width:18px;height:5px;background:#FFF9EE;margin:0 2px 2px 0}
+.oc .brand span{font-weight:300;letter-spacing:.02em}
+.oc.live .title,.oc.live .play,.oc.live .brand{opacity:0;pointer-events:none}
+.demo{position:absolute;inset:0;display:none;grid-template-columns:1fr 1fr;gap:24px;padding:32px;color:var(--brown)}
+.oc.live .demo{display:grid}
+.demo .chat{background:var(--paper);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.demo .chat .cap{font:600 11px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.demo .bub{max-width:80%;padding:10px 14px;border-radius:14px;background:var(--sand);font:400 14px/1.4 var(--sans)}
+.demo .bub.me{align-self:flex-end;background:var(--brown);color:#FFF9EE}
+.demo .inp{margin-top:auto;display:flex;gap:8px;align-items:center}
+.demo .inp input{flex:1;height:40px;border:1px solid var(--stone);border-radius:999px;padding:0 14px;font:400 14px var(--sans);background:#fff;outline:none}
+.demo .inp button{height:40px;padding:0 14px;border-radius:999px;background:var(--brown);color:#fff;font:600 13px var(--sans)}
+.demo .panel{background:var(--paper);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:12px;overflow:hidden}
+.demo .modes{display:flex;gap:6px}
+.demo .modes button,.demo .styles button{height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--stone);font:500 12.5px var(--sans);background:#fff;color:var(--brown)}
+.demo .modes button.on,.demo .styles button.on{background:var(--brown);color:#FFF9EE;border-color:var(--brown)}
+.demo .styles{display:flex;flex-wrap:wrap;gap:6px}
+.demo .cand{flex:1;background:var(--cream);border-radius:var(--r);padding:14px;font-family:var(--serif-t);font-size:17px;line-height:1.35;color:var(--brown);min-height:84px}
+.demo .cand small{display:block;font:400 11px/1.3 var(--sans);color:var(--muted);margin-top:10px}
+.demo .acts{display:flex;gap:8px;align-items:center}
+.demo .acts button{height:34px;padding:0 14px;border-radius:999px;background:var(--orange);color:#fff;font:600 13px var(--sans)}
+.demo .acts button.g{background:#fff;color:var(--brown);border:1px solid var(--stone)}
+.demo .acts .q{margin-left:auto;font:400 11px var(--sans);color:var(--muted)}
+.oc .close{position:absolute;right:14px;top:12px;z-index:2;font:600 12px var(--sans);color:var(--brown);background:rgba(255,249,238,.8);border-radius:999px;padding:6px 10px;display:none}
+.oc.live .close{display:block}
+@media (max-width:860px){.oc{aspect-ratio:auto;min-height:520px}.demo{grid-template-columns:1fr;padding:20px;position:relative}}
+@media (max-width:760px){.wordmark em{display:none}.oc .title{font-size:64px}}
+
+/* ---------- 两栏：来自沐仞 ---------- */
+.two{max-width:var(--max);margin:0 auto;padding:100px 24px;display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+.two h3{font-family:var(--serif-h);font-weight:300;font-size:clamp(28px,3vw,36px);line-height:1.08;margin:0 0 16px;letter-spacing:-.02em}
+.two p{font:400 15px/1.5 var(--sans);color:var(--dark2);margin:0 0 16px;max-width:34em}
+.two .pic{aspect-ratio:4/3;overflow:hidden;border-radius:2px;background:var(--night)}
+.two .pic img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+@media (max-width:760px){.two{grid-template-columns:1fr;gap:28px}}
+
+/* ---------- 大字标 ---------- */
+.wordmark{padding:40px 24px 60px;overflow:hidden}
+.wordmark .in{max-width:var(--max);margin:0 auto;display:flex;align-items:flex-end;gap:.04em;font-family:var(--sans);line-height:.9;letter-spacing:-.06em;white-space:nowrap;font-size:clamp(40px,9.2vw,150px)}
+.wordmark i{display:block;width:.42em;height:.12em;background:var(--orange);margin-bottom:.06em}
+.wordmark b{font-weight:800;color:var(--brown)}
+.wordmark span{font-weight:300;color:var(--brown);letter-spacing:-.02em}
+.wordmark em{font:600 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-left:14px;align-self:flex-end;margin-bottom:.4em;font-style:normal}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:var(--max);margin:0 auto;padding:40px 24px 90px}
+.faq h2{font-family:var(--serif-h);font-weight:300;font-size:36px;margin:0 0 30px}
+.qa{border-top:1px solid var(--stone)}
+.qa:last-child{border-bottom:1px solid var(--stone)}
+.qa button{width:100%;display:flex;align-items:center;gap:20px;text-align:left;padding:18px 0;font:400 16px/1.3 var(--sans);color:var(--brown)}
+.qa .pm{position:relative;width:14px;height:14px;flex:none}
+.qa .pm:before,.qa .pm:after{content:"";position:absolute;left:0;top:6px;width:14px;height:1.5px;background:var(--brown);transition:transform .3s}
+.qa .pm:after{transform:rotate(90deg)}
+.qa.open .pm:before{transform:rotate(45deg)}.qa.open .pm:after{transform:rotate(-45deg)}
+.qa .a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s cubic-bezier(.22,1,.36,1)}
+.qa .a>div{overflow:hidden}
+.qa.open .a{grid-template-rows:1fr}
+.qa .a p{margin:0 0 18px 34px;font:400 13px/1.55 var(--sans);color:var(--dark2);max-width:60em}
+
+/* ---------- 页脚 ---------- */
+footer{background:var(--cream);border-top:1px solid var(--sand);padding:22px 24px 28px}
+footer .row{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font:400 12px/1 var(--sans);color:var(--dark2)}
+footer .soc{display:flex;gap:8px;align-items:center}
+footer .soc i{width:20px;height:20px;border-radius:50%;background:var(--stone2);display:inline-block}
+footer .links{display:flex;gap:16px;flex-wrap:wrap}
+footer .row+.row{margin-top:22px}
+footer .fp{display:flex;align-items:baseline;gap:4px;font:800 18px/1 var(--sans);letter-spacing:-.04em;color:var(--brown)}
+footer .fp i{display:inline-block;width:16px;height:4px;background:var(--orange);margin-right:2px}
+footer .fp span{font-weight:300;font-size:14px;letter-spacing:0}
+
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--brown);color:#FFF9EE;padding:12px 18px;border-radius:var(--r);font:500 14px var(--sans);opacity:0;pointer-events:none;transition:all .3s;z-index:50}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.ap{opacity:1;transform:none}}
+
+/* ---------- 横幅动画：缓慢推拉 + 墨线沸腾 + 窗灯闪烁 + 薄雾漂移 ---------- */
+.anim{position:relative;overflow:hidden}
+.anim .kb{position:absolute;inset:0;animation:kb 26s ease-in-out infinite alternate;will-change:transform}
+.anim .kb img{width:100%;height:100%;object-fit:cover;object-position:center 45%;filter:url(#boilS)}
+@keyframes kb{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.12) translate(-2.5%,-2%)}}
+.anim .lights{position:absolute;inset:0;pointer-events:none}
+.anim .lights i{position:absolute;width:5px;height:6px;border-radius:1px;background:#FFD27A;box-shadow:0 0 10px 2px rgba(255,200,110,.75);opacity:0;animation:blink 4.2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:0}30%,70%{opacity:.9}}
+.anim .haze{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen}
+.anim .haze i{position:absolute;width:38%;height:46%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(255,230,200,.22),rgba(255,230,200,0) 70%);filter:blur(18px);animation:haze 30s ease-in-out infinite alternate}
+.anim .haze i:nth-child(1){left:-10%;top:30%}.anim .haze i:nth-child(2){left:40%;top:50%;animation-duration:38s;animation-delay:-12s}.anim .haze i:nth-child(3){left:75%;top:20%;animation-duration:24s;animation-delay:-6s}
+@keyframes haze{from{transform:translateX(-6%)}to{transform:translateX(10%)}}
+.banner.anim img{position:static}
+.hero2.anim .kb{z-index:0}.hero2 .ov{z-index:1}.hero2 .c{z-index:2}.hero2 .lights,.hero2 .haze{z-index:1}
+/* ---------- 视频横幅 ---------- */
+.vb{position:relative;overflow:hidden}
+.vb .bgv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;z-index:1}
+.vb .fb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;z-index:0}
+.hero2.vb .bgv{z-index:1}.hero2.vb .fb{z-index:0}
+/* ---------- 多页 ---------- */
+.page{display:none}.page.on{display:block;animation:pagein .5s ease}
+@keyframes pagein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+header.solid{position:sticky;top:0;background:var(--cream);color:var(--brown);border-bottom:1px solid var(--sand)}
+nav a.nl.cur:after{transform:translateX(-50%) scaleX(1)}
+.banner{max-width:var(--max);margin:84px auto 72px;height:360px;overflow:hidden;border-radius:10px;background:var(--sky)}
+@media (max-width:900px){.banner{height:220px;margin-bottom:40px}}
+.banner img{width:100%;height:100%;object-fit:cover;object-position:center 45%}
+.hero2{position:relative;height:100vh;min-height:620px;overflow:hidden;background:var(--brown);color:#FFF9EE;display:flex;align-items:center;justify-content:center;text-align:center}
+.hero2 .bg{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero2 .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(32,21,21,.15),rgba(32,21,21,.35))}
+.hero2 .c{position:relative;padding:0 24px;max-width:900px}
+.hero2 h1{font-family:var(--serif-h);font-weight:300;font-size:clamp(48px,8vw,120px);line-height:1.02;margin:0;color:#FFF9EE;text-shadow:0 2px 30px rgba(32,21,21,.35)}
+.hero2 p{font-family:var(--serif-t);font-size:clamp(18px,2.2vw,26px);margin:18px 0 26px;color:#FFF9EE;text-shadow:0 1px 18px rgba(32,21,21,.45)}
+.hero2 .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.prod{max-width:1440px;margin:0 auto;padding:10px 24px 120px;display:grid;grid-template-columns:248px 1fr;column-gap:132px;align-items:start}
+.pnav{position:sticky;top:80px;display:flex;flex-direction:column;text-align:left;align-items:stretch;font:400 16px/22.4px var(--sans);letter-spacing:-.16px}
+.pnav b{font-weight:600;font-size:16px;line-height:20px;letter-spacing:-.32px;margin:22px 0 10px;color:var(--brown)}.pnav b:first-child{margin-top:0}
+.pnav a{position:relative;padding:8px 10px;color:var(--brown)}
+.pnav a.cur{font-weight:600}.pnav a.cur::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:1px;background:var(--brown)}
+.plist{display:flex;flex-direction:column}
+.pgroup{font:600 14px/20px var(--sans);letter-spacing:2px;text-transform:uppercase;color:var(--brown);margin:0 0 60px}
+.pgroup:not(:first-child){margin-top:60px}
+.pcard{border-radius:10px;overflow:clip;background:#fff;margin-bottom:40px;scroll-margin-top:100px}
+.pcard .vis{position:relative;aspect-ratio:1060/751;background:#ECEAE3}
+.pcard .vis video,.pcard .vis img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.pcard .tx{padding:30px 30px 34px}
+.pcard .tag{display:inline-block;font:500 12px/18px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:#605D52;border:1px solid rgba(32,21,21,.18);padding:3px 8px;border-radius:4px;margin:0 0 15px}
+.pcard h3{font:400 30px/32px var(--serif-h);letter-spacing:-.01em;margin:0 0 15px;color:var(--brown)}
+.pcard p{font:400 16px/22.4px var(--sans);letter-spacing:-.16px;color:var(--brown);margin:0 0 26px;max-width:1000px}
+.pcard .link{font:600 18px/22px var(--sans);color:var(--brown);text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+.pcard .link:hover{text-decoration:underline}
+@media (max-width:900px){.prod{grid-template-columns:1fr;column-gap:0;padding-bottom:70px}.pnav{position:static;flex-direction:row;flex-wrap:wrap;gap:2px;margin-bottom:28px}.pnav b{margin:0 10px 0 0;width:100%}.pcard .tx{padding:22px 20px 26px}.pcard h3{font-size:26px}}
+@media (max-width:860px){.prod{grid-template-columns:1fr}.pnav{display:none}.pcard{grid-template-columns:1fr}.pcard .vis{min-height:320px}}
+.filt{max-width:var(--max);margin:0 auto;padding:0 24px 24px;display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}
+.filt select,.filt input{height:34px;border:1px solid var(--stone);border-radius:2px;background:#fff;padding:0 10px;font:400 12px var(--sans);min-width:150px}
+.filt .tz{display:inline-flex;border:1px solid var(--stone);border-radius:2px;overflow:hidden;font:600 10px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase}.filt .tz b,.filt .tz i{padding:11px 10px;font-style:normal}.filt .tz b{background:var(--brown);color:#fff}
+.tline{max-width:var(--max);margin:0 auto;padding:0 24px 40px;display:grid;grid-template-columns:150px 1fr;gap:16px 30px;border-top:1px solid var(--stone)}
+.tt{padding-top:22px;font:400 14px/1.4 var(--sans);color:var(--brown)}.tt b{display:block;font-weight:400}.tt i{display:block;font-style:normal}.tt small{display:block;font:600 10px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.tcard{display:grid;grid-template-columns:auto 1fr;background:var(--paper);border:1px solid var(--sand);border-radius:2px;overflow:hidden;margin-top:16px}
+.tcard .tv{width:170px;background:linear-gradient(180deg,#687BC7,#FFB385);display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.tcard .tv .ph{width:120px;border-radius:18px 18px 0 0;overflow:hidden;border:4px solid #201515;border-bottom:0;margin-bottom:-40px;box-shadow:0 10px 30px rgba(32,21,21,.3)}.tcard .tv .ph img{width:100%;display:block}
+.tcard .tb{padding:22px 24px 20px}
+.tcard h2{font-family:var(--serif-t);font-weight:400;font-size:24px;margin:8px 0 10px;line-height:1.2}
+.tcard p{font:400 14px/1.55 var(--sans);color:var(--dark2);margin:0 0 14px}
+.tcard .tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}.tcard .tags span{font:400 11px/1 var(--sans);border:1px solid var(--stone);padding:5px 8px;border-radius:2px;color:var(--dark2)}
+.tcard .cal{display:inline-block;font:600 12px/1 var(--sans);border:1px solid var(--brown);padding:8px 10px;border-radius:2px;color:var(--brown)}
+@media (max-width:760px){.tline{grid-template-columns:1fr;gap:0}.tt{padding-top:18px}.tt b,.tt i{display:inline}.tcard{grid-template-columns:1fr}.tcard .tv{width:100%;height:160px}.tcard .tv .ph{width:110px;margin-bottom:-60px}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="boilS" x="-1%" y="-1%" width="102%" height="102%"><feTurbulence type="fractalNoise" baseFrequency=".008" numOctaves="2" seed="1" result="t"><animate attributeName="seed" values="1;2;3;4;5;6;7;8" dur="1.4s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feDisplacementMap in="SourceGraphic" in2="t" scale="2"/></filter></svg>
+<header id="hdr" class="light">
+  <a class="logo" href="#/"><i></i><b>Soulink</b><span>AI 社交匹配平台</span><small>× 沐仞科技</small></a>
+  <nav>
+    <a class="nl" href="#/lingxi" data-page="lingxi">灵犀</a>
+    <a class="nl" href="#/how" data-page="how">怎么用</a>
+    <a class="nl" href="#/today" data-page="today">每天 20 位</a>
+    <a class="nl" href="#/campus" data-page="campus">高校联盟</a>
+    <a class="nl" href="#/home/faq">常见问题</a>
+    <a class="btn" href="#/home/apply">申请内测 <span class="ar">→</span></a>
+  </nav>
+</header>
+
+<div class="page on" data-page="home"><!-- 首屏：白天 → 黄昏 → 夜晚 -->
+<div class="heroTrack" id="top">
+  <section class="hero" id="hero">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="boilW" x="-1%" y="-1%" width="102%" height="102%"><feTurbulence type="fractalNoise" baseFrequency=".006" numOctaves="2" seed="1" result="t"><animate attributeName="seed" values="1;2;3;4;5;6;7;8" dur="1.4s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feDisplacementMap in="SourceGraphic" in2="t" scale="2.4"/></filter></svg>
+    <div class="sky boil">
+      <div class="grad"></div>
+      <video class="cv" id="heroVid" src="art/web/video/city-landscape.mp4" poster="art/web/video/city-landscape-poster.jpg" muted playsinline preload="auto" aria-hidden="true" onloadedmetadata="document.getElementById('hero').classList.add('vid')" onerror="document.getElementById('hero').classList.remove('vid')"></video>
+      <img class="fr day" data-k="0" src="art/web/hero-day.webp" alt="" onerror="document.getElementById('hero').classList.add('nohero')">
+      <img class="fr" data-k=".17" src="art/web/hero-t1.webp" alt="" onerror="this.remove()">
+      <img class="fr" data-k=".33" src="art/web/hero-t2.webp" alt="" onerror="this.remove()">
+      <img class="fr" data-k=".5" src="art/web/hero-dusk.webp" alt="" onerror="this.remove()">
+      <img class="fr" data-k=".67" src="art/web/hero-t3.webp" alt="" onerror="this.remove()">
+      <img class="fr" data-k=".83" src="art/web/hero-t4.webp" alt="" onerror="this.remove()">
+      <img class="fr" data-k="1" src="art/web/hero-night.webp" alt="" onerror="this.remove()">
+    </div>
+    <svg class="fallbackCity" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" fill="none" stroke="#000" stroke-width="1.5"><circle cx="1180" cy="200" r="110" fill="#F67D0A" stroke="none"/><g fill="#C5C0B1"><rect x="40" y="300" width="180" height="600"/><rect x="520" y="380" width="80" height="520"/><rect x="900" y="470" width="110" height="430"/><rect x="1380" y="320" width="180" height="580"/></g><g fill="#F8F4F0"><rect x="260" y="520" width="120" height="380"/><rect x="700" y="560" width="140" height="340"/><rect x="1100" y="590" width="90" height="310"/></g><path d="M130 300 C500 420 1100 420 1470 320" stroke-width="2"/><g fill="#000" stroke="none"><circle cx="130" cy="285" r="7"/><rect x="124" y="290" width="12" height="22"/><circle cx="1470" cy="305" r="7"/><rect x="1464" y="310" width="12" height="22"/></g></svg>
+    <div class="stars" id="stars"></div>
+    <div class="clouds" id="clouds"><img src="art/web/clouds-wide.webp" alt="" onerror="this.parentNode.remove()"></div>
+    <div class="dim" id="dim"></div>
+    <div class="copy" id="heroCopy">
+      <div class="hl"><h1 class="l1" id="l1"><span class="cn">遇见你的</span></h1><h1 class="l2" id="l2"><span class="cn">理想型。</span></h1></div>
+      <p id="hp">传一张你喜欢的样子，每天 20 位像的人，每一位都写明为什么。<br>聊不下去时，灵犀站在你这边。</p>
+      <a class="btn" href="#apply">申请内测 <span class="ar">→</span></a>
+    </div>
+    <div class="hint">往下滚 · 天会黑</div>
+  </section>
+</div>
+
+<!-- 深色副首屏 -->
+<section class="sub">
+  <div class="meta ap"><span class="eyebrow">每天 20 位</span><span class="sq"></span><span class="eyebrow">每一位都说清楚为什么</span><span class="sq"></span><span class="eyebrow">高校联盟 · 14 所高校已入驻</span></div>
+  <p class="lead ap d1"><b>Soulink 是帮你遇见理想型的 AI 社交匹配平台。</b>它的 AI 叫灵犀：先听你讲三段话，记住你看重什么；每天只推 20 位，一次一位，每一位都写明为什么；聊不下去时递一句给你改——发出去的每个字仍然是你自己的。</p>
+  <div class="cta ap d2"><a class="btn o" href="#/home/apply">申请内测 <span class="ar">→</span></a><a class="btn o" href="#/lingxi">看灵犀怎么找 <span class="ar">→</span></a></div>
+</section>
+
+<!-- 申请内测 -->
+<section class="ticker"><div class="eyebrow">高校联盟 · 实时注册 <b style="color:var(--orange)">1,342</b> 人 · 2026-10-26</div><div class="rail" id="rail"><ul><li><b>清华大学</b><i>989</i><small>人</small></li><li><b>北京大学</b><i>181</i><small>人</small></li><li><b>北京师范大学</b><i>80</i><small>人</small></li><li><b>同济大学</b><i>15</i><small>人</small></li><li><b>上海交通大学</b><i>12</i><small>人</small></li><li><b>中国传媒大学</b><i>12</i><small>人</small></li><li><b>中南财经政法大学</b><i>12</i><small>人</small></li><li><b>中国人民大学</b><i>11</i><small>人</small></li><li><b>北京外国语大学</b><i>11</i><small>人</small></li><li><b>南洋理工大学</b><i>9</i><small>人</small></li><li><b>复旦大学</b><i>4</i><small>人</small></li><li><b>中南大学</b><i>3</i><small>人</small></li><li><b>新加坡国立大学</b><i>3</i><small>人</small></li></ul><ul aria-hidden="true"><li><b>清华大学</b><i>989</i><small>人</small></li><li><b>北京大学</b><i>181</i><small>人</small></li><li><b>北京师范大学</b><i>80</i><small>人</small></li><li><b>同济大学</b><i>15</i><small>人</small></li><li><b>上海交通大学</b><i>12</i><small>人</small></li><li><b>中国传媒大学</b><i>12</i><small>人</small></li><li><b>中南财经政法大学</b><i>12</i><small>人</small></li><li><b>中国人民大学</b><i>11</i><small>人</small></li><li><b>北京外国语大学</b><i>11</i><small>人</small></li><li><b>南洋理工大学</b><i>9</i><small>人</small></li><li><b>复旦大学</b><i>4</i><small>人</small></li><li><b>中南大学</b><i>3</i><small>人</small></li><li><b>新加坡国立大学</b><i>3</i><small>人</small></li></ul></div></section>
+<section class="formSec" id="apply">
+  <div class="frame ap">
+    <img src="art/web/hero-day.webp" alt="" onerror="this.remove()">
+    <form class="card" id="applyForm" onsubmit="return site.apply(event)">
+      <h3>申请内测</h3>
+      <div class="f2">
+        <div class="fld"><label>称呼 *</label><input required placeholder="怎么叫你"></div>
+        <div class="fld"><label>手机号 *</label><input required inputmode="tel" placeholder="仅用于发内测码"></div>
+      </div>
+      <div class="f2" style="margin-top:14px">
+        <div class="fld"><label>城市 *</label><select required><option value="">选一个</option><option>北京</option><option>上海</option><option>其他（排队）</option></select></div>
+        <div class="fld"><label>你最想要的 *</label><select required><option value="">选一个</option><option>找到像我理想型的人</option><option>有人说清楚为什么推荐</option><option>聊不下去时有人帮一把</option><option>先通话再见面</option></select></div>
+      </div>
+      <label class="chk"><input type="checkbox"> 可以给我发内测进度和灵犀的新功能（随时可退订）。</label>
+      <p class="fine">点击"提交"即表示你同意<a href="#/home/faq">用户协议</a>与<a href="#/home/faq">隐私政策</a>。我们只收你填的这几项，不读通讯录。</p>
+      <button class="btn w" type="submit">提交</button>
+    </form>
+  </div>
+</section>
+
+<!-- 竖线段落 -->
+<section class="lines" id="lines">
+  <div class="c">
+    <p class="ap">别的 App 给你一叠脸，让你自己翻。<br>Soulink 每天只给 20 位，一次只看一位，每一位都附一句话：为什么是 Ta。</p>
+    <p class="ap d1">你可以按灵犀的顺序看，也可以按"像不像你的理想型"或"离你多近"看。理想型传一张照片，或者让灵犀照你的描述画一张。</p>
+    <div class="big ap d2">一天 20 位。一次一位。<br>先通话，再见面。</div>
+    <a class="btn ap d3" href="#/today">看今天的 20 位</a><br>
+    <a class="btn ap d4" href="#/lingxi">看灵犀怎么做</a>
+  </div>
+</section>
+
+<!-- 跑马灯 -->
+
+
+<!-- 四件事 -->
+<div class="secHead" id="lx" style="padding-top:0"><span class="sq ap"></span><h2 class="ap d1">灵犀做这几件事</h2><p class="ap d2">它按你喜欢的样子找人，每一位都写明为什么。所有它写的东西都标"AI 生成"，所有它记的东西你都能删。</p></div>
+<div class="four">
+  <div class="ap"><img src="art/flat/spot-ideal.svg" alt=""><h4>理想型</h4><p>传一张你喜欢的样子，或者让灵犀按你的描述画一张。照片只转成几个词（清冷、短发、冷色衣着、安静），不存人脸，不拿去认人。每天的 20 位里，谁和这几个词对上了，写在卡片上；还有一份灵犀写的理想型报告：Ta 大概是什么样的人、去哪遇见。</p></div>
+  <div class="ap d1"><img src="art/flat/spot-portrait.svg" alt=""><h4>灵犀记得</h4><p>它会越来越了解你说话的习惯和你看重的事，默认开着。记的每一条都标来源，你能改、能删、能导出，也能随时关掉。只用来给你推荐、写理由、帮聊，不训练对外的模型。想说心里话，直接和灵犀聊，不公开。</p></div>
+  <div class="ap d2"><img src="art/flat/spot-notes.svg" alt=""><h4>帮聊，你来发</h4><p>聊不下去时，它按你的说话习惯给一句可改的话：帮我回复、帮我改写，六种语气。不知道从哪聊起，猜个拳，赢的人从灵犀出的题里挑一个问。发出去的仍然是你的字，对方也知道有 AI 在旁边。</p></div>
+  <div class="ap d3"><img src="art/flat/spot-tests.svg" alt=""><h4>测一测 · 合盘</h4><p>星座、属相五行、MBTI、恋爱风格，和今天的任何一位合一盘：六个维度、谁更主动、Ta 大概怎么看你、适合一起做什么。仅供参考，进你的画像当一个信号，不单独决定推荐。</p></div>
+</div>
+
+<!-- 两张大卡 -->
+<div class="bigcards" id="how">
+  <a class="bc ap" href="#/how" style="--pos:center 40%"><img src="art/web/cards/card-square.webp" alt="" onerror="this.src='art/web/hero-dusk.webp';this.onerror=null"><div class="ov"></div><h3>广场：<br>动态 · 去处 · 活动</h3><div class="sub2">每一条都挂着一个去处或活动，实名，不能私信。打卡、体验、想去、今天想说的；灵犀帮你起个头，也把一个地方的评价汇总成一句。</div><div class="arrow">→</div></a>
+  <a class="bc ap d1" href="#/lingxi" style="--pos:center 40%"><img src="art/web/cards/card-call.webp" alt="" onerror="this.src='art/web/hero-night.webp';this.onerror=null"><div class="ov"></div><h3>先通话，<br>再见面</h3><div class="sub2">应用内语音，不交换手机号，通话有实时安全审核。聊到一定程度，双方都点才互相看清其他照片。见面地点从广场的去处里挑，位置只到区一级。</div><div class="arrow">→</div></a>
+</div>
+
+<!-- 来自沐仞 -->
+<div class="two">
+  <div class="ap">
+    <h3>Soulink × 沐仞科技（FathomPeak）</h3>
+    <p>Soulink 从清华的高校联盟起步。沐仞科技及其创始团队与 Soulink 以股权合作的方式共同所有、共同经营。沐仞做的是绿电算力和大模型词元供应，灵犀跑在沐仞自己的算力和模型上，成本可控，所以每天 20 位、每一位都写理由、每个人都有一份记忆这件事做得起。</p>
+    <p>交友数据和沐仞的企业业务分开存放、分开授权；不会拿来训练对外的模型。</p>
+    <a class="link" href="#/home/faq">看数据与隐私说明 <span class="ar">→</span></a>
+  </div>
+  <div class="pic ap d1"><img src="art/web/hero-night.webp" alt="" onerror="this.src='art/web/hero-day.webp';this.onerror=null"></div>
+</div>
+
+<!-- 大字标 -->
+<section class="wordmark"><div class="in ap"><i></i><b>Soulink</b><em>AI 社交匹配平台 · 与沐仞科技共同所有</em></div></section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <h2 class="ap">常见问题</h2>
+  <div id="faqList"></div>
+</section>
+</div>
+<div class="page" data-page="lingxi">
+<section class="hero2 vb"><video class="bgv" autoplay muted loop playsinline preload="metadata" poster="art/web/video/lingxi-hero-poster.jpg"><source src="art/web/video/lingxi-hero.mp4" type="video/mp4"></video><img class="fb bg" src="art/web/video/lingxi-hero-poster.jpg" alt=""><div class="ov"></div><div class="c"><h1 class="ap in">替你留意。</h1><p class="ap d1">我是灵犀，照你喜欢的样子，帮你找人。</p><div class="row ap d2"><a class="btn o" href="#/home/apply">申请内测 <span class="ar">→</span></a><a class="btn o" href="#/how">看一天怎么用 <span class="ar">→</span></a></div></div></section>
+<!-- 深色展示：帮聊 -->
+<section class="demoSec">
+  <div class="secHead"><span class="sq ap"></span><h2 class="ap d1">灵犀帮聊，到底怎么帮？</h2><p class="ap d2">点开看一段示例对话。你选语气，它按你的说话习惯给一句，你改完再发——它从不替你按发送。</p></div>
+  <div class="oc ap" id="oc">
+    <svg class="rays" viewBox="0 0 1600 840" preserveAspectRatio="none" stroke="#FFF9EE" stroke-width="1.2"><path d="M800 0V330M800 510V840M0 420H560M1040 420H1600M0 0L560 300M1600 0L1040 300M0 840L560 540M1600 840L1040 540"/></svg>
+    <div class="title">帮聊</div>
+    <button class="play" aria-label="打开演示" onclick="site.openDemo()"></button>
+    <div class="brand"><i></i>Soulink<span> · 灵犀</span></div>
+    <button class="close" onclick="site.closeDemo()">收起 ×</button>
+    <div class="demo">
+      <div class="chat">
+        <div class="cap">和林 · 对话中 · 像理想型 4/4</div>
+        <div class="bub">你周末一般做什么呀</div>
+        <div class="bub me">多半在看展，最近在看一个摄影展</div>
+        <div class="bub">哪个？我也喜欢摄影</div>
+        <div class="inp"><input id="dIn" placeholder="说点什么"><button onclick="site.send()">发送</button></div>
+      </div>
+      <div class="panel">
+        <div class="cap">灵犀 · 候选是给你改的</div>
+        <div class="modes"><button class="on" onclick="site.mode('reply',this)">帮我回复</button><button onclick="site.mode('rewrite',this)">帮我改写</button></div>
+        <div class="styles" id="dStyles"></div>
+        <div class="cand" id="dCand">三影堂那个，周六下午还在。你要是有空，可以一起去看。<small>依据：Ta 说过"周末不看展会难受"；你们都提过"安静的地方"。</small></div>
+        <div class="acts"><button onclick="site.fill()">填入输入框</button><button class="g" onclick="site.another()">换一句</button><span class="q">今日剩余 <b id="dQ">6</b> 次</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="secHead"><span class="sq ap"></span><h2 class="ap d1">灵犀现在会做的事</h2><p class="ap d2">它写的都标「AI 生成」，它记的你都能删。右边是每一项在 App 里的样子。</p></div>
+<div class="prod">
+  <nav class="pnav ap"><b>看见你</b><a href="#p-ideal">理想型</a><a href="#p-report">理想型报告</a><a href="#p-voice">讲讲你</a><b>记住你</b><a href="#p-memory">灵犀记得</a><a href="#p-chat">和灵犀聊</a><a href="#p-analyze">聊天分析</a><b>帮你聊</b><a href="#p-helper">帮聊</a><a href="#p-game">猜拳先问</a><b>算你们</b><a href="#p-pair">合盘</a></nav>
+  <div class="plist">
+    <div class="pgroup">看见你</div>
+    <div class="pcard ap" id="p-ideal"><div class="vis"><img src="art/web/prod/illu-ideal.jpg" alt=""></div><div class="tx"><span class="tag">主功能</span><h3>理想型</h3><p>传一张理想型照片，灵犀按照片帮你找像的人，推荐给你。每天 20 位里标出像的人；不存人脸。</p><a class="link" href="#/today">看今天像的人 <span class="ar">→</span></a></div></div>
+    <div class="pcard ap" id="p-report"><div class="vis"><img src="art/web/prod/illu-report.jpg" alt=""></div><div class="tx"><span class="tag">AI 生成 · 仅供参考</span><h3>理想型报告</h3><p>Ta 大概是什么样的人、去哪遇见、别做什么。依据是你讲过的话和广场上的去处，可以重新生成。</p></div></div>
+    <div class="pcard ap" id="p-voice"><div class="vis"><img src="art/web/prod/illu-voice.jpg" alt=""></div><div class="tx"><span class="tag">注册第一步</span><h3>讲讲你</h3><p>不填表。对灵犀讲三段话：周末怎么过、上一段关系教会你什么、想找什么样的人。它当场记成几条，每条你都能改、能删。</p></div></div>
+    <div class="pgroup">记住你</div>
+    <div class="pcard ap" id="p-memory"><div class="vis"><img src="art/web/prod/illu-memory.jpg" alt=""></div><div class="tx"><span class="tag">默认开 · 随时关</span><h3>灵犀记得</h3><p>它记三类：你说话的习惯、你看重的事、你对推荐的反馈，每条标来源。可改可删可导出；只用来给你推荐、写理由、帮聊。</p></div></div>
+    <div class="pcard ap" id="p-chat"><div class="vis"><img src="art/web/prod/illu-chat.jpg" alt=""></div><div class="tx"><span class="tag">AI 对话</span><h3>和灵犀聊</h3><p>进来就有四个它替你想好的问题。每个回答写依据、给下一问；用哪个工具来答，你选。说心里话也行，不公开。</p></div></div>
+    <div class="pcard ap" id="p-analyze"><div class="vis"><img src="art/web/prod/illu-analyze.jpg" alt=""></div><div class="tx"><span class="tag">只给你看</span><h3>聊天分析</h3><p>选一段对话，灵犀告诉你 Ta 这些话是什么意思、Ta 现在怎么想、你下一句怎么接。只在你手机上分析。</p></div></div>
+    <div class="pgroup">帮你聊</div>
+    <div class="pcard ap" id="p-helper"><div class="vis"><img src="art/web/prod/illu-helper.jpg" alt=""></div><div class="tx"><span class="tag">你来发</span><h3>帮聊</h3><p>聊不下去时，灵犀按你的说话习惯给整句，直接填进输入框，改完你自己发。每句写明它怎么知道的。</p><a class="link" href="#/lingxi/demo">点开演示 <span class="ar">→</span></a></div></div>
+    <div class="pcard ap" id="p-game"><div class="vis"><img src="art/web/prod/illu-game.jpg" alt=""></div><div class="tx"><span class="tag">破冰</span><h3>猜拳，赢的人先问</h3><p>不知道从哪聊起，猜个拳。手势在聊天框里出，赢了从灵犀按你们俩资料出的问题里挑一个问。</p></div></div>
+    <div class="pgroup">算你们</div>
+    <div class="pcard ap" id="p-pair"><div class="vis"><img src="art/web/prod/illu-pair.jpg" alt=""></div><div class="tx"><span class="tag">仅供参考</span><h3>合盘</h3><p>星座、属相五行、MBTI、恋爱风格，和今天的任何一位合一盘：合拍分、六个维度、三段解读。进你的画像当一个信号，不单独决定推荐。</p></div></div>
+  </div>
+</div>
+<section class="sub" style="padding:90px 24px"><div class="meta ap"><span class="eyebrow">别错过</span></div><p class="lead ap d1"><b>每天 20 位，一次一位。</b>想认识的人在「对话」里等你。</p><div class="cta ap d2"><a class="btn o" href="#/home/apply">申请内测 <span class="ar">→</span></a></div></section>
+</div>
+<div class="page" data-page="how">
+<div class="banner vb ap"><video class="bgv" autoplay muted loop playsinline preload="metadata" poster="art/web/video/how-banner-poster.jpg" onerror="this.style.display='none'"><source src="art/web/video/how-banner.mp4" type="video/mp4"></video><img class="fb" src="art/web/video/how-banner-poster.jpg" alt=""></div>
+<div class="secHead" style="padding-top:40px"><h1 class="ap" style="font-family:var(--serif-h);font-weight:300;font-size:clamp(40px,5vw,64px);margin:0;line-height:1">一天怎么用</h1><p class="ap d1">以示例账号的一天为例。每一步都在 App 里能点。</p></div>
+<div class="filt ap"><select><option>全部标签</option><option>今天</option><option>对话</option><option>灵犀</option><option>广场</option></select><input placeholder="搜一个功能…"><span class="tz"><b>北京</b><i>本地时间</i></span></div>
+<div class="tline">
+  <div class="tt"><b>08:00</b><i>–</i><b>08:10</b><small>每天</small></div>
+  <div class="tcard ap"><div class="tv"><div class="ph"><img src="art/web/shots/today.webp" alt=""></div></div><div class="tb"><span class="eyebrow" style="color:var(--orange)">今天</span><h2>20 位，一次一位</h2><p>灵犀排好顺序，先看林——Ta 刚问了你一个问题。每一位都写明为什么；想认识就说一句，不想就下一位。也可以按理想型或附近来看。</p><div class="tags"><span>今天</span><span>一次一位</span><span>三种顺序</span></div><a class="cal" href="#/home/apply">在 App 里试 ↗</a></div></div>
+  <div class="tt"><b>09:30</b><i>–</i><b>09:45</b><small>有空就聊</small></div>
+  <div class="tcard ap"><div class="tb"><span class="eyebrow" style="color:var(--orange)">灵犀</span><h2>和灵犀聊两句</h2><p>"我和林合不合？"——合拍 75，默契和羁绊最高，承诺要靠时间。它顺手问你要不要看第一次见面最容易卡在哪一步。说的都只进「灵犀记得」。</p><div class="tags"><span>灵犀</span><span>AI 生成</span><span>只给你看</span></div><a class="cal" href="#/lingxi">看灵犀会做的事 ↗</a></div></div>
+  <div class="tt"><b>12:30</b><i>–</i><b>12:50</b><small>午休</small></div>
+  <div class="tcard ap"><div class="tv"><div class="ph"><img src="art/web/shots/helper.webp" alt=""></div></div><div class="tb"><span class="eyebrow" style="color:var(--orange)">对话</span><h2>聊不下去，灵犀递一句</h2><p>帮我回复、帮我改写，六种语气，按你的习惯写短句。不知道从哪聊起就猜个拳，赢的人先问。发出去的永远是你改过的字。</p><div class="tags"><span>对话</span><span>帮聊</span><span>猜拳</span></div><a class="cal" href="#/lingxi/demo">点开帮聊演示 ↗</a></div></div>
+  <div class="tt"><b>19:00</b><i>–</i><b>19:15</b><small>下班后</small></div>
+  <div class="tcard ap"><div class="tb"><span class="eyebrow" style="color:var(--orange)">对话</span><h2>先通个话</h2><p>应用内语音，不交换手机号，通话有实时安全审核。聊到一定程度，双方都点才互相看清其他照片。</p><div class="tags"><span>通话</span><span>不交换手机号</span><span>双方都点</span></div><a class="cal" href="#/home/apply">在 App 里试 ↗</a></div></div>
+  <div class="tt"><b>周六</b><i>–</i><b>下午</b><small>见面</small></div>
+  <div class="tcard ap"><div class="tv"><div class="ph"><img src="art/web/shots/square.webp" alt=""></div></div><div class="tb"><span class="eyebrow" style="color:var(--orange)">广场</span><h2>从广场里挑一个去处</h2><p>动态 · 去处 · 活动。每一条都挂着一个地方，实名，不能私信。安静、好找、能坐一小时的咖啡馆，打过卡的人留一句，灵犀汇总成一句。位置只到区一级。</p><div class="tags"><span>广场</span><span>去处</span><span>实名</span></div><a class="cal" href="#/home/apply">在 App 里试 ↗</a></div></div>
+  <div class="tt"><b>周四</b><i>–</i><b>20:00</b><small>高校联盟</small></div>
+  <div class="tcard ap"><div class="tb"><span class="eyebrow" style="color:var(--orange)">高校联盟</span><h2>每周一封来信</h2><p>用校园邮箱登录的同学，每周四晚 20:00 另收一封深度来信：没有反复滑动，只有一次认真送达，和关于你们相遇的解释。</p><div class="tags"><span>高校联盟</span><span>每周四</span></div><a class="cal" href="#/campus">看高校联盟 ↗</a></div></div>
+</div>
+<!-- 三步（旧站文案） -->
+<div class="secHead" id="steps"><span class="sq ap"></span><h2 class="ap d1">三步，开启你的故事</h2></div>
+<div class="steps">
+  <div class="ap"><em>01</em><h4>讲讲你自己</h4><p>不填表，对灵犀讲三段话：周末怎么过、上一段关系教会你什么、想找什么样的人。灵犀当场记成几条，每条你都能改、能删。这就是「灵犀记得」的起点。</p></div>
+  <div class="ap d1"><em>02</em><h4>每天 20 位，一次一位</h4><p>每天 20 位，每一位都写明为什么：哪几个词和你的理想型对上了，你们各自说过什么。没有反复滑动，想认识就说一句，不想就下一位。高校联盟的同学另有每周四晚的一封来信。</p></div>
+  <div class="ap d2"><em>03</em><h4>聊，然后去见见 TA</h4><p>聊不下去时灵犀递一句给你改；不知道从哪聊起就猜个拳，赢的人先问。先在应用内通个话，再从广场里挑一个去处。从教学楼前的暮色，到操场边的晚风，故事交给你们自己开始。</p></div>
+</div>
+
+</div>
+<div class="page" data-page="today">
+<div class="banner vb ap"><video class="bgv" autoplay muted loop playsinline preload="metadata" poster="art/web/video/people-poster.jpg" onerror="this.style.display='none'"><source src="art/web/video/people.mp4" type="video/mp4"></video><img class="fb" src="art/web/cards/card-people.webp" alt=""></div>
+<!-- 今天的 20 位 -->
+<div class="secHead" id="today" style="padding-top:40px"><span class="sq ap"></span><h1 class="ap d1" style="font-family:var(--serif-h);font-weight:300;font-size:clamp(40px,5vw,64px);margin:0;line-height:1">今天的 20 位</h1><p class="ap d2">示例账号在 2026-10-25 收到的推荐。App 里一次只看一位，这里一次展开六位。鼠标放上去，看灵犀为什么推荐。</p></div>
+<div class="people" id="people"></div>
+<div class="center" style="padding:10px 24px 100px"><a class="btn ap" href="#/home/apply">全部 20 位在 App 里 <span class="ar">→</span></a></div>
+
+<!-- 竖线段落 -->
+<section class="lines" id="lines">
+  <div class="c">
+    <p class="ap">别的 App 给你一叠脸，让你自己翻。<br>Soulink 每天只给 20 位，一次只看一位，每一位都附一句话：为什么是 Ta。</p>
+    <p class="ap d1">你可以按灵犀的顺序看，也可以按"像不像你的理想型"或"离你多近"看。理想型传一张照片，或者让灵犀照你的描述画一张。</p>
+    <div class="big ap d2">一天 20 位。一次一位。<br>先通话，再见面。</div>
+    <a class="btn ap d3" href="#/today">看今天的 20 位</a><br>
+    <a class="btn ap d4" href="#/lingxi">看灵犀怎么做</a>
+  </div>
+</section>
+
+<!-- 申请内测 -->
+<section class="formSec" id="apply">
+  <div class="frame ap">
+    <img src="art/web/hero-day.webp" alt="" onerror="this.remove()">
+    <form class="card" id="applyForm" onsubmit="return site.apply(event)">
+      <h3>申请内测</h3>
+      <div class="f2">
+        <div class="fld"><label>称呼 *</label><input required placeholder="怎么叫你"></div>
+        <div class="fld"><label>手机号 *</label><input required inputmode="tel" placeholder="仅用于发内测码"></div>
+      </div>
+      <div class="f2" style="margin-top:14px">
+        <div class="fld"><label>城市 *</label><select required><option value="">选一个</option><option>北京</option><option>上海</option><option>其他（排队）</option></select></div>
+        <div class="fld"><label>你最想要的 *</label><select required><option value="">选一个</option><option>找到像我理想型的人</option><option>有人说清楚为什么推荐</option><option>聊不下去时有人帮一把</option><option>先通话再见面</option></select></div>
+      </div>
+      <label class="chk"><input type="checkbox"> 可以给我发内测进度和灵犀的新功能（随时可退订）。</label>
+      <p class="fine">点击"提交"即表示你同意<a href="#/home/faq">用户协议</a>与<a href="#/home/faq">隐私政策</a>。我们只收你填的这几项，不读通讯录。</p>
+      <button class="btn w" type="submit">提交</button>
+    </form>
+  </div>
+</section>
+
+</div>
+<div class="page" data-page="campus">
+<div class="banner vb ap"><video class="bgv" autoplay muted loop playsinline preload="metadata" poster="art/web/video/campus-poster.jpg" onerror="this.style.display='none'"><source src="art/web/video/campus.mp4" type="video/mp4"></video><img class="fb" src="art/web/cards/card-campus.webp" alt=""></div>
+<!-- 高校联盟 -->
+<section class="campus" id="campus">
+  <div class="wrap">
+    <div class="ch ap"><div><span class="eyebrow" style="color:var(--peach)">Campus Entry</span><h2>高校联盟</h2><p>从不同校园的氛围、故事和节奏出发，进入属于各自学校的 Soulink。先选择校园，再开始更具体的相遇。用校园邮箱登录，可指定希望匹配的对象来自哪所高校。</p></div><div class="num"><b>1,342</b><span>实时注册总人数 · 2026-10-26</span></div></div>
+    <div class="cgrid ap d1">
+      <div class="cg"><span class="eyebrow">北京</span><a>清华大学 <i>989</i></a><a>北京大学 <i>181</i></a><a>北京师范大学 <i>80</i></a><a>中国人民大学 <i>11</i></a><a>中国传媒大学 <i>12</i></a><a>北京外国语大学 <i>11</i></a><a>北京科技大学 <i>0</i></a></div>
+      <div class="cg"><span class="eyebrow">上海</span><a>复旦大学 <i>4</i></a><a>上海交通大学 <i>12</i></a><a>同济大学 <i>15</i></a></div>
+      <div class="cg"><span class="eyebrow">湖北 · 湖南</span><a>中南财经政法大学 <i>12</i></a><a>中南大学 <i>3</i></a></div>
+      <div class="cg"><span class="eyebrow">新加坡</span><a>新加坡国立大学 <i>3</i></a><a>南洋理工大学 <i>9</i></a></div>
+    </div>
+    <div class="cinv ap d2"><div><span class="eyebrow" style="color:var(--peach)">Open Invitation</span><h3>欢迎更多高校入驻 Soulink 高校联盟</h3><p>如果你也期待让本校同学拥有更认真、更真诚的连接方式，Soulink 欢迎更多校园一起加入这条高校联盟的路径。</p></div><a class="btn o" href="mailto:thusoulink@163.com">联系我们加入联盟 <span class="ar">→</span></a></div>
+  </div>
+</section>
+
+<!-- 申请内测 -->
+<section class="formSec" id="apply">
+  <div class="frame ap">
+    <img src="art/web/hero-day.webp" alt="" onerror="this.remove()">
+    <form class="card" id="applyForm" onsubmit="return site.apply(event)">
+      <h3>申请内测</h3>
+      <div class="f2">
+        <div class="fld"><label>称呼 *</label><input required placeholder="怎么叫你"></div>
+        <div class="fld"><label>手机号 *</label><input required inputmode="tel" placeholder="仅用于发内测码"></div>
+      </div>
+      <div class="f2" style="margin-top:14px">
+        <div class="fld"><label>城市 *</label><select required><option value="">选一个</option><option>北京</option><option>上海</option><option>其他（排队）</option></select></div>
+        <div class="fld"><label>你最想要的 *</label><select required><option value="">选一个</option><option>找到像我理想型的人</option><option>有人说清楚为什么推荐</option><option>聊不下去时有人帮一把</option><option>先通话再见面</option></select></div>
+      </div>
+      <label class="chk"><input type="checkbox"> 可以给我发内测进度和灵犀的新功能（随时可退订）。</label>
+      <p class="fine">点击"提交"即表示你同意<a href="#/home/faq">用户协议</a>与<a href="#/home/faq">隐私政策</a>。我们只收你填的这几项，不读通讯录。</p>
+      <button class="btn w" type="submit">提交</button>
+    </form>
+  </div>
+</section>
+
+</div>
+<footer>
+  <div class="row"><div class="soc">关注我们 <i></i><i></i><i></i><i></i></div><div class="links"><a href="#/lingxi">灵犀</a><a href="#/how">去处</a><a href="#/how">测一测</a><a href="#/home/apply">申请内测</a><a href="#/home/faq">帮助</a><a href="#/home/faq">安全中心</a><a href="#/home/faq">AI 生成内容说明</a></div></div>
+  <div class="row"><div class="fp"><i></i>沐仞科技<span> FathomPeak</span></div><div class="links"><span>© 2026 Soulink Alliance · 沐仞科技</span><span style="color:var(--stone2)">原型：灵犀页与怎么用页的两段动画基于参考站素材改制（镜像 / 变速 / 调色 / 加我们的太阳与云），上线前替换为自有素材</span><a href="mailto:thusoulink@163.com">thusoulink@163.com</a><a href="#/home/faq">用户协议</a><a href="#/home/faq">隐私政策</a><a href="#/home/faq">未成年人保护</a></div></div>
+</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)), ramp=(p,a,b)=>clamp((p-a)/(b-a),0,1);
+  // ---------- 首屏：滚动驱动日夜 ----------
+  const track=$('.heroTrack'), hero=$('#hero'), frames=$$('.sky img.fr'), l1=$('#l1'), l2=$('#l2'), hp=$('#hp'), copy=$('#heroCopy'), dim=$('#dim'), stars=$('#stars'), clouds=$('#clouds'), hdr=$('#hdr');
+  for(let i=0;i<42;i++){const s=document.createElement('i');s.style.left=(Math.random()*100)+'%';s.style.top=(Math.random()*55)+'%';s.style.animationDelay=(-Math.random()*3)+'s';stars.appendChild(s)}
+  let cy=0,cx=0,mx=0;
+  function onScroll(){ if(document.body.dataset.page&&document.body.dataset.page!=='home') return;
+    const vh=innerHeight, total=track.offsetHeight-vh, p=clamp(scrollY/total,0,1);
+    const fr=frames.filter(f=>f.isConnected), q=ramp(p,.10,.72); fr.forEach((f,i)=>{ if(i===0) return; const k0=+fr[i-1].dataset.k, k1=+f.dataset.k; f.style.opacity=ramp(q,k0,k1) });
+    const hv=document.getElementById('heroVid'); if(hv&&hero.classList.contains('vid')&&hv.duration){ const t=q*(hv.duration-0.05); if(Math.abs(t-hv.currentTime)>0.02&&!hv.seeking){ try{ hv.currentTime=t }catch(e){} } }
+    l1.style.transform=`translateY(${scrollY*.06}px)`; l2.style.transform=`translateY(${scrollY*.04}px)`; hp.style.transform=`translateY(${scrollY*.02}px)`;
+    stars.style.opacity=ramp(p,.55,.8);
+    hero.style.background= p<.4?'var(--sky)':(p<.7?'var(--dusk)':'var(--night)');
+    const fade=ramp(p,.58,.8); copy.style.opacity=1-fade; copy.style.transform=`translateY(${-60*fade}px)`;
+    dim.style.opacity=ramp(p,.8,1);
+    cy=-90*p; if(clouds) clouds.style.transform=`translate(${cx}px,${cy}px)`;
+    hdr.classList.toggle('light', scrollY<vh*2.6);
+    $('.hint').style.opacity=1-ramp(p,0,.15);
+  }
+  addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll); onScroll();
+  hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(); mx=(e.clientX-r.left)/r.width-.5; cx=mx*-26; if(clouds) clouds.style.transform=`translate(${cx}px,${cy}px)`});
+  hero.addEventListener('pointerdown',e=>{ if(e.target.closest('a,button')) return; const r=hero.getBoundingClientRect(); for(let i=0;i<9;i++){const s=document.createElement('i');s.className='spark';s.style.left=(e.clientX-r.left)+'px';s.style.top=(e.clientY-r.top)+'px';const a=-Math.PI/2+(Math.random()-.5)*1.6, d=40+Math.random()*70;s.style.setProperty('--dx',Math.cos(a)*d+'px');s.style.setProperty('--dy',Math.sin(a)*d+'px');hero.appendChild(s);setTimeout(()=>s.remove(),1400)} });
+  // ---------- 出现动画 / 竖线 ----------
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15,rootMargin:'0px 0px -5% 0px'});
+  $$('.page[data-page="home"] .ap').forEach(e=>io.observe(e));
+  const lines=$('#lines'); const H=[428,342,265,190,190,265,342,428], X=[-396,-330,-264,-198,198,264,330,396];
+  H.forEach((h,i)=>{const d=document.createElement('div');d.className='ln'+(h===190?' o':'');d.style.height=h+'px';d.style.left=`calc(50% + ${X[i]}px)`;d.style.transitionDelay=(Math.abs(X[i])/396*.5)+'s';lines.appendChild(d)});
+  const lio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){lines.classList.add('in');lio.disconnect()}}),{threshold:.3}); lio.observe(lines);
+  // ---------- 今天的 20 位（6 张示例） ----------
+  const P=[
+    ['p01','林',26,'产品设计 · 朝阳 · 约 2 公里','Ta 的自我介绍里有一句"周末不看展会难受"，和你说的几乎一样。',['短发','清冷','冷色衣着','安静'],4,'center 24%'],
+    ['p02','周',29,'建筑 · 海淀 · 约 4 公里','你们都说过"安静的地方"。Ta 周六下午常在一家靠窗的咖啡馆。',['短发','清冷','冷色衣着','安静'],2,'center 30%'],
+    ['p04','许',27,'插画 · 朝阳 · 约 3 公里','Ta 的回答里有一张手绘；你划过"审美"这个词三次。',['短发','清冷','冷色衣着','安静'],3,'center 20%'],
+    ['p07','陈',26,'编辑 · 东城 · 约 1 公里','Ta 的书单和你划过的"看展"重合，两个人都写了"不急"。',['短发','清冷','冷色衣着','安静'],1,'center 28%'],
+    ['p10','吴',30,'医生 · 朝阳 · 约 3 公里','你说周末想出门，Ta 每周六爬山；节奏相近，气质不像理想型。',['短发','清冷','冷色衣着','安静'],0,'center 26%'],
+    ['p13','韩',31,'产品 · 朝阳 · 约 2 公里','你话少，Ta 话多；灵犀标的是"性格互补"，不是"像"。',['短发','清冷','冷色衣着','安静'],0,'center 30%'],
+  ];
+  const bgs=['hero-day','hero-dusk','hero-night'];
+  $('#people').innerHTML=P.map((p,i)=>`<a class="pc ap d${i%2}" href="#apply" style="--pos:${p[7]}"><div class="pic"><img class="bg" src="art/web/${bgs[i%3]}.webp" alt="" onerror="this.src='art/web/hero-day.webp';this.onerror=null"><img class="ph" src="art/people/${p[0]}.webp" alt=""><div class="why"><b>为什么是 Ta</b>${p[4]}<div class="ws">${p[5].map((w,j)=>`<span class="${j<p[6]?'on':''}">${w}</span>`).join('')}</div></div></div><div class="nm">${p[1]}，${p[2]}</div><div class="rl">${p[3]}</div><div class="bio">${p[4]}</div><span class="tag ${p[6]>=2?'on':''}">${p[6]>=2?`理想型 · ${p[6]}/4 个词对上`:(p[6]?`理想型 · ${p[6]}/4`:'不像理想型 · 节奏相近')}</span></a>`).join('');
+  $$('#people .ap').forEach(e=>io.observe(e));
+  // ---------- 帮聊演示 ----------
+  const R={自然:'三影堂那个，周六下午还在。你要是有空，可以一起去看。',认真:'是三影堂的一个纪实摄影展，这周六还在。我想认真看一遍，你愿意一起吗？',轻松:'三影堂那个～周六还在，去不去？',简短:'三影堂，周六还在。一起？',好奇:'三影堂的。你拍什么多一点，街头还是人像？',温和:'三影堂那个。你也喜欢摄影的话，周六一起去看看，不急。'};
+  const W={自然:s=>s,认真:s=>s.replace(/～|~/g,'。').replace(/吧$/,'，可以吗？'),轻松:s=>s.replace(/。$/,'～'),简短:s=>s.split(/[，,]/)[0].slice(0,14),好奇:s=>s.replace(/[。～]$/,'')+'？你呢？',温和:s=>s.replace(/[。～]$/,'')+'，不急。'};
+  let mode='reply', style='自然', q=6, base='';
+  const styles=['自然','认真','轻松','简短','好奇','温和'];
+  $('#dStyles').innerHTML=styles.map(s=>`<button class="${s==='自然'?'on':''}" onclick="site.style('${s}',this)">${s}</button>`).join('');
+  function render(){ const c=$('#dCand'); if(mode==='reply'){c.innerHTML=R[style]+'<small>依据：Ta 说过"周末不看展会难受"；你们都提过"安静的地方"。</small>'} else { if(!base){c.innerHTML='先在左边输入框写一句，再选语气。<small>改写只改语气，不加你没说过的事。</small>';return} c.innerHTML=W[style](base)+'<small>原句：'+base+'</small>' } }
+  const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2200)};
+  window.site={
+    openDemo(){$('#oc').classList.add('live');render()}, closeDemo(){$('#oc').classList.remove('live')},
+    mode(m,b){mode=m;$$('.demo .modes button').forEach(x=>x.classList.toggle('on',x===b)); if(m==='rewrite') base=$('#dIn').value.trim(); render()},
+    style(s,b){ if(q<=0){toast('今天的次数用完了，明天再来');return} style=s;$$('#dStyles button').forEach(x=>x.classList.toggle('on',x===b)); q--; $('#dQ').textContent=q; render()},
+    another(){ if(q<=0){toast('今天的次数用完了');return} const i=(styles.indexOf(style)+1)%styles.length; site.style(styles[i], $$('#dStyles button')[i]) },
+    fill(){ const c=$('#dCand').childNodes[0].textContent.trim(); $('#dIn').value=c; $('#dIn').focus(); toast('填进去了，改完再发') },
+    send(){ const v=$('#dIn').value.trim(); if(!v) return; const b=document.createElement('div'); b.className='bub me'; b.textContent=v; $('.demo .inp').before(b); $('#dIn').value=''; base=''; toast('发出去的是你的字') },
+    apply(e){ e.preventDefault(); toast('收到。内测码会按城市顺序发到你的手机。'); e.target.reset(); return false }
+  };
+  // ---------- FAQ ----------
+  const FAQ=[
+    ['理想型的照片，你们拿去做什么？','只在你的设备和我们的处理环节里转成几个描述词（例如：清冷、短发、冷色衣着、安静），之后照片本身不保存。推荐时用的是"词对词"，不做人脸比对，也不会拿任何人的脸去全库搜索。'],
+    ['灵犀会替我发消息吗？','不会。它只给候选句和依据，你改完自己按发送。对方的对话设置里能看到"对方开启了灵犀帮聊"，这是不能关闭的标识。'],
+    ['为什么是 20 位，而且一次只看一位？','20 位是我们能把"为什么"写清楚的上限，一次一位是让你真的看完那句"为什么"。可以按灵犀的顺序看，也可以按理想型或附近看。想看更多，明早 8 点再来。'],
+    ['灵犀记得是什么？会记我多少？','它记三类：你说话的习惯、你看重的事、你对推荐的反馈，每一条都标来源。默认开着，随时可关；可以逐条改、逐条删、整体导出或全部删除。只用来给你推荐、写理由、帮聊，不训练对外的模型，和沐仞的企业业务分开存放。'],
+    ['广场是树洞吗？','不是。广场里每一条动态都实名、挂着一个去处或活动，不能从动态私信。想说心里话，和灵犀聊，不公开。'],
+    ['位置精确到哪？','只到区一级，列表里显示"约 2 公里"这样的粗距离。你可以随时关掉距离信号。'],
+    ['语音通话会暴露手机号吗？','不会。通话走应用内线路，不交换手机号；通话有实时安全审核，遇到不舒服的话可以随时挂断并举报。'],
+    ['星座、属相五行、MBTI 的结果会决定推荐吗？','不会单独决定。它们进你的画像当一个参考信号，页面上标注"仅供参考"。'],
+    ['谁可以加入 Soulink？','目前高校联盟已支持所有已入驻高校的校园邮箱登录；其他城市用户可申请内测排队。若你的高校希望加入 Soulink 高校联盟，欢迎联系 thusoulink@163.com，并附上你所在高校的邮箱后缀。'],
+    ['Soulink 和沐仞科技是什么关系？','沐仞科技及其创始团队与 Soulink 股权合作、共同所有、共同经营；灵犀跑在沐仞自己的绿电算力上。交友数据与沐仞的企业业务分开存放、分开授权，不用于训练对外的模型。'],
+  ];
+  $('#faqList').innerHTML=FAQ.map((f,i)=>`<div class="qa ap"><button onclick="this.parentNode.classList.toggle('open')"><span class="pm"></span>${f[0]}</button><div class="a"><div><p>${f[1]}</p></div></div></div>`).join('');
+  $$('#faqList .ap').forEach(e=>io.observe(e));
+
+  // 横幅窗灯：按 data-n 撒点，位置在画面中下部（楼群所在）
+  $$('.anim .lights').forEach(L=>{ const n=+L.dataset.n||20; let h=''; for(let i=0;i<n;i++){ const x=(Math.random()*96+2).toFixed(1), y=(35+Math.random()*55).toFixed(1); h+=`<i style="left:${x}%;top:${y}%;animation-delay:${(-Math.random()*4.2).toFixed(2)}s;animation-duration:${(3+Math.random()*3).toFixed(2)}s"></i>` } L.innerHTML=h });
+  // ---------- 多页路由 ----------
+  const PAGES=['home','lingxi','how','today','campus'];
+  function route(){ let h=(location.hash||'#/').replace(/^#\/?/,''); let [pg,anchor]=h.split('/'); if(!PAGES.includes(pg)){ anchor=pg; pg='home' } $$('.page').forEach(p=>p.classList.toggle('on',p.dataset.page===pg)); $$('nav a.nl').forEach(a=>a.classList.toggle('cur',a.dataset.page===pg)); hdr.classList.toggle('solid',pg!=='home'); if(pg==='home'){ hdr.classList.toggle('light',scrollY<innerHeight*2.6) } else { hdr.classList.remove('light') } document.body.dataset.page=pg;
+    $$('.page.on .ap:not(.in)').forEach(e=>io.observe(e));
+    if(anchor==='demo'){ anchor=null; setTimeout(()=>{ const oc=$('#oc'); if(oc){ oc.scrollIntoView({block:'center'}); site.openDemo() } },60) }
+    if(anchor){ setTimeout(()=>{ const el=document.getElementById(anchor); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}) },60) } else { scrollTo(0,0) }
+    if(pg==='home') onScroll(); }
+  addEventListener('hashchange',route);
+  // pnav current
+  addEventListener('scroll',()=>{ if(document.body.dataset.page!=='lingxi') return; const cards=$$('.pcard'); let cur=null; cards.forEach(c=>{ if(c.getBoundingClientRect().top<200) cur=c.id }); $$('.pnav a').forEach(a=>a.classList.toggle('cur',a.getAttribute('href')==='#'+cur)) },{passive:true});
+  $$('.pnav a').forEach(a=>a.addEventListener('click',e=>{ e.preventDefault(); const el=document.getElementById(a.getAttribute('href').slice(1)); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}) }));
+  route();
+})();
+</script>

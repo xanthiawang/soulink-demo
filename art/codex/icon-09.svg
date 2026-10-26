@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title">
+  <title id="title">理想型</title>
+  <style>
+    :root{--ink:rgba(0,0,0,.85)}
+    path{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 0.280000s ease-out both;animation-delay:var(--wait)}
+    @keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+    @media(prefers-reduced-motion:reduce){path{animation:none;stroke-dasharray:none;stroke-dashoffset:0}}
+  </style>
+  <path pathLength="1" style="--wait:0.000000s" d="M15.4 2.9 Q9 2.4 3.4 3 L3 21 Q11.1 21.8 20.6 20.9 L20.9 11.9"/>
+  <path pathLength="1" style="--wait:0.280000s" d="M10.5 7.2 C13.2 6.8 14.5 8.8 14.2 11 C14 13.4 11.6 14.7 9.8 13.3 C7.4 11.6 7.7 8.3 10.5 7.2 Z"/>
+  <path pathLength="1" style="--wait:0.560000s" d="M5.7 18 Q6.8 14.8 10.8 15.1 C14.2 14.7 16.8 16 17.7 18.3"/>
+  <path pathLength="1" style="--wait:0.840000s" d="M19.2 2 Q19.5 5.2 22.3 6.4 Q19.1 7.4 18.4 10.5 Q18 7.7 15.3 6.7 Q18.1 5.4 19.2 2 Z"/>
+  <path pathLength="1" style="--wait:1.120000s" d="M5.6 5.3 L5.3 8.8 M17.1 19.2 L18.5 19.1"/>
+</svg>

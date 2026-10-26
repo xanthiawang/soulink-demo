@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title">
+  <title id="title">隐私开关</title>
+  <style>
+    :root{--ink:rgba(0,0,0,.85)}
+    path{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 0.466667s ease-out both;animation-delay:var(--wait)}
+    @keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+    @media(prefers-reduced-motion:reduce){path{animation:none;stroke-dasharray:none;stroke-dashoffset:0}}
+  </style>
+  <path pathLength="1" style="--wait:0.000000s" d="M8 6.2 C4.5 5.9 2 8.4 2.2 12.1 C2 15.6 4.4 18 8 17.8 L16.3 17.6 C19.9 17.9 22 15.2 21.7 11.5 C21.5 8.1 19.4 6 15.8 6.3 Z"/>
+  <path pathLength="1" style="--wait:0.466667s" d="M15.7 8.7 C18 8.4 19.3 10.1 19.2 12.2 C19.3 14.5 17.5 15.7 15.5 15.3 C13.4 15.2 12.5 13.7 12.8 11.7 C12.8 9.8 14.2 8.6 15.7 8.7 Z"/>
+  <path pathLength="1" style="--wait:0.933333s" d="M5.4 11.9 Q7 11.7 8.9 12 M6 16 Q9 16.3 10.9 16"/>
+</svg>
