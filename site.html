@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Soulink · 官网原型 v0.14</title>
-<meta name="description" content="Soulink — AI 社交匹配平台。遇见你的理想型。由 Soulink 与沐仞科技（FathomPeak）共同所有。">
+<title>Soulink · 官网 v0.21</title>
+<meta name="description" content="Soulink — AI 社交匹配平台。遇见你的理想型。Soulink 与沐仞科技（FathomPeak）合作出品。">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400&family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@300;400&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -422,22 +422,20 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
 <header id="hdr" class="light">
   <a class="logo" href="#/"><i></i><b>Soulink</b><span>AI 社交匹配平台</span><small>× 沐仞科技</small></a>
   <nav>
-    <a class="nl" href="#/lingxi" data-page="lingxi">灵犀</a>
+    <a class="nl" href="#/product" data-page="product">产品</a>
     <a class="nl" href="#/how" data-page="how">怎么用</a>
-    <a class="nl" href="#/today" data-page="today">每天 20 位</a>
     <a class="nl" href="#/campus" data-page="campus">高校联盟</a>
-    <a class="nl" href="#/home/faq">常见问题</a>
+    <a class="nl" href="#/about" data-page="about">关于</a>
     <a class="btn" href="app.html#onboarding/1">登录 <span class="ar">→</span></a>
   </nav>
   <button class="menu" id="menuBtn" aria-label="菜单" onclick="document.getElementById('drawer').classList.add('on')"><i></i><i></i></button>
 </header>
 <div class="drawer" id="drawer">
   <div class="dh"><a class="logo" href="#/" onclick="document.getElementById('drawer').classList.remove('on')"><i></i><b>Soulink</b></a><button class="dx" aria-label="关闭" onclick="document.getElementById('drawer').classList.remove('on')">×</button></div>
-  <a href="#/lingxi" onclick="document.getElementById('drawer').classList.remove('on')">灵犀</a>
+  <a href="#/product" onclick="document.getElementById('drawer').classList.remove('on')">产品</a>
   <a href="#/how" onclick="document.getElementById('drawer').classList.remove('on')">怎么用</a>
-  <a href="#/today" onclick="document.getElementById('drawer').classList.remove('on')">每天 20 位</a>
   <a href="#/campus" onclick="document.getElementById('drawer').classList.remove('on')">高校联盟</a>
-  <a href="#/home/faq" onclick="document.getElementById('drawer').classList.remove('on')">常见问题</a>
+  <a href="#/about" onclick="document.getElementById('drawer').classList.remove('on')">关于</a>
   <a class="dcta" href="app.html#onboarding/1">登录 <span class="ar">→</span></a>
 </div>
 
@@ -473,7 +471,7 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
 <section class="sub">
   <div class="meta ap"><span class="eyebrow">每天 20 位</span><span class="sq"></span><span class="eyebrow">每一位都说清楚为什么</span><span class="sq"></span><span class="eyebrow">高校联盟 · 14 所高校已入驻</span></div>
   <p class="lead ap d1"><b>Soulink 是帮你遇见理想型的 AI 社交匹配平台。</b>它的 AI 叫灵犀：先听你讲三段话，记住你看重什么；每天只推 20 位，一次一位，每一位都写明为什么；聊不下去时递一句给你改——发出去的每个字仍然是你自己的。</p>
-  <div class="cta ap d2"><a class="btn o" href="app.html#onboarding/1">登录 <span class="ar">→</span></a><a class="btn o" href="#/lingxi">看灵犀怎么找 <span class="ar">→</span></a></div>
+  <div class="cta ap d2"><a class="btn o" href="app.html#onboarding/1">登录 <span class="ar">→</span></a><a class="btn o" href="#/product">看灵犀怎么找 <span class="ar">→</span></a></div>
 </section>
 
 <!-- 登录 -->
@@ -497,7 +495,7 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
     <p class="ap d1">一次只看一位，每一位都附一句话：为什么是 Ta。你可以按灵犀的顺序看，也可以只看像你理想型的。</p>
     <p class="ap d2">理想型传一张照片就行，或者让灵犀照它对你的了解画一张。聊不下去时，它按你的口吻递一句，改完你自己发。</p>
     <div class="big ap d3">一天 20 位。一次一位。<br>先通话，再见面。</div>
-    <div class="row ap d4"><a class="btn" href="#/today">看今天的 20 位</a><a class="btn" href="#/lingxi">看灵犀怎么做</a></div>
+    <div class="row ap d4"><a class="btn" href="#/product/today">看今天的 20 位</a><a class="btn" href="#/product">看灵犀怎么做</a></div>
   </div>
 </section>
 
@@ -516,14 +514,14 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
 <!-- 两张大卡 -->
 <div class="bigcards" id="how">
   <a class="bc ap" href="#/how" style="--pos:center 40%"><img src="art/web/cards/card-square.webp" alt="" onerror="this.src='art/web/hero-dusk.webp';this.onerror=null"><div class="ov"></div><h3>广场：<br>动态 · 去处 · 活动</h3><div class="sub2">每一条都挂着一个去处或活动，实名，不能私信。打卡、体验、想去、今天想说的；灵犀帮你起个头，也把一个地方的评价汇总成一句。</div><div class="arrow">→</div></a>
-  <a class="bc ap d1" href="#/lingxi" style="--pos:center 40%"><img src="art/web/cards/card-call.webp" alt="" onerror="this.src='art/web/hero-night.webp';this.onerror=null"><div class="ov"></div><h3>先通话，<br>再见面</h3><div class="sub2">应用内语音，不交换手机号，通话有实时安全审核。聊到一定程度，双方都点才互相看清其他照片。见面地点从广场的去处里挑，位置只到区一级。</div><div class="arrow">→</div></a>
+  <a class="bc ap d1" href="#/product" style="--pos:center 40%"><img src="art/web/cards/card-call.webp" alt="" onerror="this.src='art/web/hero-night.webp';this.onerror=null"><div class="ov"></div><h3>先通话，<br>再见面</h3><div class="sub2">应用内语音，不交换手机号，通话有实时安全审核。聊到一定程度，双方都点才互相看清其他照片。见面地点从广场的去处里挑，位置只到区一级。</div><div class="arrow">→</div></a>
 </div>
 
 <!-- 来自沐仞 -->
 <div class="two">
   <div class="ap">
     <h3>Soulink × 沐仞科技（FathomPeak）</h3>
-    <p>Soulink 从清华的高校联盟起步。沐仞科技及其创始团队与 Soulink 以股权合作的方式共同所有、共同经营。沐仞做的是绿电算力和大模型词元供应，灵犀跑在沐仞自己的算力和模型上，成本可控，所以每天 20 位、每一位都写理由、每个人都有一份记忆这件事做得起。</p>
+    <p>Soulink 从清华的高校联盟起步，和沐仞科技一起做。沐仞做的是绿电算力和大模型词元供应，灵犀跑在沐仞自己的算力和模型上，成本可控，所以每天 20 位、每一位都写理由、每个人都有一份记忆这件事做得起。</p>
     <p>交友数据和沐仞的企业业务分开存放、分开授权；不会拿来训练对外的模型。</p>
     <a class="link" href="#/home/faq">看数据与隐私说明 <span class="ar">→</span></a>
   </div>
@@ -531,7 +529,7 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
 </div>
 
 <!-- 大字标 -->
-<section class="wordmark"><div class="in ap"><i></i><b>Soulink</b><em>AI 社交匹配平台 · 与沐仞科技共同所有</em></div></section>
+<section class="wordmark"><div class="in ap"><i></i><b>Soulink</b><em>AI 社交匹配平台 · 与沐仞科技合作</em></div></section>
 
 <!-- FAQ -->
 <section class="faq" id="faq">
@@ -539,7 +537,7 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
   <div id="faqList"></div>
 </section>
 </div>
-<div class="page" data-page="lingxi">
+<div class="page" data-page="product">
 <section class="hero2 vb"><video class="bgv" autoplay muted loop playsinline preload="metadata" poster="art/web/video/lingxi-hero-poster.jpg"><source src="art/web/video/lingxi-hero.mp4" type="video/mp4"></video><img class="fb bg" src="art/web/video/lingxi-hero-poster.jpg" alt=""><div class="ov"></div><div class="c"><h1 class="ap in">替你留意。</h1><p class="ap d1">我是灵犀，照你喜欢的样子，帮你找人。</p><div class="row ap d2"><a class="btn o" href="app.html#onboarding/1">登录 <span class="ar">→</span></a><a class="btn o" href="#/how">看一天怎么用 <span class="ar">→</span></a></div></div></section>
 <!-- 深色展示：帮聊 -->
 <section class="demoSec">
@@ -580,7 +578,7 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
 <h4>从一张照片开始。</h4><p>传一张理想型照片，<br>让灵犀了解你喜欢的样子。</p>
 <div class="lxui-traits"><span>短发</span><span>冷色衣着</span></div>
 <div class="lxui-foot"><a class="lxui-action" href="app.html#me/ideal">到原型中上传照片<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><a class="lxui-action secondary" href="app.html#me/ideal">体验「让灵犀画」<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div></div></div>
-    <div class="ui-steps"><h4>传一张照片，<br>看推荐理由。</h4><span>短发</span><span>冷色衣着</span><p>照片特点 · AI 生成 · 仅供参考<br>性格还要通过资料和相处了解。</p></div></div><div class="tx"><span class="tag">主功能</span><h3>理想型</h3><p>传一张理想型照片，灵犀按照片帮你找像的人，推荐给你。每天 20 位里标出像的人；不存人脸。</p><a class="link" href="#/today">看今天像的人 <span class="ar">→</span></a></div></div>
+    <div class="ui-steps"><h4>传一张照片，<br>看推荐理由。</h4><span>短发</span><span>冷色衣着</span><p>照片特点 · AI 生成 · 仅供参考<br>性格还要通过资料和相处了解。</p></div></div><div class="tx"><span class="tag">主功能</span><h3>理想型</h3><p>传一张理想型照片，灵犀按照片帮你找像的人，推荐给你。每天 20 位里标出像的人；不存人脸。</p><a class="link" href="#/product/today">看今天像的人 <span class="ar">→</span></a></div></div>
     <div class="pcard ap" id="p-pair"><div class="vis"><div class="lxui lxui-pair" aria-label="你和林的合盘界面示例">
     <div class="lxui-top"><strong>你和林的合盘</strong><span>界面示例</span></div>
     <div class="lxui-content"><div class="lxui-people"><div><img src="art/people/p21.webp" alt="原型中的你"><strong>你</strong><span>INFJ</span></div><span class="lxui-people-link"><img class="lxui-icon" src="art/ink/act-star.svg" alt=""></span><div><img src="art/people/p01.webp" alt="原型人物林"><strong>林</strong><span>ENFP</span></div></div>
@@ -611,7 +609,7 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
 <div class="lxui-draft"><div><img class="lxui-icon" src="art/ink/act-wand.svg" alt=""><span>灵犀拟稿 · AI 生成</span></div><blockquote>是三影堂那个，这周六还在。你拍什么多？</blockquote></div>
 <div class="lxui-source">依据 · 你 10-24 打卡「三影堂」<br>你的习惯 · 短句、不用「哈哈」</div>
 <div class="lxui-rule"></div><p class="lxui-note">改好后，由你自己发。</p><a class="lxui-action" href="app.html#chat/lin">到原型中试试帮聊<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div></div>
-    </div><div class="tx"><span class="tag">你来发</span><h3>帮聊</h3><p>聊不下去时，灵犀按你的说话习惯给整句，直接填进输入框，改完你自己发。每句写明它怎么知道的。</p><a class="link" href="#/lingxi/demo">点开演示 <span class="ar">→</span></a></div></div>
+    </div><div class="tx"><span class="tag">你来发</span><h3>帮聊</h3><p>聊不下去时，灵犀按你的说话习惯给整句，直接填进输入框，改完你自己发。每句写明它怎么知道的。</p><a class="link" href="#/product/demo">点开演示 <span class="ar">→</span></a></div></div>
     <div class="pcard ap" id="p-analyze"><div class="vis"><div class="lxui lxui-analyze" aria-label="聊天分析界面示例">
     <div class="lxui-top"><strong>聊天分析</strong><span>界面示例</span></div>
     <div class="lxui-content"><h4>这一段对话，<br>一起看看。</h4><p>上传你有权使用的聊天截图。</p>
@@ -621,6 +619,11 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
     </div><div class="tx"><span class="tag">只给你看</span><h3>聊天分析</h3><p>选一段对话，灵犀告诉你 Ta 这些话是什么意思、Ta 现在怎么想、你下一句怎么接。只在你手机上分析。</p></div></div>
   </div>
 </div>
+<!-- 今天的 20 位 -->
+<div class="secHead" id="today" style="padding-top:70px"><span class="sq ap"></span><h2 class="ap d1">每天 20 位，一次一位</h2><p class="ap d2">一位用户 10 月 25 日收到的 20 位。App 里一次只看一位，这里一次展开六位；鼠标放上去，看灵犀为什么推荐。</p></div>
+<div class="people" id="people"></div>
+<div class="center" style="padding:10px 24px 100px"><a class="btn ap" href="app.html#onboarding/1">全部 20 位在 App 里 <span class="ar">→</span></a></div>
+
 <section class="sub" style="padding:90px 24px"><div class="meta ap"><span class="eyebrow">别错过</span></div><p class="lead ap d1"><b>每天 20 位，一次一位。</b>想认识的人在「对话」里等你。</p><div class="cta ap d2"><a class="btn o" href="app.html#onboarding/1">登录 <span class="ar">→</span></a></div></section>
 </div>
 <div class="page" data-page="how">
@@ -631,9 +634,9 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
   <div class="tt"><b>08:00</b><i>–</i><b>08:10</b><small>每天</small></div>
   <div class="tcard ap"><div class="tv"><div class="ph"><img src="art/web/shots/today.webp" alt=""></div></div><div class="tb"><span class="eyebrow" style="color:var(--orange)">今天</span><h2>20 位，一次一位</h2><p>灵犀排好顺序，先看林——Ta 刚问了你一个问题。每一位都写明为什么；想认识就说一句，不想就下一位。也可以按理想型或附近来看。</p><div class="tags"><span>今天</span><span>一次一位</span><span>三种顺序</span></div><a class="cal" href="app.html#onboarding/1">在 App 里试 ↗</a></div></div>
   <div class="tt"><b>09:30</b><i>–</i><b>09:45</b><small>有空就聊</small></div>
-  <div class="tcard ap"><div class="tb"><span class="eyebrow" style="color:var(--orange)">灵犀</span><h2>和灵犀聊两句</h2><p>"我和林合不合？"——合拍 75，默契和羁绊最高，承诺要靠时间。它顺手问你要不要看第一次见面最容易卡在哪一步。说的都只进「灵犀记得」。</p><div class="tags"><span>灵犀</span><span>AI 生成</span><span>只给你看</span></div><a class="cal" href="#/lingxi">看灵犀会做的事 ↗</a></div></div>
+  <div class="tcard ap"><div class="tb"><span class="eyebrow" style="color:var(--orange)">灵犀</span><h2>和灵犀聊两句</h2><p>"我和林合不合？"——合拍 75，默契和羁绊最高，承诺要靠时间。它顺手问你要不要看第一次见面最容易卡在哪一步。说的都只进「灵犀记得」。</p><div class="tags"><span>灵犀</span><span>AI 生成</span><span>只给你看</span></div><a class="cal" href="#/product">看灵犀会做的事 ↗</a></div></div>
   <div class="tt"><b>12:30</b><i>–</i><b>12:50</b><small>午休</small></div>
-  <div class="tcard ap"><div class="tv"><div class="ph"><img src="art/web/shots/helper.webp" alt=""></div></div><div class="tb"><span class="eyebrow" style="color:var(--orange)">对话</span><h2>聊不下去，灵犀递一句</h2><p>帮我回复、帮我改写，六种语气，按你的习惯写短句。不知道从哪聊起就猜个拳，赢的人先问。发出去的永远是你改过的字。</p><div class="tags"><span>对话</span><span>帮聊</span><span>猜拳</span></div><a class="cal" href="#/lingxi/demo">点开帮聊演示 ↗</a></div></div>
+  <div class="tcard ap"><div class="tv"><div class="ph"><img src="art/web/shots/helper.webp" alt=""></div></div><div class="tb"><span class="eyebrow" style="color:var(--orange)">对话</span><h2>聊不下去，灵犀递一句</h2><p>帮我回复、帮我改写，六种语气，按你的习惯写短句。不知道从哪聊起就猜个拳，赢的人先问。发出去的永远是你改过的字。</p><div class="tags"><span>对话</span><span>帮聊</span><span>猜拳</span></div><a class="cal" href="#/product/demo">点开帮聊演示 ↗</a></div></div>
   <div class="tt"><b>19:00</b><i>–</i><b>19:15</b><small>下班后</small></div>
   <div class="tcard ap"><div class="tb"><span class="eyebrow" style="color:var(--orange)">对话</span><h2>先通个话</h2><p>应用内语音，不交换手机号，通话有实时安全审核。聊到一定程度，双方都点才互相看清其他照片。</p><div class="tags"><span>通话</span><span>不交换手机号</span><span>双方都点</span></div><a class="cal" href="app.html#onboarding/1">在 App 里试 ↗</a></div></div>
   <div class="tt"><b>周六</b><i>–</i><b>下午</b><small>见面</small></div>
@@ -650,37 +653,14 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
 </div>
 
 </div>
-<div class="page" data-page="today">
-<div class="banner vb ap"><video class="bgv" autoplay muted loop playsinline preload="metadata" poster="art/web/video/people-poster.jpg" onerror="this.style.display='none'"><source src="art/web/video/people.mp4" type="video/mp4"></video><img class="fb" src="art/web/cards/card-people.webp" alt=""></div>
-<!-- 今天的 20 位 -->
-<div class="secHead" id="today" style="padding-top:40px"><span class="sq ap"></span><h1 class="ap d1" style="font-family:var(--serif-h);font-weight:300;font-size:clamp(40px,5vw,64px);margin:0;line-height:1">今天的 20 位</h1><p class="ap d2">一位用户 10 月 25 日收到的 20 位。App 里一次只看一位，这里一次展开六位；鼠标放上去，看灵犀为什么推荐。</p></div>
-<div class="people" id="people"></div>
-<div class="center" style="padding:10px 24px 100px"><a class="btn ap" href="app.html#onboarding/1">全部 20 位在 App 里 <span class="ar">→</span></a></div>
-
-<!-- 竖线段落 -->
-<section class="lines" id="lines">
-  <div class="c">
-    <p class="ap">别的 App 给你一叠脸，让你自己翻。<br>Soulink 每天只给 20 位，一次只看一位，每一位都附一句话：为什么是 Ta。</p>
-    <p class="ap d1">你可以按灵犀的顺序看，也可以按"像不像你的理想型"或"离你多近"看。理想型传一张照片，或者让灵犀照你的描述画一张。</p>
-    <div class="big ap d2">一天 20 位。一次一位。<br>先通话，再见面。</div>
-    <a class="btn ap d3" href="#/today">看今天的 20 位</a><br>
-    <a class="btn ap d4" href="#/lingxi">看灵犀怎么做</a>
-  </div>
-</section>
-
-<!-- 登录 -->
-<section class="formSec" id="apply">
-  <div class="frame ap">
-    <img src="art/web/hero-day.webp" alt="" onerror="this.remove()">
-    <div class="card login-entry">
-      <span class="eyebrow">SOULINK</span><h3>从认识你开始。</h3>
-      <p>进入 Soulink，告诉灵犀你喜欢的样子。</p>
-      <a class="btn w" href="app.html#onboarding/1">登录 <span class="ar">→</span></a>
-      <p class="fine">当前为交互原型，可预览登录流程；暂未接入真实账号验证。</p>
-    </div>
-  </div>
-</section>
-
+<div class="page" data-page="about">
+<div class="banner vb ap"><video class="bgv" autoplay muted loop playsinline preload="metadata" poster="art/web/video/people-poster.jpg" onerror="this.style.display='none'"><source src="art/web/video/people.mp4" type="video/mp4"></video><img class="fb" src="art/web/video/people-poster.jpg" alt=""></div>
+<div class="secHead" style="padding-top:40px"><h1 class="ap" style="font-family:var(--serif-h);font-weight:300;font-size:clamp(40px,5vw,64px);margin:0;line-height:1">关于 Soulink</h1><p class="ap d1">遇见你的理想型。从清华的高校联盟起步，和沐仞科技一起做。</p></div>
+<div class="four"><div class="ap"><img src="art/ink/spot-lingxi.svg" alt="" style="width:36px;height:36px;display:block;margin-bottom:14px"><h4>灵犀是谁</h4><p>产品里的 AI。它按你喜欢的样子找人，每天 20 位，每一位都写明为什么；记得你说话的习惯和你看重的事；聊不下去时递一句，由你发。它说事实、给依据，不替你说话。</p></div><div class="ap d1"><img src="art/ink/act-home.svg" alt="" style="width:36px;height:36px;display:block;margin-bottom:14px"><h4>从高校联盟起步</h4><p>Soulink 从清华的高校联盟起步，现在 14 所高校、1,342 人注册，每周四晚一封来信。用校园邮箱加入，邀请同校同学各多一封来信。</p></div><div class="ap d2"><img src="art/ink/spot-match.svg" alt="" style="width:36px;height:36px;display:block;margin-bottom:14px"><h4>和沐仞科技一起做</h4><p>沐仞科技（FathomPeak）做绿电算力和大模型词元供应，灵犀跑在沐仞自己的算力和模型上，成本可控，所以每天 20 位、每位都写理由这件事做得起。</p></div><div class="ap d3"><img src="art/ink/act-send.svg" alt="" style="width:36px;height:36px;display:block;margin-bottom:14px"><h4>联系我们</h4><p>高校入驻、合作、媒体：thusoulink@163.com。</p></div></div>
+<div class="secHead" id="safety" style="padding-top:30px"><span class="sq ap"></span><h2 class="ap d1">安全与隐私</h2><p class="ap d2">能说清楚的都写在这里。做不到的，不写。</p></div>
+<div class="four"><div class="ap"><img src="art/ink/act-shield.svg" alt="" style="width:36px;height:36px;display:block;margin-bottom:14px"><h4>真人，实名</h4><p>注册要对着镜头转一下头，只用来确认是本人，视频几秒后删除。高校联盟成员用校园邮箱登录，学历和学校可验证。</p></div><div class="ap d1"><img src="art/ink/act-eye.svg" alt="" style="width:36px;height:36px;display:block;margin-bottom:14px"><h4>照片，你说了算</h4><p>其他照片默认模糊，双方都点"看清照片"才互相清晰。理想型照片只用来找像的人，不存人脸，不拿去认人。</p></div><div class="ap d2"><img src="art/ink/act-pin.svg" alt="" style="width:36px;height:36px;display:block;margin-bottom:14px"><h4>位置只到区一级</h4><p>对方看到的是"约 2 公里"，不是你在哪。关掉位置也能用，只是不按距离排。</p></div><div class="ap d3"><img src="art/ink/act-phone.svg" alt="" style="width:36px;height:36px;display:block;margin-bottom:14px"><h4>通话在应用内</h4><p>语音和视频通话不交换手机号；通话有实时安全审核，不舒服随时挂断并举报。</p></div></div>
+<div class="four"><div class="ap"><img src="art/ink/spot-notes.svg" alt="" style="width:36px;height:36px;display:block;margin-bottom:14px"><h4>AI 写的都有标识</h4><p>灵犀写的每一句都标"AI 生成 · 仅供参考"，并写明依据。它只拟句，不替你发；发送键永远在你手里。</p></div><div class="ap d1"><img src="art/ink/act-settings.svg" alt="" style="width:36px;height:36px;display:block;margin-bottom:14px"><h4>数据分开放</h4><p>交友数据和沐仞科技的企业业务分开存放、分开授权，不用来训练对外的模型。灵犀记得的每一条可改、可删、可导出。</p></div><div class="ap d2"><img src="art/ink/act-bell.svg" alt="" style="width:36px;height:36px;display:block;margin-bottom:14px"><h4>举报 24 小时内处理</h4><p>动态、评论、对话、通话都能举报；对方不会知道是谁。广场实名，不能私信。</p></div><div class="ap d3"><img src="art/ink/act-close.svg" alt="" style="width:36px;height:36px;display:block;margin-bottom:14px"><h4>随时注销</h4><p>注销会删掉画像、理想型、记忆、聊天与通话记录，7 天内可撤回。</p></div></div>
+<section class="faq" id="faq-about" style="padding-top:20px"><div class="secHead" id="faq2"><span class="sq ap"></span><h2 class="ap d1">常见问题</h2></div><div class="faqList" id="faqList2"></div></section>
 </div>
 <div class="page" data-page="campus">
 <div class="banner vb ap"><video class="bgv" autoplay muted loop playsinline preload="metadata" poster="art/web/video/campus-poster.jpg" onerror="this.style.display='none'"><source src="art/web/video/campus.mp4" type="video/mp4"></video><img class="fb" src="art/web/cards/card-campus.webp" alt=""></div>
@@ -713,8 +693,8 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
 
 </div>
 <footer>
-  <div class="row"><div class="soc">关注我们 <i></i><i></i><i></i><i></i></div><div class="links"><a href="#/lingxi">灵犀</a><a href="#/how">去处</a><a href="#/how">测一测</a><a href="app.html#onboarding/1">登录</a><a href="#/home/faq">帮助</a><a href="#/home/faq">安全中心</a><a href="#/home/faq">AI 生成内容说明</a></div></div>
-  <div class="row"><div class="fp"><i></i>沐仞科技<span> FathomPeak</span></div><div class="links"><span>© 2026 Soulink Alliance · 沐仞科技</span><a href="mailto:thusoulink@163.com">thusoulink@163.com</a><a href="#/home/faq">用户协议</a><a href="#/home/faq">隐私政策</a><a href="#/home/faq">未成年人保护</a></div></div>
+  <div class="row"><div class="soc">关注我们 <i></i><i></i><i></i><i></i></div><div class="links"><a href="#/product">产品</a><a href="#/product/today">每天 20 位</a><a href="#/how">怎么用</a><a href="#/about/safety">安全与隐私</a><a href="#/campus">高校联盟</a><a href="#/about">关于</a><a href="#/about/faq2">常见问题</a><a href="app.html#onboarding/1">登录</a></div></div>
+  <div class="row"><div class="fp"><i></i>沐仞科技<span> FathomPeak</span></div><div class="links"><span>© 2026 Soulink Alliance · 沐仞科技</span><a href="mailto:thusoulink@163.com">thusoulink@163.com</a><a href="#/about/safety">用户协议</a><a href="#/about/safety">隐私政策</a><a href="#/about/safety">未成年人保护</a></div></div>
 </footer>
 <div class="toast" id="toast"></div>
 
@@ -782,22 +762,23 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
     ['理想型的照片，你们拿去做什么？','只在你的设备和我们的处理环节里转成几个描述词（例如：清冷、短发、冷色衣着、安静），之后照片本身不保存。推荐时用的是"词对词"，不做人脸比对，也不会拿任何人的脸去全库搜索。'],
     ['灵犀会替我发消息吗？','不会。它只给候选句和依据，你改完自己按发送。对方的对话设置里能看到"对方开启了灵犀帮聊"，这是不能关闭的标识。'],
     ['为什么是 20 位，而且一次只看一位？','20 位是我们能把"为什么"写清楚的上限，一次一位是让你真的看完那句"为什么"。可以按灵犀的顺序看，也可以按理想型或附近看。想看更多，明早 8 点再来。'],
+    ['免费吗？','非会员每天 20 位，帮聊和通话不限。会员不限量，还能提前看明天的推荐、让灵犀安排见面；价格待定。'],
     ['灵犀记得是什么？会记我多少？','它记三类：你说话的习惯、你看重的事、你对推荐的反馈，每一条都标来源。默认开着，随时可关；可以逐条改、逐条删、整体导出或全部删除。只用来给你推荐、写理由、帮聊，不训练对外的模型，和沐仞的企业业务分开存放。'],
     ['广场是树洞吗？','不是。广场里每一条动态都实名、挂着一个去处或活动，不能从动态私信。想说心里话，和灵犀聊，不公开。'],
     ['位置精确到哪？','只到区一级，列表里显示"约 2 公里"这样的粗距离。你可以随时关掉距离信号。'],
     ['语音通话会暴露手机号吗？','不会。通话走应用内线路，不交换手机号；通话有实时安全审核，遇到不舒服的话可以随时挂断并举报。'],
     ['星座、属相五行、MBTI 的结果会决定推荐吗？','不会单独决定。它们进你的画像当一个参考信号，页面上标注"仅供参考"。'],
     ['谁可以加入 Soulink？','目前高校联盟已支持所有已入驻高校的校园邮箱登录；其他城市用户可从登录入口了解产品。若你的高校希望加入 Soulink 高校联盟，欢迎联系 thusoulink@163.com，并附上你所在高校的邮箱后缀。'],
-    ['Soulink 和沐仞科技是什么关系？','沐仞科技及其创始团队与 Soulink 股权合作、共同所有、共同经营；灵犀跑在沐仞自己的绿电算力上。交友数据与沐仞的企业业务分开存放、分开授权，不用于训练对外的模型。'],
+    ['Soulink 和沐仞科技是什么关系？','合作关系：灵犀跑在沐仞自己的绿电算力和模型上。交友数据与沐仞的企业业务分开存放、分开授权，不用于训练对外的模型。'],
   ];
-  $('#faqList').innerHTML=FAQ.map((f,i)=>`<div class="qa ap"><button onclick="this.parentNode.classList.toggle('open')"><span class="pm"></span>${f[0]}</button><div class="a"><div><p>${f[1]}</p></div></div></div>`).join('');
+  $('#faqList').innerHTML=FAQ.map((f,i)=>`<div class="qa ap"><button onclick="this.parentNode.classList.toggle('open')"><span class="pm"></span>${f[0]}</button><div class="a"><div><p>${f[1]}</p></div></div></div>`).join(''); const fl2=$('#faqList2'); if(fl2) fl2.innerHTML=$('#faqList').innerHTML;
   $$('#faqList .ap').forEach(e=>io.observe(e));
 
   // 横幅窗灯：按 data-n 撒点，位置在画面中下部（楼群所在）
   $$('.anim .lights').forEach(L=>{ const n=+L.dataset.n||20; let h=''; for(let i=0;i<n;i++){ const x=(Math.random()*96+2).toFixed(1), y=(35+Math.random()*55).toFixed(1); h+=`<i style="left:${x}%;top:${y}%;animation-delay:${(-Math.random()*4.2).toFixed(2)}s;animation-duration:${(3+Math.random()*3).toFixed(2)}s"></i>` } L.innerHTML=h });
   // ---------- 多页路由 ----------
-  const PAGES=['home','lingxi','how','today','campus'];
-  function route(){ let h=(location.hash||'#/').replace(/^#\/?/,''); let [pg,anchor]=h.split('/'); if(!PAGES.includes(pg)){ anchor=pg; pg='home' } $$('.page').forEach(p=>p.classList.toggle('on',p.dataset.page===pg)); $$('nav a.nl').forEach(a=>a.classList.toggle('cur',a.dataset.page===pg)); hdr.classList.toggle('solid',pg!=='home'); if(pg==='home'){ hdr.classList.toggle('light',scrollY<innerHeight*2.6) } else { hdr.classList.remove('light') } document.body.dataset.page=pg;
+  const PAGES=['home','product','how','campus','about']; const ALIAS={lingxi:'product',today:'product',safety:'about'};
+  function route(){ let h=(location.hash||'#/').replace(/^#\/?/,''); let [pg,anchor]=h.split('/'); if(ALIAS[pg]){ if(pg==='today'&&!anchor) anchor='today'; if(pg==='safety'&&!anchor) anchor='safety'; pg=ALIAS[pg] } if(!PAGES.includes(pg)){ anchor=pg; pg='home' } $$('.page').forEach(p=>p.classList.toggle('on',p.dataset.page===pg)); $$('nav a.nl').forEach(a=>a.classList.toggle('cur',a.dataset.page===pg)); hdr.classList.toggle('solid',pg!=='home'); if(pg==='home'){ hdr.classList.toggle('light',scrollY<innerHeight*2.6) } else { hdr.classList.remove('light') } document.body.dataset.page=pg;
     $$('.page.on .ap:not(.in)').forEach(e=>io.observe(e));
     if(anchor==='demo'){ anchor=null; setTimeout(()=>{ const oc=$('#oc'); if(oc){ oc.scrollIntoView({block:'center'}); site.openDemo() } },60) }
     if(anchor){ setTimeout(()=>{ const el=document.getElementById(anchor); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}) },60) } else { scrollTo({top:0,left:0,behavior:'instant'}) }
