@@ -400,6 +400,18 @@ nav a.nl.cur:after{transform:translateX(-50%) scaleX(1)}
 .login-entry .fine{font-size:12px;color:#625c58;margin:16px 0 0}
 @media(max-width:620px){.ideal-demo{width:100%}.ideal-demo-head{padding:18px}.ideal-demo-body{padding:18px}.ideal-demo-actions a{padding:13px 12px}}
 
+
+/* ---------- 手机导航折页（量自 ZapConnect 手机版） ---------- */
+header .menu{display:none;width:24px;height:24px;margin-left:auto;flex-direction:column;justify-content:center;gap:6px;cursor:pointer}
+header .menu i{display:block;height:2px;background:currentColor;border-radius:1px}
+.drawer{display:none;position:fixed;left:0;right:0;top:0;z-index:40;background:var(--cream);color:var(--brown);padding:0 0 20px;box-shadow:0 20px 40px rgba(32,21,21,.12);transform:translateY(-8px);opacity:0;transition:transform .25s ease,opacity .25s ease}
+.drawer.on{display:block;transform:none;opacity:1}
+.drawer .dh{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 16px 0 12px;margin-bottom:20px}
+.drawer .dh .logo{color:var(--brown)}
+.drawer .dx{width:24px;height:24px;font:300 26px/1 var(--sans);color:var(--brown);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.drawer>a:not(.dcta){display:flex;align-items:center;height:48px;padding:0 16px;margin-bottom:12px;font:500 24px/42px var(--sans);color:var(--brown)}
+.drawer .dcta{display:flex;align-items:center;justify-content:center;gap:8px;height:44px;margin:4px 16px 0;background:var(--brown);color:var(--cream);border-radius:4px;font:600 16px var(--sans)}
+@media (max-width:900px){nav{display:none}header .menu{display:flex}header .logo span,header .logo small{display:none}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="boilS" x="-1%" y="-1%" width="102%" height="102%"><feTurbulence type="fractalNoise" baseFrequency=".008" numOctaves="2" seed="1" result="t"><animate attributeName="seed" values="1;2;3;4;5;6;7;8" dur="1.4s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feDisplacementMap in="SourceGraphic" in2="t" scale="2"/></filter></svg>
@@ -413,7 +425,17 @@ nav a.nl.cur:after{transform:translateX(-50%) scaleX(1)}
     <a class="nl" href="#/home/faq">常见问题</a>
     <a class="btn" href="app.html#onboarding/1">登录 <span class="ar">→</span></a>
   </nav>
+  <button class="menu" id="menuBtn" aria-label="菜单" onclick="document.getElementById('drawer').classList.add('on')"><i></i><i></i></button>
 </header>
+<div class="drawer" id="drawer">
+  <div class="dh"><a class="logo" href="#/" onclick="document.getElementById('drawer').classList.remove('on')"><i></i><b>Soulink</b></a><button class="dx" aria-label="关闭" onclick="document.getElementById('drawer').classList.remove('on')">×</button></div>
+  <a href="#/lingxi" onclick="document.getElementById('drawer').classList.remove('on')">灵犀</a>
+  <a href="#/how" onclick="document.getElementById('drawer').classList.remove('on')">怎么用</a>
+  <a href="#/today" onclick="document.getElementById('drawer').classList.remove('on')">每天 20 位</a>
+  <a href="#/campus" onclick="document.getElementById('drawer').classList.remove('on')">高校联盟</a>
+  <a href="#/home/faq" onclick="document.getElementById('drawer').classList.remove('on')">常见问题</a>
+  <a class="dcta" href="app.html#onboarding/1">登录 <span class="ar">→</span></a>
+</div>
 
 <div class="page on" data-page="home"><!-- 首屏：白天 → 黄昏 → 夜晚 -->
 <div class="heroTrack" id="top">
