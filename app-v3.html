@@ -691,6 +691,41 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
 .dkacts button:active{transform:scale(.92)}
 .dk-like{background:#141414}.dk-skip{background:#fff}
 
+/* ---------- 第 72 轮 · 邀请与分享 ---------- */
+.invhub{display:block;margin:14px 20px 0!important;text-decoration:none;color:inherit}
+.ih-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.ih-top b{font-weight:500;font-size:16px}
+.ih-pill{font:500 11.5px/1 var(--sans);padding:6px 10px;border-radius:999px;background:var(--fill-primary,#141414);color:#fff;white-space:nowrap}
+.ih-bar{height:6px;border-radius:3px;background:rgba(20,20,30,.08);margin:12px 0 8px;overflow:hidden}
+.ih-bar i{display:block;height:100%;border-radius:3px;background:var(--fill-primary,#141414)}
+.ih-sub{font-size:12px;color:var(--tertiary)}
+.ih-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 20px 0}
+.ih-tiles button{text-align:left;padding:12px;border-radius:16px;background:var(--fill-tertiary,#F4F4F6);border:1px solid rgba(20,20,30,.06);display:flex;flex-direction:column;gap:4px}
+.ih-tiles b{font-weight:500;font-size:13.5px}
+.ih-tiles small{font-size:11.5px;color:var(--tertiary)}
+.iv-row{display:flex;justify-content:space-between;align-items:baseline;margin-top:4px}
+.iv-big{font-size:20px;font-weight:500}
+.iv-num{font-size:13px;color:var(--secondary)}
+.iv-steps{position:relative;height:22px;margin:16px 14px 6px}
+.iv-line{position:absolute;left:0;right:0;top:10px;height:2px;background:rgba(20,20,30,.1)}
+.iv-line i{display:block;height:100%;background:var(--fill-primary,#141414);transition:width .4s}
+.iv-dot{position:absolute;top:4px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:#fff;border:2px solid rgba(20,20,30,.25)}
+.iv-dot.on{background:var(--fill-primary,#141414);border-color:var(--fill-primary,#141414)}
+.iv-lbls{display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center;font-size:12.5px}
+.iv-lbls div:first-child{text-align:left}.iv-lbls div:last-child{text-align:right}
+.iv-lbls b{display:block;font-weight:500}.iv-lbls small{color:var(--tertiary);font-size:11.5px}
+.iv-code{display:flex;justify-content:space-between;align-items:center}
+.iv-codev{font-family:var(--mono);font-size:18px;letter-spacing:.1em}
+.iv-alt .li{width:100%;text-align:left}
+.iv-rules ol{margin:0;padding-left:18px;font-size:13px;line-height:1.7;color:var(--secondary)}
+.jn-big{font-size:30px;font-weight:600;letter-spacing:-.01em;margin-top:6px}
+.jn-card{padding:0!important;overflow:hidden}
+.jn-ph{position:relative;height:260px}.jn-ph img{width:100%;height:100%;object-fit:cover}
+.jn-ph .dkchip{position:absolute;left:14px;bottom:14px}
+.jn-trust{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-size:12.5px}
+.jn-trust b{display:block;font-weight:500}.jn-trust small{color:var(--tertiary);font-size:11.5px}
+.gp-qr{margin:14px auto 0;width:150px;height:150px;border-radius:14px;border:1px dashed rgba(20,20,30,.25);display:flex;align-items:center;justify-content:center;text-align:center;font-size:12px;color:var(--tertiary);padding:12px}
+
 /* ============ v3 · 参考 Dafi 的整套设计系统 ============ */
 :root{--background:#F7F7F9;--white:#FFFFFF;--card:#FFFFFF;
  --primary:#141414;--secondary:#66666C;--tertiary:#98989F;--quaternary:#C7C7CD;
@@ -1011,7 +1046,7 @@ html,body{background:#F0F0F2}
 <div class="stage">
   <div class="side">
     <h1>Soulink</h1>
-    <div>遇见你的理想型。<br>原型 v2.54 · 2026-10-26</div>
+    <div>遇见你的理想型。<br>原型 v2.63 · 2026-10-27</div>
     <span class="cap">路由</span>
     <a href="#onboarding/1" data-nav>首屏 · 手绘城市</a>
     <a href="#onboarding/1a" data-nav style="color:var(--tertiary)">（旧）首屏 A · 线稿动画</a>
@@ -1036,6 +1071,8 @@ html,body{background:#F0F0F2}
     <a href="#me" data-nav>我</a>
     <a href="#me/edit" data-nav>我 › 编辑资料</a>
     <a href="#me/preview" data-nav>我 › 预览</a>
+    <a href="#me/invite" data-nav>我 › 邀请同学（裂变）</a>
+    <a href="#join" data-nav>邀请落地页（同学打开）</a>
     <span class="cap">演示控制</span>
     <div class="demo"><button onclick="demo.reset()">重置</button><button onclick="demo.nextDay()">跳到次日回访</button></div>
     <span class="cap">说明</span>
@@ -1448,6 +1485,38 @@ html,body{background:#F0F0F2}
     </section>
 
     <!-- ===== 我 ===== -->
+        <section class="screen" data-route="me/invite"><div class="bgB"></div>
+      <div class="top"><a class="back" href="#me"><svg class="ic" viewBox="0 0 24 24" width="22" height="22"><g fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M15.1 4.5 Q10.6 8.2 7.9 11.8 Q11 15.8 15.4 19.6"/></g></svg></a><span class="t">邀请同学</span><span class="right">规则见底部</span></div>
+      <div class="scroll">
+        <div class="card p iv-school"><div class="cap">高校联盟 · 学校进度</div><div class="iv-row"><b class="iv-big">清华大学</b><span class="iv-num">989 位同学</span></div><div class="ih-bar"><i style="width:82%"></i></div><small class="ih-sub">到下一档全校解锁本校专场活动（档位待定）· 北大 181 · 北师大 80</small></div>
+        <div class="card p iv-mine"><div class="iv-row"><b>我的邀请</b><span class="iv-num">已生效 <span class="inv-n">0</span> / 10</span></div>
+          <div class="iv-steps"><div class="iv-line"><i class="inv-fill" style="width:0%"></i></div><span class="iv-dot" data-at="1" style="left:0%"></span><span class="iv-dot" data-at="3" style="left:50%"></span><span class="iv-dot" data-at="10" style="left:100%"></span></div>
+          <div class="iv-lbls"><div><b>1 位</b><small>马上多看 5 位</small></div><div><b>3 位</b><small>提前看 3 天</small></div><div><b>10 位</b><small>校园发起人</small></div></div></div>
+        <div class="card p iv-code"><div><div class="cap">你的邀请码</div><b class="iv-codev">THU-7K2Q</b></div><button class="btn sm" onclick="demo.toast('已复制邀请码')">复制</button></div>
+        <div class="pad"><button class="btn" style="width:100%" onclick="demo.shareCard('invite')">生成同校邀请卡</button></div>
+        <div class="cap pad" style="margin-top:18px">不想让人知道你在用？换一种分享</div>
+        <div class="card list iv-alt">
+          <button class="li" onclick="demo.shareCard('pairinvite')"><div><b>和朋友合盘</b><small>测测你们合不合 · 朋友不用注册</small></div><span class="chev">›</span></button>
+          <button class="li" onclick="demo.shareCard('ideal3')"><div><b>分享我的理想型三个词</b><small>不含照片 · 朋友可以测自己的三个词</small></div><span class="chev">›</span></button>
+          <button class="li" onclick="demo.shareCard('matchmake')"><div><b>帮两位朋友牵线</b><small>发合盘邀请给两个人 · 双方都同意前互相看不到资料</small></div><span class="chev">›</span></button>
+          <button class="li" onclick="demo.sheet('group')"><div><b>加入清华 Soulink 群</b><small>活动、去处、每周一个话题 · 仅校园邮箱</small></div><span class="chev">›</span></button>
+        </div>
+        <div class="card p iv-rules"><div class="cap" style="margin-bottom:6px">规则</div><ol><li>同学用校园邮箱注册，并讲完三段话，邀请才生效。</li><li>生效后你们马上各多看 5 位，当天有效；3 位生效送 3 天「提前看明天的 20 位」。</li><li>每人最多邀请 10 位；全校人数到档后全校一起解锁，与个人邀请数无关。</li><li>邀请卡不放你的头像和交友状态；同学看不到是谁邀请的，你也只看到人数。</li><li>不需要转发朋友圈、不需要好友助力。</li></ol></div>
+        <div class="pad" style="margin:6px 0 24px"><button class="cap" style="text-decoration:underline" onclick="demo.invJoin()">演示：1 位同学加入</button> · <a class="cap" style="text-decoration:underline" href="#join">看同学打开的落地页 ›</a></div>
+      </div>
+      <nav class="tabs" data-tabs></nav>
+    </section>
+
+    <section class="screen" data-route="join"><div class="bgB"></div>
+      <div class="top"><span class="t">Soulink</span><span class="right">清华大学</span></div>
+      <div class="scroll">
+        <div class="pad jn-hero"><div class="cap">清华大学 · 高校联盟</div><div class="jn-big">已有 989 位同学</div><div class="h h2" style="margin-top:6px">遇见你的理想型。</div><p class="sub" style="margin-top:6px">传一张你喜欢的样子，每天 20 位像的人，每一位都写明为什么。</p><a class="btn" style="width:100%;margin-top:16px" href="#onboarding/2">用校园邮箱加入</a><small class="ih-sub" style="display:block;margin-top:8px;text-align:center">不用先下 App，小程序里就能走完注册</small></div>
+        <div class="cap pad" style="margin-top:18px">一张推荐长什么样</div>
+        <div class="card jn-card"><div class="jn-ph"><img class="avp" src="art/people/p01.webp" alt=""><span class="dkchip">理想型 · 对上 3 个</span></div><div class="p" style="padding:14px 16px 16px"><b>林　26</b><small class="ih-sub" style="display:block">产品设计 · 已验证 ✓</small><p style="margin:8px 0 0;font-size:14px">为什么是 Ta：你们都提过周末喜欢看展。</p><small class="ih-sub">AI 生成 · 示例</small></div></div>
+        <div class="card p jn-trust"><div><b>只有同校同学</b><small>校园邮箱验证</small></div><div><b>照片先模糊</b><small>双方都点才看清</small></div><div><b>不存人脸</b><small>理想型只转成几个词</small></div></div>
+        <div style="height:28px"></div>
+      </div>
+    </section>
     <section class="screen" data-route="me"><div class="bgB"></div>
       <div class="top"><span class="t">我</span><a class="right" href="#me/settings">设置</a></div>
       <div class="scroll">
@@ -1455,6 +1524,8 @@ html,body{background:#F0F0F2}
           <div class="hd"><div class="av"><img class="avp" src="art/people/p21.webp" alt=""></div><div class="tx"><div class="h h2">你</div><div class="st">研究生在读 · 海淀 · 创业中</div><div class="vf">✓ 人脸 ✓ 手机 · <button class="cap" style="text-decoration:underline;letter-spacing:0;text-transform:none;font:inherit;font-size:11.5px;color:var(--tertiary)" onclick="demo.sheet('views')">37 人看过我</button></div></div><a class="btn sm soft" href="#me/preview" style="flex:none">预览</a></div>
           <div class="tags"><span class="tag">处女座 · 土兔</span><span class="tag">INFJ</span><span class="tag">看展 · 电影</span><br><span class="tag">认真交往 · 不急</span><span id="me-pubtags" style="display:contents"></span></div>
         </div>
+                <a class="card p invhub" href="#me/invite"><div class="ih-top"><b>邀请同校同学</b><span class="ih-pill">同学加入，马上多 5 位</span></div><div class="ih-bar"><i style="width:82%"></i></div><small class="ih-sub">清华 989 位同学 · 我的邀请已生效 <span class="inv-n">0</span> / 10</small></a>
+        <div class="ih-tiles"><button onclick="demo.shareCard('pairinvite')"><b>和朋友合盘</b><small>测测你们合不合</small></button><button onclick="demo.shareCard('ideal3')"><b>我的理想型</b><small>分享三个词</small></button><button onclick="demo.sheet('group')"><b>清华 Soulink 群</b><small>活动 · 去处</small></button></div>
         <div class="seg" style="margin:16px 20px 0" id="me-seg"><button class="on" onclick="demo.meTab(this,'feed')">动态</button><button onclick="demo.meTab(this,'profile')">资料</button></div>
         <div id="me-feed">
           <div class="card p comp2" id="me-draft"><div class="hd"><div class="av"><img class="avp" src="art/people/p21.webp" alt=""></div><input id="me-in" placeholder="今天想说的…"></div>
@@ -1477,7 +1548,7 @@ html,body{background:#F0F0F2}
         <div class="card list" style="margin-top:18px">
           <a class="li" href="#me/settings"><img class="objic" src="art/flat/spot-key.svg" alt="" width="640" height="622" onerror="this.src=this.src.replace('/flat/','/ink/');this.onerror=null"><div><b>数据开关</b><small>理想型推荐 开 · 灵犀帮聊 开 · 位置 区级</small></div><span class="chev">›</span></a>
           <a class="li" href="#me/plus"><img class="objic" src="art/flat/spot-plus.svg" alt="" width="120" height="120" onerror="this.src=this.src.replace('/flat/','/ink/');this.onerror=null"><div><b>会员</b><small>提前看明天的 20 位 · 让灵犀约见面</small></div><span class="chev">›</span></a>
-          <button class="li" style="width:100%;text-align:left" onclick="demo.sheet('invite')"><img class="objic" src="art/flat/spot-match.svg" alt="" width="120" height="120" onerror="this.src=this.src.replace('/flat/','/ink/');this.onerror=null"><div><b>邀请同校同学</b><small>Ta 用校园邮箱加入，你们各多一封周四来信</small></div><span class="chev">›</span></button>
+          <button class="li" style="width:100%;text-align:left" onclick="location.hash='#me/invite'"><img class="objic" src="art/flat/spot-match.svg" alt="" width="120" height="120" onerror="this.src=this.src.replace('/flat/','/ink/');this.onerror=null"><div><b>邀请同校同学</b><small>同学加入后，你们马上各多 5 位</small></div><span class="chev">›</span></button>
         </div>
       </div>
       <nav class="tabs" data-tabs></nav>
@@ -1577,7 +1648,7 @@ html,body{background:#F0F0F2}
         <div class="card" style="padding:10px"><div class="photo" style="height:320px;background:#fff"><img class="avp" src="art/people/ideal.webp" alt="" onerror="this.style.display='none'"><span class="ai">你的理想型照片</span></div>
           <div style="display:flex;gap:8px;padding:10px 6px 2px;align-items:center"><button class="btn sm soft" onclick="demo.pickerOpen('ideal',this)">上传照片</button><button class="btn sm soft" onclick="demo.regen(this)">让灵犀画</button></div></div>
         <div class="card p"><div class="cap" style="margin-bottom:6px">给理想型命名</div><input class="inp" value="小婷型" onchange="demo.renameIdeal(this.value)"></div>
-        <div class="card p"><div class="cap" style="margin-bottom:8px">照片特点 · AI 生成 · 仅供参考</div><span id="ideal-words"><span class="tag">清冷</span><span class="tag">短发</span><span class="tag">冷色衣着</span><span class="tag">安静</span></span><button class="tag" style="border:1px dashed var(--quaternary);background:transparent;color:var(--tertiary)" onclick="demo.tagOpen('words',this)">+ 加一个</button></div>
+        <div class="card p"><div class="cap" style="margin-bottom:8px;display:flex;justify-content:space-between">照片特点 · AI 生成 · 仅供参考<button class="cap" style="text-decoration:underline" onclick="demo.shareCard('ideal3')">分享这三个词</button></div><span id="ideal-words"><span class="tag">清冷</span><span class="tag">短发</span><span class="tag">冷色衣着</span><span class="tag">安静</span></span><button class="tag" style="border:1px dashed var(--quaternary);background:transparent;color:var(--tertiary)" onclick="demo.tagOpen('words',this)">+ 加一个</button></div>
         <div class="card list"><div class="cap" style="padding:12px 0 4px">今天 8 位像</div><a class="li" href="#today/profile/lin"><div class="av" style="overflow:hidden"><img class="avp" src="art/people/p01.webp" alt=""></div><div><b>林，26</b><small>4 个全对上 · 短发 清冷 冷色 安静</small></div><span class="pill hot">最像</span></a><a class="li" href="#today/profile/qian"><div class="av g2" style="overflow:hidden"><img class="avp" src="art/people/p11.webp" alt=""></div><div><b>钱，26</b><small>对上 3 个 · 离你最近</small></div><span class="chev">›</span></a><a class="li" href="#today/profile/xu"><div class="av g3" style="overflow:hidden"><img class="avp" src="art/people/p05.webp" alt=""></div><div><b>许，27</b><small>对上 3 个</small></div><span class="chev">›</span></a><a class="li" href="#today" onclick="demo.filterIdeal()"><div><b style="font-weight:400;color:var(--secondary)">今天 · 理想型 · 8 位 ›</b></div></a></div>
         <div class="pad" style="margin-top:20px;display:flex;justify-content:space-between;align-items:baseline"><span class="cap">理想型分析</span><span class="cap" style="color:var(--quaternary)">AI 生成 · 仅供参考</span></div>
         <div class="card p rpt"><div class="cap">照片能看出什么</div><p>照片里是短发、冷色衣着。性格还要通过资料和相处了解。</p>
@@ -1690,6 +1761,7 @@ html,body{background:#F0F0F2}
       <div class="card p lxnote" style="margin:12px 0 0"><div class="cap">灵犀</div><p style="margin:6px 0 0;font-size:13.5px;line-height:1.5">其中 <b>3 位</b>像你的理想型，明天优先推荐。喜欢你的人会出现在「今天」。</p></div>
       <p class="sub" style="font-size:11.5px;margin-top:12px">仅自己可见，不展示访客名单。</p></div></div>
     <div class="sheet" id="sheet-invite"><div class="box"><div class="grab"></div><div class="cap">高校联盟 · 邀请</div><div class="h h2" style="margin-top:6px">邀请同校同学</div><p class="sub">同学校园邮箱注册并讲完三段话后，双方各多一封本周四来信。清华目前 989 人注册。</p><div class="card p" style="margin:14px 0 0;display:flex;justify-content:space-between;align-items:center"><div><div class="cap">你的邀请码</div><b style="font-family:var(--mono);font-size:18px;letter-spacing:.1em">THU-7K2Q</b></div><button class="btn sm" onclick="demo.toast('已复制')">复制</button></div><div style="display:flex;gap:10px;margin-top:14px"><button class="btn" style="flex:1" onclick="demo.shareOpen('invite')">生成邀请卡</button><button class="btn soft" onclick="demo.closeSheet()">关闭</button></div><p class="sub" style="font-size:11.5px;margin-top:12px">仅限校园邮箱，每人最多邀请 10 位。</p></div></div>
+    <div class="sheet" id="sheet-group"><div class="box"><div class="grab"></div><div class="cap">高校联盟 · 社群</div><div class="h h2" style="margin-top:6px">加入清华 Soulink 群</div><p class="sub">企业微信群，只对校园邮箱验证过的同学开放。群里发活动、去处和每周一个话题。</p><div class="gp-qr"><span>企业微信群二维码</span></div><div class="card p" style="margin-top:12px"><div class="kv"><span>不发</span>个人资料、照片、联系方式</div><div class="kv"><span>不做</span>群里私加、拉人进群换奖励</div><div class="kv" style="border:0"><span>退出</span>随时退群，不影响推荐</div></div><div style="display:flex;gap:10px;margin-top:14px"><button class="btn" style="flex:1" onclick="demo.toast('已保存二维码 · 用微信扫码加入');demo.closeSheet()">保存二维码</button><button class="btn soft" onclick="demo.closeSheet()">以后再说</button></div></div></div>
     <div class="sheet" id="sheet-reply"><div class="box"><div class="grab"></div><div class="cap">评论 <span id="rp-who">李</span> · 实名 · 审核后可见</div><div class="card p" style="margin:10px 0 0;background:var(--fill-tertiary);border:0"><p id="rp-quote" style="margin:0;font-size:13.5px;color:var(--secondary);line-height:1.5"></p></div><div class="field"><input class="inp" id="rp-in" placeholder="写一句"></div><div style="display:flex;gap:10px;margin-top:12px;align-items:center"><button class="cap" style="text-decoration:underline" onclick="demo.replyDraft()">灵犀拟稿</button><span class="cap" id="rp-why" style="margin-left:auto"></span></div><div style="display:flex;gap:10px;margin-top:14px"><button class="btn" style="flex:1" onclick="demo.replySend()">发布</button><button class="btn soft" onclick="demo.closeSheet()">取消</button></div></div></div>
     <div class="sheet" id="sheet-report"><div class="box"><div class="grab"></div><div class="cap">举报 <span id="rt-who">李</span></div><div class="h h2" style="margin-top:6px">举报原因</div><div class="chips" id="rt-chips" style="margin-top:12px"><button class="chip" onclick="demo.pick(this)">冒充他人</button><button class="chip" onclick="demo.pick(this)">骚扰</button><button class="chip" onclick="demo.pick(this)">色情低俗</button><button class="chip" onclick="demo.pick(this)">欺诈</button><button class="chip" onclick="demo.pick(this)">不实信息</button><button class="chip" onclick="demo.pick(this)">垃圾广告</button><button class="chip" onclick="demo.pick(this)">泄露他人隐私</button><button class="chip" onclick="demo.pick(this)">其他</button></div><div class="field"><input class="inp" id="rt-in" placeholder="补一句（可不填）"></div><div style="display:flex;gap:10px;margin-top:14px"><button class="btn" style="flex:1" onclick="demo.reportSend()">提交</button><button class="btn soft" onclick="demo.closeSheet()">取消</button></div><p class="sub" style="font-size:11.5px;margin-top:12px">24 小时内处理；Ta 不会知道是谁举报的。</p></div></div>
     <div class="sheet" id="sheet-picker"><div class="box"><div class="grab"></div><div style="display:flex;justify-content:space-between;align-items:center"><div class="h h2" id="pk-title">选一张</div><button class="cap" onclick="demo.closeSheet()">关闭 ×</button></div><p class="sub" id="pk-sub" style="margin-top:4px"></p><div id="pk-body"></div></div></div>
@@ -1772,7 +1844,7 @@ html,body{background:#F0F0F2}
   function deckList(){ let f=state.filter||'lx'; if(!['lx','ideal'].includes(f)) f=state.filter='lx'; let L=[LIN,...PEOPLE]; const done=state.done||[]; L=L.filter(p=>!done.includes(p[0])).filter(passes); const soft=pref().soft||[]; if(f==='lx'&&soft.length){ L=L.slice().sort((a,b)=>(soft.some(w=>b[8].includes(w)||b[9].includes(w))?1:0)-(soft.some(w=>a[8].includes(w)||a[9].includes(w))?1:0)) } if(f==='ideal') L=L.filter(p=>p[10]>=2).sort((a,b)=>b[10]-a[10]); if(state.pin){ const i=L.findIndex(p=>p[0]===state.pin); if(i>0){ const [q]=L.splice(i,1); L.unshift(q) } } return L }
   function likeTxt(n){ return n>=4?'理想型 · 全对上':n>=2?`理想型 · 对上 ${n} 个`:'' }
   function renderToday(){ let f=state.filter||'lx'; if(!['lx','ideal','near'].includes(f)) f=state.filter='lx'; $$('[data-route="today"] .seg button').forEach(b=>b.classList.toggle('on',(b.getAttribute('onclick')||'').includes("'"+f+"'"))); const L=deckList(); const p=L[0]; const lead=$('#deck-lead'), link=$('#deck-link'); if(lead&&lead.parentNode) lead.parentNode.style.display='none'; if(f==='lx'){ lead.textContent=''; link.style.display='none' } else if(f==='ideal'){ const n=L.filter(x=>x[10]>=2).length; lead.textContent=`按照片相似程度排 · 小婷型 · ${n} 位像`; link.style.display=''; } else { lead.textContent=''; link.style.display='none' }
-        const d=$('#deck'); if(!p){ d.innerHTML='<div class="glass" style="text-align:center;padding:28px 16px"><b style="font-weight:500">今天没有更多符合条件的人</b><p class="sub" style="margin-top:6px">明早 8 点更新，已喜欢的人可在「消息」里查看。</p></div>'; $('#deck-count').textContent=''; $('#deck-next').innerHTML=''; return }
+        const d=$('#deck'); if(!p){ d.innerHTML='<div class="glass" style="text-align:center;padding:28px 16px"><b style="font-weight:500">今天没有更多符合条件的人</b><p class="sub" style="margin-top:6px">明早 8 点更新，已喜欢的人可在「消息」里查看。</p><a class="btn sm" href="#me/invite" style="margin-top:12px;display:inline-flex">邀请同学 · 加入后马上多 5 位</a></div>'; $('#deck-count').textContent=''; $('#deck-next').innerHTML=''; return }
     const words=WORDS.map((w,i)=>`<span class="${i<p[10]?'on':''}">${w}</span>`).join(''); const meta=`${p[3]} · ${p[4]} · 约 ${p[5]} 公里${p[0]==='lin'?' · 已验证 ✓':''}`; const badge= f==='ideal'?likeTxt(p[10]):(p[0]==='lin'?'首推':p[9]);
     const ANS=p[0]==='lin'?[['周末不＿＿会难受','周末不看展会难受。最近在看一个摄影展，去了两次。'],['理想的周日是','上午咖啡馆，下午随便走走，晚上早点回家。']]:[];
     const PICS=(p[0]==='lin'?['art/people/p01-2.webp','art/people/p01-3.webp','art/people/p01-4.webp']:[]).concat(FEED.filter(x=>x.id===p[0]&&x.ph).map(x=>`art/photos/${x.ph}.webp`));
@@ -2042,6 +2114,26 @@ html,body{background:#F0F0F2}
     scr.addEventListener('pointerdown',e=>{ if(e.target.closest('a,button')) return; const r=scr.getBoundingClientRect(); const box=$('#sparks'); if(!box) return; for(let i=0;i<9;i++){ const d=document.createElement('i'); const a=Math.random()*Math.PI*2, dist=30+Math.random()*60; d.style.left=(e.clientX-r.left)+'px'; d.style.top=(e.clientY-r.top)+'px'; d.style.setProperty('--dx',(Math.cos(a)*dist).toFixed(0)+'px'); d.style.setProperty('--dy',(-40-Math.random()*70+Math.sin(a)*20).toFixed(0)+'px'); d.style.animationDelay=(Math.random()*.15)+'s'; box.appendChild(d); setTimeout(()=>d.remove(),1600) } });
   })();
   window.addEventListener('hashchange',route); route();
+})();
+</script>
+
+<script>
+(function(){
+  function W(){ try{ var st=JSON.parse(localStorage.getItem('mr-proto2')||'{}'); return st.idealW||['清冷','短发','冷色衣着','安静'] }catch(e){ return ['清冷','短发','冷色衣着','安静'] } }
+  function n(){ try{ return +(localStorage.getItem('sl-inv')||0) }catch(e){ return 0 } }
+  var CARDS={
+    invite:function(){ return ['清华大学 · 已有 989 位同学','遇见你的理想型。','传一张你喜欢的样子，每天 20 位像的人。用校园邮箱加入，讲完三段话就开始。','长按识别小程序码 · 仅限校园邮箱'] },
+    pairinvite:function(){ return ['合盘 · 邀请','和我合个盘？','填生日和 MBTI 就行，不用注册。结果我们俩都能看，你的资料不进推荐池。','仅供参考'] },
+    ideal3:function(){ return ['我的理想型',W().join(' · '),'测测你的理想型是哪三个词：传一张你喜欢的样子，不用注册。','AI 生成 · 不含照片'] },
+    matchmake:function(){ return ['帮朋友牵线','我觉得你俩合','各自填生日和 MBTI，测一下你们的合盘。两人都同意前，互相看不到对方资料。','仅供参考 · 不含任何人照片'] }
+  };
+  window.demo.shareCard=function(kind){ var c=CARDS[kind](); var q=function(id){return document.getElementById(id)}; q('sh-cap').textContent=c[0]; q('sh-title').textContent=c[1]; q('sh-body').textContent=c[2]; q('sh-foot').textContent=c[3]; window.demo.closeSheet(); window.demo.sheet('share') };
+  window.demo.invRender=function(){ var k=n(); document.querySelectorAll('.inv-n').forEach(function(e){e.textContent=k});
+    var pct=k<=1?0:(k<=3?(k-1)/2*50:50+(k-3)/7*50); document.querySelectorAll('.inv-fill').forEach(function(e){e.style.width=pct+'%'});
+    document.querySelectorAll('.iv-dot').forEach(function(d){d.classList.toggle('on',k>=+d.dataset.at)}) };
+  window.demo.invJoin=function(){ var k=n(); if(k>=10){ window.demo.toast('已到 10 位上限'); return } k++; try{localStorage.setItem('sl-inv',k)}catch(e){}
+    window.demo.invRender(); window.demo.toast(k===3?'第 3 位同学加入了 · 送你 3 天提前看明天的 20 位':k===10?'10 位同学加入了 · 你是清华的校园发起人':'1 位同学加入了 · 你们各多 5 位，现在就能看') };
+  window.addEventListener('hashchange',window.demo.invRender); window.demo.invRender();
 })();
 </script>
 
