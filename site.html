@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Soulink · 官网 v0.31</title>
+<title>Soulink · 官网 v0.32</title>
 <meta name="description" content="Soulink — AI 社交匹配平台。遇见你的理想型。Soulink 与沐仞科技（FathomPeak）合作出品。">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400&family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@300;400&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -445,6 +445,11 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
 .feat .phone{width:300px;margin:0 auto;border-radius:36px;border:6px solid #201515;overflow:hidden;box-shadow:0 20px 60px rgba(32,21,21,.18);background:#fff;aspect-ratio:390/844}
 .feat .phone img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:opacity .25s}
 @media (max-width:900px){.feat{grid-template-columns:1fr;gap:28px}.feat .fr{position:static}.feat .phone{width:240px}}
+
+/* 沐仞优惠条 */
+.fp-offer{margin:18px 0 22px;padding:16px 18px;border-radius:12px;background:rgba(255,79,0,.07);border:1px solid rgba(255,79,0,.18);display:flex;flex-direction:column;gap:4px}
+.fp-offer b{font-weight:600;font-size:17px}
+.fp-offer span{font-size:14px;opacity:.75}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="boilS" x="-1%" y="-1%" width="102%" height="102%"><feTurbulence type="fractalNoise" baseFrequency=".008" numOctaves="2" seed="1" result="t"><animate attributeName="seed" values="1;2;3;4;5;6;7;8" dur="1.4s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feDisplacementMap in="SourceGraphic" in2="t" scale="2"/></filter></svg>
@@ -486,7 +491,6 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
       <p id="hp">传一张你喜欢的样子，每天 20 位像的人，每一位都写明为什么。<br>聊不下去时，灵犀站在你这边。</p>
       <a class="btn" href="app.html#onboarding/1">登录 <span class="ar">→</span></a>
     </div>
-    <div class="hint">往下滚 · 天会黑</div>
   </section>
 </div>
 
@@ -544,8 +548,9 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
 <div class="two">
   <div class="ap">
     <h3>Soulink × 沐仞科技</h3>
-    <p>沐仞科技（FathomPeak）做绿电算力和大模型词元供应。灵犀跑在沐仞自己的算力上，所以每天 20 位、每一位都写理由这件事做得起。</p>
-    <a class="link" href="https://fathompeak.cn" target="_blank" rel="noopener">了解沐仞科技 <span class="ar">→</span></a>
+    <p>灵犀跑在沐仞科技（FathomPeak）的算力上，所以每天 20 位、每一位都写理由这件事做得起。沐仞是一站式大模型 API 平台：GLM、DeepSeek、Qwen、MiniMax 等主流模型，兼容 OpenAI 接口。</p>
+    <div class="fp-offer"><b>做 AI 项目？模型 API 公开价 4 折起</b><span>注册沐仞就能用，实际折扣以模型与用量为准。</span></div>
+    <a class="link" href="https://fathompeak.cn" target="_blank" rel="noopener">去沐仞注册 <span class="ar">→</span></a>
   </div>
   <div class="pic ap d1"><img src="art/web/cards/card-lingxi.webp" alt=""></div>
 </div>
@@ -709,7 +714,7 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
     dim.style.opacity=ramp(p,.8,1);
     cy=-90*p; if(clouds) clouds.style.transform=`translate(${cx}px,${cy}px)`;
     hdr.classList.toggle('light', scrollY<vh*2.6);
-    $('.hint').style.opacity=1-ramp(p,0,.15);
+    { const h=$('.hint'); if(h) h.style.opacity=1-ramp(p,0,.15) }
   }
   addEventListener('scroll',()=>{ if(document.body.dataset.page!=='product') return; const fis=[...document.querySelectorAll('.feat .fi')]; if(!fis.length) return; const mid=innerHeight*0.45; let best=null,bd=1e9; fis.forEach(f=>{ const r=f.getBoundingClientRect(); const d=Math.abs((r.top+r.height/2)-mid); if(d<bd){bd=d;best=f} }); if(best&&!best.classList.contains('on')) site.feat(best) },{passive:true});
   addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll); onScroll();
