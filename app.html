@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Soulink · 原型 v2.66</title>
+<title>Soulink · 原型 v2.67</title>
 <meta name="description" content="Soulink · 遇见你的理想型。可点击原型 v2：每天 20 位、合并的对话与约会、去处、测一测、语音通话。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght,WONK@9..144,300..500,0..1&display=swap">
@@ -767,12 +767,16 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
 .fp-tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
 .fp-tx b{font-weight:500;font-size:14px}
 .fp-tx small{font-size:11.5px;color:var(--tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ---------- 第 77 轮 · 讲讲你：常驻下一步 ---------- */
+.obring,.obcap{display:none}
+.obnext{margin-top:12px}
 </style>
 
 <div class="stage">
   <div class="side">
     <h1>Soulink</h1>
-    <div>遇见你的理想型。<br>原型 v2.66 · 2026-10-27</div>
+    <div>遇见你的理想型。<br>原型 v2.67 · 2026-10-27</div>
     <span class="cap">路由</span>
     <a href="#onboarding/1" data-nav>首屏 · 手绘城市</a>
     <a href="#onboarding/1a" data-nav style="color:var(--tertiary)">（旧）首屏 A · 线稿动画</a>
@@ -907,6 +911,7 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
           <div class="wave" id="ob-wave" style="height:48px;margin-bottom:26px"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
           <div class="cap" style="margin-bottom:10px">讲讲你 · 第 <span id="ob-qn">1</span> / 3 段 · 灵犀在听</div>
           <div class="mix" id="ob-q"><span style="color:var(--secondary)">周末你</span><b>喜欢做什么</b><span style="color:var(--secondary)">？</span></div>
+          <div class="obring"><button class="obmic" onclick="demo.obMic()" title="点一下说话"><img src="art/v3/act-mic.svg" alt=""></button></div><div class="cap obcap">点一下说话 · 再点结束</div>
           <p class="sub" id="ob-hint" style="margin:18px auto 0;max-width:24em;font-size:13.5px">聊两三分钟，灵犀记下你在意的事。每条都能改、能删。</p>
         </div>
         <div class="msgs" id="ob-msgs" style="padding-top:22px"></div>
@@ -918,8 +923,9 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
           <button class="chip" onclick="demo.obAnswer(this,'在家待着，看书或打游戏')">在家待着</button>
         </div>
         <input id="ob-in" class="obin" placeholder="打字也行，回车发送" onkeydown="if(event.key==='Enter')demo.obSend()">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><button class="gp ic" onclick="demo.obType(this)" title="改用打字"><img src="art/ink/act-keyboard.svg" alt="" style="width:18px;height:18px" onerror="this.src='art/ink/act-send.svg';this.onerror=null"></button><button class="mic on" onclick="demo.obMic()" title="按住说话"><svg class="ic" viewBox="0 0 24 24" width="26" height="26"><g fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M11.5 2.5 C14 2.1 15.5 3.7 15.3 6.4 L15.4 10.6 C15.5 13.2 13.8 14.6 11.7 14.3 C9.5 14.4 8.3 12.7 8.6 10.5 L8.5 6.2 Q8.4 2.9 11.5 2.5 Z"/> <path d="M5.6 10.7 C5.1 20 18.9 20.6 18.6 10.5 M12.1 18 L11.9 21.4 M8.2 21.5 Q12 21.1 15.9 21.4"/></g></svg></button><button class="gp ic" onclick="demo.obSend()"><svg class="ic" viewBox="0 0 24 24" width="18" height="18"><g fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M2.7 10.1 Q12.1 6.7 21 3.3 Q18.8 12.2 16 21 L11.3 13.2 L2.7 10.1 Z M11.3 13.2 Q15.8 8.8 21 3.3"/></g></svg></button></div>
-        <div class="cap center" style="margin-top:10px">点一下说话 · 再点结束</div>
+        <div class="obrow" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><button class="gp ic" onclick="demo.obType(this)" title="改用打字"><img src="art/ink/act-keyboard.svg" alt="" style="width:18px;height:18px" onerror="this.src='art/ink/act-send.svg';this.onerror=null"></button><button class="mic on" onclick="demo.obMic()" title="按住说话"><svg class="ic" viewBox="0 0 24 24" width="26" height="26"><g fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M11.5 2.5 C14 2.1 15.5 3.7 15.3 6.4 L15.4 10.6 C15.5 13.2 13.8 14.6 11.7 14.3 C9.5 14.4 8.3 12.7 8.6 10.5 L8.5 6.2 Q8.4 2.9 11.5 2.5 Z"/> <path d="M5.6 10.7 C5.1 20 18.9 20.6 18.6 10.5 M12.1 18 L11.9 21.4 M8.2 21.5 Q12 21.1 15.9 21.4"/></g></svg></button><button class="gp ic" onclick="demo.obSend()"><svg class="ic" viewBox="0 0 24 24" width="18" height="18"><g fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M2.7 10.1 Q12.1 6.7 21 3.3 Q18.8 12.2 16 21 L11.3 13.2 L2.7 10.1 Z M11.3 13.2 Q15.8 8.8 21 3.3"/></g></svg></button></div>
+        <div class="cap center obhint2" style="margin-top:10px">点一下说话 · 再点结束</div>
+        <button class="btn w obnext" id="ob-next" onclick="demo.obGo()">下一步 ›</button>
       </div>
     </section>
 
@@ -1785,8 +1791,9 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
     talkSend(){ const t=$('#talk-in').value.trim(); if(!t) return; state.mem=state.mem||[]; state.mem.push({t:'社交前会犹豫，但不想错过',src:'你跟灵犀说的 · 今天',cat:'value'}); if(state.memList) state.memList.push({t:'社交前会犹豫，但不想错过',src:'你跟灵犀说的 · 今天',cat:'value'}); save(); $('#talk-in').value=''; demo.closeSheet(); toast('记下了一条，在「灵犀记得」里能看到') },
     fdDraft(){ const i=$('#fd-in'); i.value='周六下午去了三影堂，人少，看得很慢。'; i.focus(); toast('已参考记忆拟稿 · AI 生成 · 仅供参考') },
     fdSend(){ const i=$('#fd-in'); if(!i.value.trim()) return; const ty=[...$$('#fdcomp .types .chip')].find(c=>c.classList.contains('sel'))?.textContent||'打卡'; $('#place-list').insertAdjacentHTML('afterbegin',`<div class="fd" style="opacity:.6"><div class="hd"><div class="av"><img class="avp" src="art/people/p21.webp" alt=""></div><div><b>你</b><small>刚刚 · 审核中</small></div><span class="ty">${ty}</span></div><p>${i.value.trim().replace(/</g,'&lt;')}</p></div>`); i.value=''; toast('已发布，审核后对别人可见') },
-    obAnswer(chip,text){ const seg=state.obSeg||0, S=SEG[seg]; const m=$('#ob-msgs'); m.insertAdjacentHTML('beforeend',`<div class="bub me" style="align-self:center;max-width:86%">${text}</div>`); state.mem=state.mem||[]; S.mem.forEach(x=>{ if(!state.mem.some(y=>y.t===x[0])) state.mem.push({t:x[0],src:x[1],cat:x[2],ob:true}) }); save(); m.insertAdjacentHTML('beforeend',`<div class="memcard"><div class="cap">灵犀记得 · 可改可删</div>${S.mem.map(x=>`<div class="mi"><div><span contenteditable="false">${x[0]}</span><small>来源：${x[1]}</small></div><button onclick="demo.memEditInline(this)">改</button><button onclick="this.closest('.mi').remove();demo.memDrop('${x[0]}')">删</button></div>`).join('')}</div>`); const chips=$('#ob-chips'); if(seg<2){ chips.innerHTML='<button class="btn" onclick="demo.obNext()">下一段 ›</button>'; $('#ob-wave').classList.add('idle') } else { const n=state.mem.length; m.insertAdjacentHTML('beforeend',`<div class="memcard" style="margin-top:6px"><div class="cap">三段讲完 · 灵犀记得了 ${n} 条</div><div class="sw" style="padding:10px 0 4px;border:0"><div><b>灵犀记得 · 默认开</b><small>记说话习惯、你看重的、对推荐的反馈，用于推荐和帮聊。每条有来源，可改可删可导出，不训练对外模型。</small></div><button class="tg" data-sw="memory" onclick="demo.toggle(this)"></button></div></div>`); chips.innerHTML='<a class="btn" href="#onboarding/6">查看画像</a>'; $('#ob-wave').classList.add('idle') } $('#ob-chat').scrollTop=1e6 },
-    obNext(){ if((state.obSeg||0)>=2) return; state.obSeg=(state.obSeg||0)+1; save(); const S=SEG[state.obSeg]; $('#ob-qn').textContent=state.obSeg+1; $('#ob-q').innerHTML=`<span style="color:var(--secondary)">${S.q[0]}</span><b>${S.q[1]}</b><span style="color:var(--secondary)">${S.q[2]}</span>`; $('#ob-hint').textContent=S.hint; $('#ob-chips').innerHTML=S.chips.map(c=>`<button class="chip" onclick="demo.obAnswer(this,'${c[1]}')">${c[0]}</button>`).join(''); $('#ob-wave').classList.remove('idle'); $('#ob-chat').scrollTop=0 },
+    obAnswer(chip,text){ const seg=state.obSeg||0, S=SEG[seg]; const m=$('#ob-msgs'); m.insertAdjacentHTML('beforeend',`<div class="bub me" style="align-self:center;max-width:86%">${text}</div>`); state.mem=state.mem||[]; S.mem.forEach(x=>{ if(!state.mem.some(y=>y.t===x[0])) state.mem.push({t:x[0],src:x[1],cat:x[2],ob:true}) }); save(); m.insertAdjacentHTML('beforeend',`<div class="memcard"><div class="cap">灵犀记得 · 可改可删</div>${S.mem.map(x=>`<div class="mi"><div><span contenteditable="false">${x[0]}</span><small>来源：${x[1]}</small></div><button onclick="demo.memEditInline(this)">改</button><button onclick="this.closest('.mi').remove();demo.memDrop('${x[0]}')">删</button></div>`).join('')}</div>`); const chips=$('#ob-chips'); if(seg<2){ chips.innerHTML=''; $('#ob-wave').classList.add('idle') } else { const n=state.mem.length; m.insertAdjacentHTML('beforeend',`<div class="memcard" style="margin-top:6px"><div class="cap">三段讲完 · 灵犀记得了 ${n} 条</div><div class="sw" style="padding:10px 0 4px;border:0"><div><b>灵犀记得 · 默认开</b><small>记说话习惯、你看重的、对推荐的反馈，用于推荐和帮聊。每条有来源，可改可删可导出，不训练对外模型。</small></div><button class="tg" data-sw="memory" onclick="demo.toggle(this)"></button></div></div>`); chips.innerHTML=''; { const nb=$('#ob-next'); if(nb) nb.textContent='查看画像 ›' } $('#ob-wave').classList.add('idle') } $('#ob-chat').scrollTop=1e6 },
+    obGo(){ if((state.obSeg||0)>=2){ location.hash='#onboarding/6'; return } this.obNext() },
+    obNext(){ if((state.obSeg||0)>=2) return; state.obSeg=(state.obSeg||0)+1; save(); const S=SEG[state.obSeg]; $('#ob-qn').textContent=state.obSeg+1; $('#ob-q').innerHTML=`<span style="color:var(--secondary)">${S.q[0]}</span><b>${S.q[1]}</b><span style="color:var(--secondary)">${S.q[2]}</span>`; $('#ob-hint').textContent=S.hint; $('#ob-chips').innerHTML=S.chips.map(c=>`<button class="chip" onclick="demo.obAnswer(this,'${c[1]}')">${c[0]}</button>`).join(''); $('#ob-wave').classList.remove('idle'); $('#ob-msgs').innerHTML=''; $('#ob-chat').scrollTop=0 },
     obMic(){ const w=$('#ob-wave'); if(!state.rec){ state.rec=true; w.classList.remove('idle'); toast('在听…再点一下结束'); } else { state.rec=false; this.obAnswer(null,'（语音）'+SEG[state.obSeg||0].chips[0][1]); } },
     obSend(){ const i=$('#ob-in'); if(!i.value.trim()) return; this.obAnswer(null,i.value.trim()); i.value='' },
     helper(){ const h=$('#helper'); const on=h.style.display==='none'; if(on) demo.panel(null); h.style.display=on?'block':'none'; const fb=$('#fabs'); if(fb) fb.style.display=on?'none':''; $('#help-btn').classList.toggle('on',on); if(on&&!state.hpMode){state.hpMode='reply';state.hpStyle='自然'} },
