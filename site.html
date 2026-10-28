@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Soulink · 官网 v0.33</title>
+<title>Soulink · 官网 v0.34</title>
 <meta name="description" content="Soulink — AI 社交匹配平台。遇见你的理想型。Soulink 与沐仞科技（FathomPeak）合作出品。">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400&family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@300;400&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -534,7 +534,7 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
 <div class="four">
   <div class="ap"><img src="art/flat/spot-ideal.svg" alt=""><h4>理想型</h4><p>传一张你喜欢的样子，或者让灵犀按你的描述画一张。照片只转成几个词（清冷、短发、冷色衣着、安静），不存人脸，不拿去认人。每天的 20 位里，谁和这几个词对上了，写在卡片上；还有一份灵犀写的理想型报告：Ta 大概是什么样的人、去哪遇见。</p></div>
   <div class="ap d1"><img src="art/flat/spot-portrait.svg" alt=""><h4>灵犀记得</h4><p>它会越来越了解你说话的习惯和你看重的事，默认开着。记的每一条都标来源，你能改、能删、能导出，也能随时关掉。只用来给你推荐、写理由、帮聊，不训练对外的模型。想说心里话，直接和灵犀聊，不公开。</p></div>
-  <div class="ap d2"><img src="art/flat/spot-notes.svg" alt=""><h4>帮聊，你来发</h4><p>聊不下去时，它按你的说话习惯给一句可改的话：帮我回复、帮我改写，六种语气。不知道从哪聊起，猜个拳，赢的人从灵犀出的题里挑一个问。发出去的仍然是你的字，对方也知道有 AI 在旁边。</p></div>
+  <div class="ap d2"><img src="art/flat/spot-notes.svg" alt=""><h4>每天替你安排，你来发</h4><p>每天早上 8 点给你一份安排：先看哪几位、谁在等你回、拟好的几句话放在「待你确认」，你改完按发送才会发出去。聊不下去时它按你的说话习惯递一句，六种语气；对方说外语，点「翻译」就能看懂。发出去的仍然是你的字，对方也知道有 AI 在旁边。</p></div>
   <div class="ap d3"><img src="art/flat/spot-tests.svg" alt=""><h4>测一测 · 合盘</h4><p>星座、属相五行、MBTI、恋爱风格，和今天的任何一位合一盘：六个维度、谁更主动、Ta 大概怎么看你、适合一起做什么。进你的画像当一个信号，不单独决定推荐。</p></div>
 </div>
 
@@ -757,15 +757,17 @@ header .menu i{display:block;height:2px;background:currentColor;border-radius:1p
   // ---------- FAQ ----------
   const FAQ=[
     ['理想型的照片，你们拿去做什么？','只在你的设备和我们的处理环节里转成几个描述词（例如：清冷、短发、冷色衣着、安静），之后照片本身不保存。推荐时用的是"词对词"，不做人脸比对，也不会拿任何人的脸去全库搜索。'],
-    ['灵犀会替我发消息吗？','不会。它只给候选句和依据，你改完自己按发送。对方的对话设置里能看到"对方开启了灵犀帮聊"，这是不能关闭的标识。'],
+    ['灵犀会替我发消息吗？','不会。它只给候选句和依据，每天拟好的几句放在「待你确认」，你改完自己按发送。对方的对话设置里能看到"对方开启了灵犀帮聊"，这是不能关闭的标识。'],
     ['为什么是 20 位，而且一次只看一位？','20 位是我们能把"为什么"写清楚的上限，一次一位是让你真的看完那句"为什么"。可以按灵犀的顺序看，也可以按理想型或附近看。想看更多，明早 8 点再来。'],
-    ['免费吗？','非会员每天 20 位，帮聊和通话不限。会员不限量，还能提前看明天的推荐、让灵犀安排见面；价格待定。'],
+    ['免费吗？','注册免费，每天 20 位，帮聊、翻译和通话不限。会员连续包月 18 元、包季 45 元、包年 148 元，可以提前看明天的推荐、让灵犀安排见面，随时取消。'],
+  ['对方说外语怎么办？','对话和广场里点「翻译」就能看译文，也可以在对话设置里打开自动翻译。译文都标「AI 翻译」。'],
+  ['邀请同学有什么用？','同学用你的邀请码注册，你们马上各多看 5 位；邀请 3 位送 3 天提前看。邀请卡不放你的头像和交友状态，同学看不到是谁邀请的。'],
     ['灵犀记得是什么？会记我多少？','它记三类：你说话的习惯、你看重的事、你对推荐的反馈，每一条都标来源。默认开着，随时可关；可以逐条改、逐条删、整体导出或全部删除。只用来给你推荐、写理由、帮聊，不训练对外的模型，和沐仞的企业业务分开存放。'],
     ['广场是树洞吗？','不是。广场里每一条动态都实名、挂着一个去处或活动，不能从动态私信。想说心里话，和灵犀聊，不公开。'],
     ['位置精确到哪？','只到区一级，列表里显示"约 2 公里"这样的粗距离。你可以随时关掉距离信号。'],
     ['语音通话会暴露手机号吗？','不会。通话走应用内线路，不交换手机号；通话有实时安全审核，遇到不舒服的话可以随时挂断并举报。'],
     ['星座、属相五行、MBTI 的结果会决定推荐吗？','不会单独决定。它们进你的画像当一个参考信号。'],
-    ['谁可以加入 Soulink？','目前高校联盟已支持所有已入驻高校的校园邮箱登录；其他城市用户可从登录入口了解产品。若你的高校希望加入 Soulink 高校联盟，欢迎联系 thusoulink@163.com，并附上你所在高校的邮箱后缀。'],
+    ['谁可以加入 Soulink？','所有人都能用微信或手机号注册。用校园邮箱验证后加入高校联盟：同校的人优先推荐，可以只看高校认证的人，还能参加本校专场。想让你的高校加入，联系 thusoulink@163.com，附上学校的邮箱后缀。'],
     ['Soulink 和沐仞科技是什么关系？','合作关系：灵犀跑在沐仞自己的绿电算力和模型上。交友数据与沐仞的企业业务分开存放、分开授权，不用于训练对外的模型。'],
   ];
   $('#faqList').innerHTML=FAQ.map((f,i)=>`<div class="qa ap"><button onclick="this.parentNode.classList.toggle('open')"><span class="pm"></span>${f[0]}</button><div class="a"><div><p>${f[1]}</p></div></div></div>`).join(''); const fl2=$('#faqList2'); if(fl2) fl2.innerHTML=$('#faqList').innerHTML;

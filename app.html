@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Soulink · 原型 v2.72</title>
+<title>Soulink · 原型 v2.73</title>
 <meta name="description" content="Soulink · 遇见你的理想型。可点击原型 v2：每天 20 位、合并的对话与约会、去处、测一测、语音通话。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght,WONK@9..144,300..500,0..1&display=swap">
@@ -791,12 +791,35 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
 .lg-wxlogo{width:40px;height:40px;border-radius:12px;background:#141414;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600}
 
 .lxabout{margin-top:18px!important}.lxabout .cap{display:block;margin-bottom:2px}
+
+/* ---------- 第 83 轮 · 灵犀今天的安排 / 待发 / 翻译 ---------- */
+.agent{margin-top:4px!important}
+.ag-hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.ag-hd b{font-weight:500;font-size:17px}
+.ag-it{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:11px 0;border-top:1px solid rgba(20,20,30,.06);color:inherit;text-decoration:none}
+.ag-it:first-of-type{border-top:0}
+.ag-it i{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(20,20,30,.06);font:500 11.5px/22px var(--sans);font-style:normal;text-align:center;color:var(--secondary)}
+.ag-it div{flex:1;min-width:0}.ag-it b{display:block;font-weight:500;font-size:14.5px}.ag-it small{display:block;font-size:12px;color:var(--tertiary);margin-top:2px}
+.pend{padding:4px 16px!important}
+.pd{display:grid;grid-template-columns:40px 1fr;gap:4px 12px;padding:14px 0;border-top:1px solid rgba(20,20,30,.06)}
+.pd:first-child{border-top:0}
+.pd .av{width:40px;height:40px;border-radius:12px;overflow:hidden}
+.pd-tx b{font-weight:500;font-size:14px}.pd-tx p{margin:4px 0 2px;font-size:14px;line-height:1.5}.pd-tx small{font-size:11.5px;color:var(--tertiary)}
+.pd-act{grid-column:2;display:flex;gap:8px;margin-top:6px}
+.bub .tr{display:block;margin-top:6px;font:400 11.5px/1.4 var(--sans);color:var(--tertiary);text-decoration:underline;background:none;border:0;padding:0;text-align:left}
+.bub .trx{display:block;margin-top:6px;padding-top:6px;border-top:1px solid rgba(20,20,30,.08);font-size:13px;color:var(--secondary)}
+.bub .trx small{display:block;font-size:10.5px;color:var(--tertiary);margin-top:2px}
+.fd .tr{display:inline-block;margin-top:4px;font-size:12px;color:var(--tertiary);text-decoration:underline;background:none;border:0;padding:0}
+.fd .trx{margin:6px 0 0;font-size:13.5px;color:var(--secondary);line-height:1.55}
+.fd .trx small{display:block;font-size:10.5px;color:var(--tertiary)}
+
+.fd>.tr,.fd>.trx{margin-left:54px!important}
 </style>
 
 <div class="stage">
   <div class="side">
     <h1>Soulink</h1>
-    <div>遇见你的理想型。<br>原型 v2.72 · 2026-10-27</div>
+    <div>遇见你的理想型。<br>原型 v2.73 · 2026-10-27</div>
     <span class="cap">路由</span>
     <a href="#onboarding/1" data-nav>首屏 · 手绘城市</a>
     <a href="#onboarding/1a" data-nav style="color:var(--tertiary)">（旧）首屏 A · 线稿动画</a>
@@ -1066,6 +1089,8 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
           <button class="li prf" onclick="demo.prefSheet('verify')"><img src="art/ink/act-shield.svg" alt=""><div><b>认证</b><small>完成同类验证后可筛选</small></div><span class="val" id="pv-verify">真人已验证</span><span class="chev">›</span></button>
         </div>
         <div class="card p lxnote" id="pf-note"></div>
+        <div class="pad" style="margin-top:18px"><span class="cap">高校联盟</span></div><div class="card p"><div class="sw" style="padding:4px 0;border:0"><div><b>只看高校认证的人</b><small>验证校园邮箱后可用；同校的人排在前面。</small></div><button class="tg off" data-sw="campus" onclick="demo.toggle(this)"></button></div></div>
+        
         <div class="pad" style="margin-top:18px"><span class="cap">隐私</span></div>
         <div class="card p"><div class="sw" style="padding:4px 0;border:0"><div><b>屏蔽熟人</b><small>与通讯录联系人互相隐藏。</small></div><button class="tg off" data-sw="hide" onclick="demo.toggle(this)"></button></div><div class="sw" style="padding:10px 0 4px"><div><b>只让我喜欢的人看见我</b><small>只有你点过「喜欢」的人能看到你。</small></div><button class="tg off" data-sw="onlylike" onclick="demo.toggle(this)"></button></div></div>
         <div class="card p"><div class="cap">灵犀建议 · 由你决定</div><p style="margin:8px 0 0;font-size:13.5px;line-height:1.5">年龄设为 24–32，你喜欢的三位中两位在 33 以上。上限要改为 35 吗？<button class="cap" style="text-decoration:underline;margin-left:6px" onclick="pref().age=[24,35];save();demo.prefRender();demo.toast('上限改成 35 了')">放到 35</button></p></div>
@@ -1098,6 +1123,7 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
       <div class="scroll">
         <div class="cap pad" style="margin-top:4px">本周约会</div>
         <a class="card p" href="#chat/zhou" style="display:flex;gap:14px;align-items:center;margin-top:8px"><div class="av g2" style="width:52px;height:52px;border-radius:16px;position:relative;overflow:hidden;flex:none"><img class="avp" src="art/people/p02.webp" alt="" onerror="this.style.display='none'"></div><div style="flex:1"><b style="font-weight:500">和周 · 周六 15:00</b><div style="font-size:12.5px;color:var(--tertiary);margin:2px 0 6px">定地点中 · 灵犀提了两家</div><div class="dots"><i class="d"></i><i class="d"></i><i></i><i></i><i></i></div></div><span style="color:var(--quaternary)">›</span></a>
+        <div class="cap pad" style="margin-top:22px">待你确认 · 灵犀拟好，你按发送才会发</div><div class="card list pend" id="pend-list" style="margin-top:8px"><div class="pd" data-who="林"><div class="av"><img class="avp" src="art/people/p01.webp" alt=""></div><div class="pd-tx"><b>回林</b><p>三影堂那个，人少，看得慢。你平时去哪看？</p><small>AI 生成 · 依据：林问了「哪个？」，你们都喜欢摄影</small></div><div class="pd-act"><a class="btn sm soft" href="#chat/lin" onclick="demo.pdEdit('林',this)">改一下</a><button class="btn sm" onclick="demo.pdSend(this)">发送</button></div></div><div class="pd" data-who="陈"><div class="av g3"><img class="avp" src="art/people/p04.webp" alt=""></div><div class="pd-tx"><b>回陈 · 3 天没回</b><p>那张是在朝阳门那家咖啡馆二楼拍的，下午光线很好。</p><small>AI 生成 · 依据：陈问了照片在哪拍的</small></div><div class="pd-act"><a class="btn sm soft" href="#chat/chen">改一下</a><button class="btn sm" onclick="demo.pdSend(this)">发送</button></div></div></div>
         <div class="cap pad" style="margin-top:22px">聊天 · 该你回的在前</div>
         <div class="card list" style="margin-top:8px" id="chat-list">
           <a class="li" href="#chat/lin"><div class="av"><img class="avp" src="art/people/p01.webp" alt="" onerror="this.style.display='none'"></div><div><b>林</b><small>哪个？我也喜欢摄影</small></div><span class="pill hot">该你回了</span></a>
@@ -1115,9 +1141,9 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
         <div class="relcard" id="relcard"><div class="row1"><div class="avs"><div class="av"><img class="avp" src="art/people/p21.webp" alt=""></div><div class="av"><img class="avp" src="art/people/p01.webp" alt=""></div></div><div style="flex:1"><span class="tag p">理想型 · 全对上</span><span class="tag">处女 × 处女</span><span class="tag">金龙 × 土兔</span></div><button class="cap" style="text-decoration:underline" onclick="demo.toggleRel(this)">收起</button></div><div class="k" id="relk"><span>共同点</span><em style="font-style:normal">看展 · 摄影 · 朝阳 · 都喜欢安静</em><span>Ta 的回答</span><em style="font-style:normal">「周末不看展会难受。」·「理想的周日是上午咖啡馆。」</em><span>灵犀</span><em style="font-style:normal">Ta 刚问了问题，可以先回复。</em></div></div>
         <div class="msgs" id="chat-msgs" style="padding-top:8px">
           <div class="bub sys">昨天 · 你们互相喜欢了 · 可以语音通话，不交换手机号</div>
-          <div class="inrow"><a class="av" href="#today/profile/lin"><img class="avp" src="art/people/p01.webp" alt=""></a><div class="bub">你周末一般做什么呀</div></div>
+          <div class="inrow"><a class="av" href="#today/profile/lin"><img class="avp" src="art/people/p01.webp" alt=""></a><div class="bub">你周末一般做什么呀<button class="tr" data-tr="What do you usually do on weekends?" onclick="demo.tr(this)">翻译</button></div></div>
           <div class="bub me">多半在看展，最近在看一个摄影展</div>
-          <div class="inrow"><a class="av" href="#today/profile/lin"><img class="avp" src="art/people/p01.webp" alt=""></a><div class="bub">哪个？我也喜欢摄影</div></div>
+          <div class="inrow"><a class="av" href="#today/profile/lin"><img class="avp" src="art/people/p01.webp" alt=""></a><div class="bub">哪个？我也喜欢摄影<button class="tr" data-tr="Which one? I like photography too." onclick="demo.tr(this)">翻译</button></div></div>
           <div class="sugcard" id="sugcard"><div class="hd"><span><img src="art/flat/spot-lingxi.svg" alt="" onerror="this.src='art/ink/spot-lingxi.svg';this.onerror=null">灵犀拟稿 · AI 生成</span><button onclick="demo.sugMore()" title="换一批">⟳</button><button onclick="document.getElementById('sugcard').remove()">×</button></div><div class="opts" id="sug-opts"></div><small id="sug-why"></small></div>
         </div>
       </div>
@@ -1148,7 +1174,7 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
       <div class="top"><a class="back" href="#chat/lin"><svg class="ic" viewBox="0 0 24 24" width="22" height="22"><g fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M15.1 4.5 Q10.6 8.2 7.9 11.8 Q11 15.8 15.4 19.6"/></g></svg></a><span class="t">对话设置</span><span class="right"></span></div>
       <div class="scroll">
         <div class="card" style="padding:4px 18px">
-          <div class="sw"><div><b>允许灵犀读当前对话</b><small>点「帮聊」才读；对方能看到「对方开启了灵犀帮聊」。</small></div><button class="tg" data-sw="chat" onclick="demo.toggle(this)"></button></div>
+          <div class="sw"><div><b>自动翻译</b><small>对方的消息下面显示译文，标「AI 翻译」；也可以点单条消息下的「翻译」。</small></div><button class="tg off" data-sw="autotr" onclick="demo.toggle(this)"></button></div><div class="sw"><div><b>允许灵犀读当前对话</b><small>点「帮聊」才读；对方能看到「对方开启了灵犀帮聊」。</small></div><button class="tg" data-sw="chat" onclick="demo.toggle(this)"></button></div>
           <div class="sw"><div><b>实时提示</b><small>任一方三天未回复时提醒。</small></div><button class="tg" data-sw="nudge" onclick="demo.toggle(this)"></button></div>
           <div class="sw"><div><b>通话前提醒</b><small>见面前提醒先通话 5 分钟。</small></div><button class="tg" data-sw="callhint" onclick="demo.toggle(this)"></button></div>
         </div>
@@ -1221,6 +1247,7 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
     <section class="screen" data-route="lx"><div class="bgB"></div>
       <div class="top"><span class="t">灵犀</span><span class="right">按你喜欢的样子找</span></div>
       <div class="scroll">
+        <div class="card p agent"><div class="ag-hd"><b>今天的安排</b><span class="cap">灵犀 · AI 生成 · 8:00 更新</span></div><a class="ag-it" href="#today"><i>1</i><div><b>先看这 3 位</b><small>林（理想型全对上）· 许 · 钱</small></div><span class="chev">›</span></a><a class="ag-it" href="#chats"><i>2</i><div><b>两句话等你确认</b><small>给林的回复、给陈的一句，改完再发</small></div><span class="chev">›</span></a><button class="ag-it" onclick="demo.agPost()"><i>3</i><div><b>今天发一条</b><small>灵犀拟了广场打卡：朝阳门那家咖啡馆</small></div><span class="chev">›</span></button><a class="ag-it" href="#chat/zhou"><i>4</i><div><b>周六 15:00 和周见面</b><small>地点还没定，灵犀提了两家</small></div><span class="chev">›</span></a></div>
         <a class="idealhero" href="#me/ideal"><div class="ph"><img class="avp" src="art/people/ideal.webp" alt="" onerror="this.style.display='none'"><span class="ai">你的理想型照片</span></div><div class="tx"><span class="cap">我的理想型</span><div class="h h2" style="margin-top:4px">小婷型</div><div class="ws"><span>清冷</span><span>短发</span><span>冷色衣着</span><span>安静</span></div><p>传一张理想型照片，灵犀按照片帮你找像的人，推荐给你。今天 <b>8 位像</b>，林最像。</p><div class="row"><span class="btn sm" onclick="event.preventDefault();demo.pickerOpen('ideal',this)">上传照片</span><span class="btn sm soft" onclick="event.preventDefault();demo.drawGo()">让灵犀画</span><span class="cap" style="margin-left:auto">看分析 ›</span></div></div></a>
         <a class="lxbar" href="#lx/chat"><div class="av"><img src="art/flat/spot-lingxi.svg" alt="" width="120" height="120" onerror="this.src='art/ink/spot-lingxi.svg';this.onerror=null"></div><div class="tx"><b>灵犀</b><p>聊推荐、看对话，灵犀会说明依据。</p></div><span class="go">聊 ›</span></a>
         <a class="card p memcard2" href="#me/memory"><div class="hd"><img class="objic" src="art/flat/spot-portrait.svg" alt="" width="640" height="630" onerror="this.src=this.src.replace('/flat/','/ink/');this.onerror=null"><div style="flex:1"><b>灵犀记得</b><div class="sub2" id="lx-mem-sub">12 条 · 默认开 · 可改可删</div></div><span class="chev">›</span></div><div class="src" id="lx-mem-src"></div></a>
@@ -1313,7 +1340,7 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
             <a class="li" href="#me/edit"><div><b>关于我</b><small>研究生在读 · 清华（未验证）· 海淀 · 创业中 · 想找认真交往</small></div><span class="chev">›</span></a>
             <a class="li" href="#me/edit"><div><b>三条回答</b><small>还差 3 条 · 可让灵犀拟稿</small></div><span class="pill">待填</span></a>
             <a class="li" href="#me/profile"><div><b>画像</b><small>AI 生成 · 可删改</small></div><span class="chev">›</span></a>
-            <a class="li" href="#me/edit"><div><b>验证</b><small>✓ 人脸 ✓ 手机 · 学历未验证</small></div><span class="chev">›</span></a>
+            <a class="li" href="#me/edit"><div><b>验证</b><small>✓ 人脸 ✓ 手机 · 校园邮箱未验证（验证后同校优先、解锁本校专场）</small></div><span class="chev">›</span></a>
           </div>
           <p class="pad" style="font-size:12px;color:var(--tertiary);margin-top:10px">资料完成 70%。补全回答，让灵犀有更多推荐依据。</p>
         </div>
@@ -1339,7 +1366,7 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
           <p id="ans-note" style="display:none;margin:8px 0 0;font:400 11px var(--mono);letter-spacing:.04em;color:var(--tertiary)">AI 生成 · 依据三段对话与「灵犀记得」· 发布后标「灵犀帮写过」</p></div>
         <div class="card p"><div class="cap" style="margin-bottom:8px">想找什么</div><div class="chips"><button class="chip sel" onclick="demo.pick(this)">认真交往</button><button class="chip" onclick="demo.pick(this)">先认识看看</button><button class="chip" onclick="demo.pick(this)">还没想好</button></div></div>
         <div class="card p"><div class="cap" style="margin-bottom:8px">标签 · 最多 6 个</div><span class="tag sel">摄影</span><span class="tag sel">咖啡</span><span class="tag">不抽烟</span><span class="tag">猫</span><span class="tag">跑步</span><button class="tag" style="border:1px dashed var(--quaternary);background:transparent;color:var(--tertiary)" onclick="demo.tagOpen('tags',this)">+ 加一个</button></div>
-        <div class="card list"><div class="li"><div><b>验证</b><small id="vf-state">✓ 人脸 ✓ 手机 · 学历未验证</small></div><button class="btn sm soft" id="vf-btn" style="margin-left:auto" onclick="demo.sheet('verify')">验学历</button></div></div>
+        <div class="card list"><div class="li"><div><b>验证</b><small id="vf-state">✓ 人脸 ✓ 手机 · 校园邮箱未验证（验证后同校优先、解锁本校专场）</small></div><button class="btn sm soft" id="vf-btn" style="margin-left:auto" onclick="demo.sheet('verify')">验学历</button></div></div>
       </div>
       <div class="foot"><button class="btn w" onclick="demo.toast('已保存，推荐理由会参考新资料');location.hash='#me'">保存</button></div>
     </section>
@@ -1938,5 +1965,26 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
     if(inv && !/^[A-Za-z]{2,4}-?[A-Za-z0-9]{3,6}$/.test(inv)){ window.demo.toast('邀请码格式不对，可以先留空'); return }
     window.demo.toast(inv?'登录成功 · 邀请码已生效，你们各多看 5 位':'登录成功'); setTimeout(function(){ location.hash='#onboarding/2' },500) };
   window.addEventListener('hashchange',function(){ if(/^#login\//.test(location.hash)) prefill() }); prefill();
+})();
+</script>
+
+<script>
+(function(){
+  var FEED_EN={'二楼靠窗那排下午三点以后有太阳，带本书很舒服。':'The window seats on the second floor get sun after 3 pm. Nice with a book.',
+    '六个人一起看展，看完各自安排，聊得挺自然。':'Six of us went to the exhibition, then went our own ways. The chat felt natural.',
+    '周六下午想一起去书店，各自看书也行。':'Want to go to a bookstore on Saturday afternoon? Fine to read on our own.',
+    '今天把「喜欢热闹」从标签里划掉了。更想和一两个人慢慢聊。':'Took "likes crowds" off my tags today. I would rather talk slowly with one or two people.',
+    '傍晚桥洞下风大，记得带外套。':'It gets windy under the bridge at dusk. Bring a jacket.'};
+  window.demo.tr=function(b){ var host=b.parentNode, x=host.querySelector('.trx');
+    if(x){ x.remove(); b.textContent='翻译'; return }
+    host.insertAdjacentHTML('beforeend','<span class="trx">'+b.dataset.tr+'<small>AI 翻译 · English</small></span>'); b.textContent='收起翻译'; };
+  function feedTr(){ document.querySelectorAll('#place-list .fd > p').forEach(function(p){ if(p.dataset.trd) return; var en=FEED_EN[p.textContent.trim()]; if(!en) return; p.dataset.trd=1;
+    p.insertAdjacentHTML('afterend','<button class="tr" data-tr="'+en.replace(/"/g,'&quot;')+'" onclick="demo.trFeed(this)">翻译</button>') }) }
+  window.demo.trFeed=function(b){ var n=b.nextElementSibling; if(n && n.classList.contains('trx')){ n.remove(); b.textContent='翻译'; return }
+    b.insertAdjacentHTML('afterend','<p class="trx">'+b.dataset.tr+'<small>AI 翻译 · English</small></p>'); b.textContent='收起翻译'; };
+  window.demo.pdSend=function(b){ var r=b.closest('.pd'); var who=r.dataset.who; r.style.opacity=.4; setTimeout(function(){ r.remove(); var l=document.getElementById('pend-list'); if(l && !l.children.length) l.innerHTML='<div class="pd-tx" style="padding:14px 0;color:var(--tertiary);font-size:13px">都处理完了。</div>' },250); window.demo.toast('已发送给'+who) };
+  window.demo.pdEdit=function(who,a){ var t=a.closest('.pd').querySelector('p').textContent; setTimeout(function(){ var i=document.getElementById('chat-in'); if(i){ i.value=t; i.focus() } },400) };
+  window.demo.agPost=function(){ location.hash='#places'; setTimeout(function(){ if(window.demo.fdDraft) window.demo.fdDraft(); var c=document.getElementById('fdcomp'); if(c) c.scrollIntoView({behavior:'smooth',block:'center'}) },450) };
+  new MutationObserver(feedTr).observe(document.body,{childList:true,subtree:true}); feedTr();
 })();
 </script>
