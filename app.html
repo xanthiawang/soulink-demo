@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Soulink · 原型 v2.71</title>
+<title>Soulink · 原型 v2.72</title>
 <meta name="description" content="Soulink · 遇见你的理想型。可点击原型 v2：每天 20 位、合并的对话与约会、去处、测一测、语音通话。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght,WONK@9..144,300..500,0..1&display=swap">
@@ -789,12 +789,14 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
 .lg-wx{margin:18px 0 0!important}
 .lg-wxhd{display:flex;gap:12px;align-items:center}.lg-wxhd b{display:block;font-weight:500}.lg-wxhd small{color:var(--tertiary);font-size:12px}
 .lg-wxlogo{width:40px;height:40px;border-radius:12px;background:#141414;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600}
+
+.lxabout{margin-top:18px!important}.lxabout .cap{display:block;margin-bottom:2px}
 </style>
 
 <div class="stage">
   <div class="side">
     <h1>Soulink</h1>
-    <div>遇见你的理想型。<br>原型 v2.71 · 2026-10-27</div>
+    <div>遇见你的理想型。<br>原型 v2.72 · 2026-10-27</div>
     <span class="cap">路由</span>
     <a href="#onboarding/1" data-nav>首屏 · 手绘城市</a>
     <a href="#onboarding/1a" data-nav style="color:var(--tertiary)">（旧）首屏 A · 线稿动画</a>
@@ -1233,6 +1235,7 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
           <a class="li" href="#lx/personality"><img class="objic" src="art/flat/spot-lingxi.svg" alt="" width="120" height="120" onerror="this.src=this.src.replace('/flat/','/ink/');this.onerror=null"><div><b>灵犀的性格</b><small>当前：直接 · 说事实 · 给依据</small></div><span class="chev">›</span></a>
           <a class="li" href="#me/notes"><img class="objic" src="art/flat/spot-notes.svg" alt="" width="640" height="580" onerror="this.src=this.src.replace('/flat/','/ink/');this.onerror=null"><div><b>灵犀笔记</b><small>每日小结 · 回访记录</small></div><span class="chev">›</span></a>
         </div>
+        <button class="card fpad lxabout" onclick="demo.sheet('fathom')"><div class="fp-tx"><span class="cap">关于灵犀</span><b>灵犀由沐仞科技的算力支持</b><small>做 AI 项目？模型 API 4 折起 · GLM、DeepSeek、Qwen、MiniMax</small></div><span class="chev">›</span></button>
       </div>
       <nav class="tabs" data-tabs></nav>
     </section>
@@ -1295,7 +1298,6 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
           <div class="tags"><span class="tag">处女座 · 土兔</span><span class="tag">INFJ</span><span class="tag">看展 · 电影</span><br><span class="tag">认真交往 · 不急</span><span id="me-pubtags" style="display:contents"></span></div>
         </div>
                 <div class="card mgrid"><a href="#me/invite"><span class="mg-ic"><img src="art/flat/spot-match.svg" alt="" onerror="this.src=this.src.replace('/flat/','/ink/');this.onerror=null"><em>+5</em></span><b>邀请同学</b></a><a href="#me/tests/pair"><span class="mg-ic"><img src="art/flat/test-pair.svg" alt="" onerror="this.src=this.src.replace('/flat/','/ink/');this.onerror=null"></span><b>合盘</b></a><a href="#me/ideal"><span class="mg-ic"><img src="art/flat/spot-ideal.svg" alt="" onerror="this.src=this.src.replace('/flat/','/ink/');this.onerror=null"></span><b>理想型</b></a><a href="#me/tests"><span class="mg-ic"><img src="art/flat/spot-tests.svg" alt="" onerror="this.src=this.src.replace('/flat/','/ink/');this.onerror=null"></span><b>测一测</b></a><a href="#me/plus"><span class="mg-ic"><img src="art/flat/spot-plus.svg" alt="" onerror="this.src=this.src.replace('/flat/','/ink/');this.onerror=null"></span><b>会员</b></a></div>
-        <button class="card fpad" onclick="demo.sheet('fathom')"><div class="fp-tx"><b>做 AI 项目？模型 API 4 折起</b><small>灵犀跑在沐仞科技的算力上 · GLM、DeepSeek、Qwen、MiniMax</small></div><span class="chev">›</span></button>
         <div class="seg" style="margin:16px 20px 0" id="me-seg"><button class="on" onclick="demo.meTab(this,'feed')">动态</button><button onclick="demo.meTab(this,'profile')">资料</button></div>
         <div id="me-feed">
           <div class="card p comp2" id="me-draft"><div class="hd"><div class="av"><img class="avp" src="art/people/p21.webp" alt=""></div><input id="me-in" placeholder="今天想说的…"></div>
@@ -1501,6 +1503,7 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
           <div class="sw"><div><b>使用区级位置</b><small>位置只到区一级，关闭后不按距离排序。</small></div><button class="tg" data-sw="loc" onclick="demo.toggle(this)"></button></div>
           <div class="sw"><div><b>参与理想型推荐</b><small>关闭后，不再按照片推荐给别人。</small></div><button class="tg" data-sw="pool" onclick="demo.toggle(this)"></button></div>
         </div>
+        <div class="card list"><a class="li" onclick="demo.sheet('fathom')"><div><b>关于 Soulink</b><small>技术合作：沐仞科技</small></div><span class="chev">›</span></a></div>
         <div class="card list"><a class="li" onclick="demo.exportOpen('all')"><div><b>导出数据</b></div><span class="chev">›</span></a><a class="li" onclick="demo.sheet('delete')"><div><b style="color:#B02A12">注销账号</b><small>删除画像、理想型、聊天、通话记录与回访</small></div><span class="chev">›</span></a></div>
       </div>
     </section>
