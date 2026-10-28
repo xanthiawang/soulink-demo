@@ -1092,12 +1092,14 @@ html,body{background:#F0F0F2}
 /* ============ v3.6 · 讲讲你（照 Dafi Audio recording：白底、淡彩光环、黑色圆角麦克风、底部黑色主按钮） ============ */
 [data-route="onboarding/5"]::before,[data-route="onboarding/5"] .bgB img,[data-route="onboarding/5"] #ob-wave{display:none!important}
 [data-route="onboarding/5"] #ob-q{font-size:30px!important;line-height:1.25}
-[data-route="onboarding/5"] .obring{display:flex;position:relative;width:236px;height:236px;margin:22px auto 4px;align-items:center;justify-content:center}
-[data-route="onboarding/5"] .obring::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 210deg,#F7CAD6,#E3DAF7,#CFE0F7,#CDEFE3,#F3D3E8,#F7CAD6);-webkit-mask:radial-gradient(circle,transparent 56%,#000 61%,#000 70%,transparent 75%);mask:radial-gradient(circle,transparent 56%,#000 61%,#000 70%,transparent 75%);filter:blur(10px);opacity:.95}
-[data-route="onboarding/5"] #ob-wave:not(.idle)~.obring::before{animation:obspin 7s linear infinite}
+[data-route="onboarding/5"] .obring{display:flex;position:relative;width:268px;height:268px;margin:18px auto 0;align-items:center;justify-content:center}
+[data-route="onboarding/5"] .obring::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 200deg,#F4C9DA,#E2D6F6,#C9DCF5,#CFEDE2,#F1D9EC,#F4C9DA);-webkit-mask:radial-gradient(circle,transparent 60%,#000 66%,#000 72%,transparent 78%);mask:radial-gradient(circle,transparent 60%,#000 66%,#000 72%,transparent 78%);filter:blur(9px);opacity:.92}
+[data-route="onboarding/5"] .obring::after{content:"";position:absolute;inset:16%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.95) 55%,rgba(255,255,255,0) 72%)}
+[data-route="onboarding/5"] #ob-wave:not(.idle)~.obring::before{animation:obspin 9s linear infinite}
 @keyframes obspin{to{transform:rotate(360deg)}}
-[data-route="onboarding/5"] .obmic{position:relative;z-index:1;width:64px;height:64px;border-radius:18px;background:#141414;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(20,20,30,.18)}
-[data-route="onboarding/5"] .obmic img{width:26px!important;height:26px!important;filter:invert(1)}
+[data-route="onboarding/5"] .obmic{position:relative;z-index:1;width:60px;height:60px;border-radius:17px;background:#141414;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(20,20,30,.16)}
+[data-route="onboarding/5"] .obmic svg{width:30px;height:30px;display:block}
+[data-route="onboarding/5"] #ob-hint{text-wrap:balance;max-width:20em!important}
 [data-route="onboarding/5"] .obcap{display:block;margin-top:6px}
 [data-route="onboarding/5"] .compose{background:linear-gradient(180deg,rgba(255,255,255,0),#fff 30%)!important}
 [data-route="onboarding/5"] .compose .mic,[data-route="onboarding/5"] .compose .gp.ic[onclick*="obSend"],[data-route="onboarding/5"] .obhint2{display:none!important}
@@ -1112,7 +1114,7 @@ html,body{background:#F0F0F2}
 <div class="stage">
   <div class="side">
     <h1>Soulink</h1>
-    <div>遇见你的理想型。<br>原型 v2.67 · 2026-10-27</div>
+    <div>遇见你的理想型。<br>原型 v2.68 · 2026-10-27</div>
     <span class="cap">路由</span>
     <a href="#onboarding/1" data-nav>首屏 · 手绘城市</a>
     <a href="#onboarding/1a" data-nav style="color:var(--tertiary)">（旧）首屏 A · 线稿动画</a>
@@ -1256,7 +1258,7 @@ html,body{background:#F0F0F2}
           <div class="wave" id="ob-wave" style="height:48px;margin-bottom:26px"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
           <div class="cap" style="margin-bottom:10px">讲讲你 · 第 <span id="ob-qn">1</span> / 3 段 · 灵犀在听</div>
           <div class="mix" id="ob-q"><span style="color:var(--secondary)">周末你</span><b>喜欢做什么</b><span style="color:var(--secondary)">？</span></div>
-          <div class="obring"><button class="obmic" onclick="demo.obMic()" title="点一下说话"><img src="art/v3/act-mic.svg" alt=""></button></div><div class="cap obcap">点一下说话 · 再点结束</div>
+          <div class="obring"><button class="obmic" onclick="demo.obMic()" title="点一下说话"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><rect x="8.6" y="2.6" width="6.8" height="11.6" rx="3.4" fill="#fff"/><path d="M5.6 11.2a6.4 6.4 0 0 0 12.8 0" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/><path d="M12 17.8v3.4" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/></svg></button></div><div class="cap obcap">点一下说话 · 再点结束</div>
           <p class="sub" id="ob-hint" style="margin:18px auto 0;max-width:24em;font-size:13.5px">聊两三分钟，灵犀记下你在意的事。每条都能改、能删。</p>
         </div>
         <div class="msgs" id="ob-msgs" style="padding-top:22px"></div>
